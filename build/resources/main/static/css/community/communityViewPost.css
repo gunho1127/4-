@@ -1,0 +1,315 @@
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    /* border-radius: 20px; */
+    padding: 60px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container4 {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 70px;
+  }
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.post-header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+.post-header .buttons {
+    display: flex;
+    gap: 10px;
+}
+.post-header .buttons button {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.post-header .buttons button:hover {
+    background-color: #eee;
+}
+.post-header .buttons button.delete {
+    background-color: #ff6666;
+    color: white;
+    border: none;
+}
+.post-header .buttons button.delete:hover {
+    background-color: #cc0000;
+}
+.post-header .buttons button.edit {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+.post-header .buttons button.edit:hover {
+    background-color: #0056b3;
+}
+.post-meta {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between
+}
+
+.img-container{
+    width: 250px;
+    height: 300px;
+    background-color: #007bff;
+
+}
+
+.post-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.horizontal-line {
+    border-top: 1px solid #ddd; /* 수평선 스타일 정의 */
+    margin-top: 20px; /* 필요에 따라 여백 설정 */
+    margin-bottom: 20px; /* 필요에 따라 여백 설정 */
+}
+
+.post-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+}
+.like-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.like-section button {
+    background: none;
+    border: none;
+    font-size: 36px;
+    cursor: pointer;
+}
+.like-section button.liked {
+    color: red;
+}
+.like-section button.unliked {
+    color: black;
+}
+
+/* 댓글 섹션 전체 */
+.comments-section {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.comments-section-more{
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    border-top: 1px solid #ddd;
+}
+
+/* 댓글 입력 */
+.comment-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.comment-input input[type="text"] {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.comment-input button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.comment-input button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* 댓글 목록 */
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/* 개별 댓글 */
+.comment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fafafa;
+}
+
+.comment-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    color: #555;
+}
+
+.comment-content {
+    flex: 1;
+    margin: 0 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 삭제 버튼 */
+.comment-actions .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.comment-actions .delete-button img {
+    width: 16px;
+    height: 16px;
+}
+
+/* 좋아요 버튼 */
+.comment-actions .like-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.comment-actions .like-button img {
+    width: 16px;
+    height: 16px;
+}
+
+/* 더보기 버튼 */
+.load-more {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.load-more button {
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: #666;
+}
+
+.load-more button:hover {
+    text-decoration: underline;
+}
+
+/* 모달 배경 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  /* 모달 컨텐츠 */
+  .modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* 모달 텍스트 */
+  .modal-content p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* 버튼 컨테이너 */
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  /* 버튼 공통 스타일 */
+  .modal-buttons button {
+    width: 45%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* 예 버튼 스타일 */
+  #confirmDelete {
+    background-color: #f44336; /* 빨간색 */
+    color: white;
+  }
+  
+  #confirmDelete:hover {
+    background-color: #d32f2f; /* 더 짙은 빨간색 */
+  }
+  
+  /* 아니오 버튼 스타일 */
+  #cancelDelete {
+    background-color: #f1f1f1;
+    color: #333;
+    border: 1px solid #ddd;
+  }
+  
+  #cancelDelete:hover {
+    background-color: #e0e0e0;
+  }
+  
