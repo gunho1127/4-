@@ -12,5 +12,6 @@ public class UserVO {
     private int isDelete = 1; // 삭제 여부 (기본값 1: 삭제된 상태)
     private int followerCount = 0; // 팔로워 수
     private int followingCount = 0; // 팔로잉 수
+    private String loginType;//로그인 타입
 }
 
