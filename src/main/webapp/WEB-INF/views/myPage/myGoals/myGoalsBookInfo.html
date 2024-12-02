@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../../../../resources/css/myPage/myGoalsBookInfostyle.css">
+
+
+  <style>
+    a,
+    button,
+    input,
+    select,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: none;
+      text-decoration: none;
+      background: none;
+
+      -webkit-font-smoothing: antialiased;
+    }
+
+    menu,
+    ol,
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .field input {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <title>리플렛 - 도서 정보</title>
+</head>
+
+<body>
+  <div class="page-content">
+    
+    <div class="page-content2">
+      
+      <img class="placeholder-picture" src="../../../../resources/images/myPage/placeholder-picture0.png" />
+      <div class="right-column">
+        <div class="section-text">
+          <div class="top">
+            <div class="secondary-headline">도서 명</div>
+
+          </div>
+          <div class="paragraph">작가 명</div>
+        </div>
+
+        <form action="/myPage/myGoals/bookInfoRecord" method="post">
+
+          <div class="form-5-fields-checkbox-button">
+            <div class="fields-group">
+              <div class="text-field">
+                <div class="label-and-field">
+                  <div class="label">시작 일자</div>
+                  <div class="field">
+                    <input type="text" value="시작일자">
+                  </div>
+                </div>
+              </div>
+              <div class="text-field">
+                <div class="label-and-field">
+                  <div class="label">목표 일자</div>
+                  <div class="field">
+                    <input type="text" value="목표 일자">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="form-5-fields-checkbox-button">
+            <div class="fields-group">
+              <div class="text-field">
+                <div class="label-and-field">
+                  <div class="label">총 페이지</div>
+                  <div class="field">
+                    <input type="text" value="총 페이지">
+                  </div>
+                </div>
+              </div>
+              <div class="text-field">
+                <div class="label-and-field">
+                  <div class="label">읽은 페이지</div>
+                  <div class="field">
+                    <input type="text" value="읽은 페이지">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="buttons-group">
+              <div class="button">
+                <div class="text-container">
+                  <input class="button-text" type="submit" value="기록 완료">
+                </div>
+
+              </div>
+
+              <div class="buttons-group">
+                <div class="button">
+                  <div class="text-container">
+                    <button class="button-text">목표 삭제</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="header">
+      <div class="auto-layout-vertical">
+        <div class="div">필사 다이어리</div>
+      </div>
+      <div class="type-primary-size-large-status-enable">
+        <div class="div2">필사 추가</div>
+      </div>
+    </div>
+    <div class="table2">
+      <div class="frame-1">
+
+        <div class="column">
+
+          <div class="kanban">
+            <div class="description-top">2024.11.14</div>
+            <div class="description-top2">필사 문장</div>
+            <div class="description-top3">사용자의 생각 작성란</div>
+            <div class="bottom">
+              <div class="icons-container">
+                <a href="">
+                  <img class="icon-heroicons-outline-pencil-alt4"
+                    src="../../../../resources/images/myPage/icon-heroicons-outline-pencil-alt3.svg" />
+                </a>
+                <a href="">
+                  <img class="icon-heroicons-outline-trash4"
+                    src="../../../../resources/images/myPage/icon-heroicons-outline-trash3.svg" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 카드 1 -->
+          <!-- <div class="kanban">
+            <div class="description-top">2024.11.14</div>
+            <div class="description-top2">필사 문장</div>
+            <div class="description-top3">사용자의 생각 작성란</div>
+            <div class="bottom">
+              <div class="icons-container">
+                <img class="icon-heroicons-outline-pencil-alt" src="icon-heroicons-outline-pencil-alt0.svg" />
+                <img class="icon-heroicons-outline-trash" src="icon-heroicons-outline-trash0.svg" />
+              </div>
+            </div>
+          </div> -->
+
+          <!-- 카드 2 -->
+          <!-- <div class="kanban">
+            <div class="description-top">2024.11.14</div>
+            <div class="description-top2">필사 문장</div>
+            <div class="description-top3">사용자의 생각 작성란</div>
+            <div class="bottom">
+              <div class="icons-container">
+                <img class="icon-heroicons-outline-pencil-alt2" src="icon-heroicons-outline-pencil-alt1.svg" />
+                <img class="icon-heroicons-outline-trash2" src="icon-heroicons-outline-trash1.svg" />
+              </div>
+            </div>
+          </div> -->
+
+          <!-- 카드 3 -->
+          <!-- <div class="kanban">
+            <div class="description-top">2024.11.14</div>
+            <div class="description-top2">필사 문장</div>
+            <div class="description-top3">사용자의 생각 작성란</div>
+            <div class="bottom">
+              <div class="icons-container">
+                <img class="icon-heroicons-outline-pencil-alt3" src="icon-heroicons-outline-pencil-alt2.svg" />
+                <img class="icon-heroicons-outline-trash3" src="icon-heroicons-outline-trash2.svg" />
+              </div>
+            </div>
+          </div> -->
+
+
+
+        </div>
+
+        <div class="column">
+          <!-- 카드 5 -->
+          <!-- <div class="kanban">
+            <div class="description-top">2024.11.14</div>
+            <div class="description-top2">필사 문장</div>
+            <div class="description-top3">사용자의 생각 작성란</div>
+            <div class="bottom">
+              <div class="icons-container">
+                <img class="icon-heroicons-outline-pencil-alt5" src="icon-heroicons-outline-pencil-alt4.svg" />
+                <img class="icon-heroicons-outline-trash5" src="icon-heroicons-outline-trash4.svg" />
+              </div>
+            </div>
+          </div> -->
+
+          <!-- 카드 2 -->
+          <!-- <div class="kanban">
+            <div class="description-top">2024.11.14</div>
+            <div class="description-top2">필사 문장</div>
+            <div class="description-top3">사용자의 생각 작성란</div>
+            <div class="bottom">
+              <div class="icons-container">
+                <img class="icon-heroicons-outline-pencil-alt2" src="icon-heroicons-outline-pencil-alt1.svg" />
+                <img class="icon-heroicons-outline-trash2" src="icon-heroicons-outline-trash1.svg" />
+              </div>
+            </div>
+          </div> -->
+
+          <!-- 카드 3 -->
+          <!-- <div class="kanban">
+            <div class="description-top">2024.11.14</div>
+            <div class="description-top2">필사 문장</div>
+            <div class="description-top3">사용자의 생각 작성란</div>
+            <div class="bottom">
+              <div class="icons-container">
+                <img class="icon-heroicons-outline-pencil-alt3" src="icon-heroicons-outline-pencil-alt2.svg" />
+                <img class="icon-heroicons-outline-trash3" src="icon-heroicons-outline-trash2.svg" />
+              </div>
+            </div>
+          </div> -->
+
+          <!-- 카드 4 -->
+          <!-- <div class="kanban">
+            <div class="description-top">2024.11.14</div>
+            <div class="description-top2">필사 문장</div>
+            <div class="description-top3">사용자의 생각 작성란</div>
+            <div class="bottom">
+              <div class="icons-container">
+                <img class="icon-heroicons-outline-pencil-alt4" src="icon-heroicons-outline-pencil-alt3.svg" />
+                <img class="icon-heroicons-outline-trash4" src="icon-heroicons-outline-trash3.svg" />
+              </div>
+            </div>
+          </div> -->
+
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+  </div>
+
+</body>
+
+</html>

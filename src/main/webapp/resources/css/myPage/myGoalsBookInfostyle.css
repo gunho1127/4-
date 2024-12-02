@@ -1,0 +1,603 @@
+.page-content,
+.page-content * {
+  box-sizing: border-box;
+}
+.page-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  height: 85.875rem;
+  position: relative;
+}
+.page-content2 {
+  background: #ffffff;
+  padding: 5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 36.625rem;
+  position: relative;
+}
+.placeholder-picture {
+  background: linear-gradient(to left, #dde1e6, #dde1e6);
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  object-fit: cover;
+}
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 26.625rem;
+  position: relative;
+}
+.section-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.secondary-headline {
+  color: var(--coolgray-90, #21272a);
+  text-align: left;
+  font-family: var(--heading-2-font-family, "Roboto-Bold", sans-serif);
+  font-size: var(--heading-2-font-size, 2.625rem);
+  line-height: var(--heading-2-line-height, 110%);
+  font-weight: var(--heading-2-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+}
+.paragraph {
+  color: var(--coolgray-90, #21272a);
+  text-align: left;
+  font-family: var(--body-l-font-family, "Roboto-Regular", sans-serif);
+  font-size: var(--body-l-font-size, 1.125rem);
+  line-height: var(--body-l-line-height, 140%);
+  font-weight: var(--body-l-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+.form-5-fields-checkbox-button {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 38.5rem;
+  position: relative;
+}
+.fields-group {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.text-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.label-and-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.label {
+  color: var(--coolgray-90, #21272a);
+  text-align: left;
+  font-family: var(--body-s-font-family, "Roboto-Regular", sans-serif);
+  font-size: var(--body-s-font-size, 0.875rem);
+  line-height: var(--body-s-line-height, 140%);
+  font-weight: var(--body-s-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+.field {
+  background: var(--coolgray-10, #f2f4f8);
+  border-style: solid;
+  border-color: var(--coolgray-30, #c1c7cd);
+  border-width: 0rem 0rem 0.0625rem 0rem;
+  padding: 0.75rem 1rem 0.75rem 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 3rem;
+  position: relative;
+}
+.text {
+  color: var(--coolgray-60, #697077);
+  text-align: left;
+  font-family: var(--body-m-font-family, "Roboto-Regular", sans-serif);
+  font-size: var(--body-m-font-size, 1rem);
+  line-height: var(--body-m-line-height, 140%);
+  font-weight: var(--body-m-font-weight, 400);
+  position: relative;
+  flex: 1;
+}
+.buttons-group {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.button {
+  background: var(--primary-60, #0f62fe);
+  border-style: solid;
+  border-color: var(--primary-60, #0f62fe);
+  border-width: 0.125rem;
+  padding: 1rem 0.75rem 1rem 0.75rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 3rem;
+  position: relative;
+}
+.text-container {
+  padding: 0rem 1rem 0rem 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.button-text {
+  color: var(--default-white, #ffffff);
+  text-align: left;
+  font-family: var(--button-m-font-family, "Roboto-Bold", sans-serif);
+  font-size: var(--button-m-font-size, 1rem);
+  line-height: var(--button-m-line-height, 100%);
+  letter-spacing: var(--button-m-letter-spacing, 0.03125rem);
+  font-weight: var(--button-m-font-weight, 700);
+  position: relative;
+}
+.table {
+  background: var(--default-white, #ffffff);
+  border-style: solid;
+  border-color: var(--coolgray-20, #dde1e6);
+  border-width: 0.0625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 46.25rem;
+  position: relative;
+  overflow: hidden;
+}
+.header {
+  padding: 3.125rem 1.875rem 3.125rem 1.875rem;
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-space-24, 1.5rem);
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 67.75rem;
+  height: 6.25rem;
+  position: relative;
+}
+.auto-layout-vertical {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 54.1875rem;
+  height: 5.1875rem;
+  position: relative;
+}
+.div {
+  color: var(--color-secondary-100, #283747);
+  text-align: left;
+  font-family: var(
+    --heading-40-medium-font-family,
+    "PlusJakartaSans-Bold",
+    sans-serif
+  );
+  font-size: var(--heading-40-medium-font-size, 2.5rem);
+  line-height: var(--heading-40-medium-line-height, 3.5rem);
+  font-weight: var(--heading-40-medium-font-weight, 700);
+  position: relative;
+}
+.type-primary-size-large-status-enable {
+  background: var(--color-clickable-color, #2b73ff);
+  border-radius: var(--space-space-4, 0.25rem);
+  padding: 0rem var(--space-space-24, 1.5rem) 0rem var(--space-space-24, 1.5rem);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-space-12, 0.75rem);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 7.1875rem;
+  height: 2.875rem;
+  position: relative;
+}
+.div2 {
+  color: var(--color-main-100, #ffffff);
+  text-align: left;
+  font-family: var(
+    --body-16-medium-font-family,
+    "PlusJakartaSans-Bold",
+    sans-serif
+  );
+  font-size: var(--body-16-medium-font-size, 1rem);
+  line-height: var(--body-16-medium-line-height, 1.625rem);
+  font-weight: var(--body-16-medium-font-weight, 700);
+  position: relative;
+}
+.table2 {
+  background: var(--default-white, #ffffff);
+  border-color: var(--coolgray-20, #dde1e6);
+  border-width: 0.0625rem;
+  padding: 0rem 6.25rem 0rem 6.25rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 32.75rem;
+  position: relative;
+  overflow: hidden;
+}
+.frame-1 {
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.column {
+  background: var(--coolgray-20, #dde1e6);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 28.3125rem;
+  position: relative;
+}
+.kanban {
+  background: var(--default-white, #ffffff);
+  border-style: solid;
+  border-color: var(--coolgray-20, #dde1e6);
+  border-width: 0.0625rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.description-top {
+  color: var(--coolgray-90, #21272a);
+  text-align: left;
+  font-family: var(--body-xs-font-family, "Roboto-Regular", sans-serif);
+  font-size: var(--body-xs-font-size, 0.75rem);
+  line-height: var(--body-xs-line-height, 140%);
+  font-weight: var(--body-xs-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+.description-top2 {
+  color: var(--coolgray-90, #21272a);
+  text-align: left;
+  font-family: var(--body-m-font-family, "Roboto-Bold", sans-serif);
+  font-size: var(--body-m-font-size, 1rem);
+  line-height: var(--body-m-line-height, 140%);
+  font-weight: var(--body-m-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+}
+.description-top3 {
+  color: var(--coolgray-90, #21272a);
+  text-align: left;
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 0.75rem;
+  line-height: 140%;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+}
+.bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  width: 3.9375rem;
+  position: relative;
+}
+.icons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.icon-heroicons-outline-pencil-alt {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-trash {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-pencil-alt2 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-trash2 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-pencil-alt3 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-trash3 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-pencil-alt4 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-trash4 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-pencil-alt5 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-trash5 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-pencil-alt6 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-trash6 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-pencil-alt7 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-trash7 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-pencil-alt8 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-heroicons-outline-trash8 {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.pagination {
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.pagination2 {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 2.5rem;
+  position: relative;
+}
+.icon-jam-icons-outline-logos-chevron-left {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.text-container2 {
+  padding: 0rem 0.5rem 0rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.page {
+  color: var(--coolgray-60, #697077);
+  text-align: left;
+  font-family: var(--button-m-font-family, "Roboto-Medium", sans-serif);
+  font-size: var(--button-m-font-size, 1rem);
+  line-height: var(--button-m-line-height, 100%);
+  letter-spacing: var(--button-m-letter-spacing, 0.03125rem);
+  font-weight: var(--button-m-font-weight, 500);
+  position: relative;
+}
+.text-container3 {
+  padding: 0rem 0.5rem 0rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.page2 {
+  color: var(--primary-60, #0f62fe);
+  text-align: left;
+  font-family: var(--button-m-font-family, "Roboto-Medium", sans-serif);
+  font-size: var(--button-m-font-size, 1rem);
+  line-height: var(--button-m-line-height, 100%);
+  letter-spacing: var(--button-m-letter-spacing, 0.03125rem);
+  font-weight: var(--button-m-font-weight, 500);
+  position: relative;
+}
+.pagination3 {
+  background: var(--primary-30, #a6c8ff);
+  border-style: solid;
+  border-color: var(--primary-30, #a6c8ff);
+  border-width: 0.125rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 2.5rem;
+  position: relative;
+}
+.page3 {
+  color: var(--primary-90, #001d6c);
+  text-align: left;
+  font-family: var(--button-m-font-family, "Roboto-Medium", sans-serif);
+  font-size: var(--button-m-font-size, 1rem);
+  line-height: var(--button-m-line-height, 100%);
+  letter-spacing: var(--button-m-letter-spacing, 0.03125rem);
+  font-weight: var(--button-m-font-weight, 500);
+  position: relative;
+}
+.icon-jam-icons-outline-logos-chevron-right {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}

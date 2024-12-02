@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../../../../resources/css/myPage/myGoalsAddBooks.css">
+
+
+  <style>
+    a,
+    button,
+    input,
+    select,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: none;
+      text-decoration: none;
+      background: none;
+
+      -webkit-font-smoothing: antialiased;
+    }
+
+    menu,
+    ol,
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <title>리플렛 - 목표 추가</title>
+</head>
+
+<body>
+  
+  <div class="page-content">
+
+    
+    <div class="table">
+      <div class="form">
+        <div class="section-text">
+          <div class="top">
+            <div class="secondary-headline">목표 추가</div>
+          </div>
+          <div class="paragraph">
+            목표 도서를 등록하여 독서 성취를 이뤄보아요!
+          </div>
+        </div>
+
+        <form action="/myPage/myGoalsAddBooks" method="post">
+          <div class="fields-group">
+            <div class="text-field">
+              <div class="label-and-field">
+                <div class="label">도서 명</div>
+                <div class="field">
+                  <input type="text">
+                </div>
+              </div>
+            </div>
+
+            <!-- 모달창 가져오기 -->
+            <a href="/myPage/myGoalsAddBooksModal">
+              <div class="button">
+                <div class="text-container">
+                  <div class="button-text">도서 검색</div>
+                </div>
+              </div>
+            </a>
+            
+            
+            <div class="text-field">
+              <div class="label-and-field">
+                <div class="label">작가 명</div>
+                <div class="field">
+                  <input type="text">
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="fields-group2">
+            <div class="text-field">
+              <div class="label-and-field">
+                <div class="label">시작 날짜</div>
+                <div class="field">
+                  <input type="text">
+                </div>
+              </div>
+            </div>
+            <div class="text-field">
+              <div class="label-and-field">
+                <div class="label">목표 날짜</div>
+                <div class="field">
+                  <input type="text">
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="form-5-fields-checkbox-button">
+            <div class="fields-group2">
+              <div class="text-field">
+                <div class="label-and-field">
+                  <div class="label">총 페이지</div>
+                  <div class="field2">
+                    <input type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="text-field">
+                <div class="label-and-field">
+                  <div class="label"></div>
+                </div>
+              </div>
+            </div>
+            <div class="buttons-group">
+              <div class="button">
+                <div class="text-container">
+                  <input class="button-text" type="submit" value="추가하기">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>

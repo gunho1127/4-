@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실시간 인기 게시글</title>
+    <link rel="stylesheet" href="../../../resources/static/css/community/communityMain.css">
+    <link rel="stylesheet" href="../../../resources/static/css/headerstyle.css">
+    <script src="../../../resources/static/js/community/communitMain.js"></script>
+</head>
+
+<body>
+    <header>
+
+    <div class="desktop-horizontal-logo-left-not-logged-menu-bottom-search-icons-right">
+        <div class="top">
+            <div class="logo">
+
+                <!-- 메인 이동 -->
+                <a href="/index">
+                    <div class="text">
+                        <div class="webby-frames">REAPLETTE</div>
+                        <div class="for-figma"></div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 검색창 -->
+            <form class="field" action="/search/total">
+                <div>
+
+                    <input class="text2" placeholder="검색어를 입력하세요 . . .">
+                    <img class="icon-jam-icons-outline-logos-search"
+                         src="../../../resources/static/images/icon-jam-icons-outline-logos-search0.svg" />
+                </div>
+            </form>
+
+
+            <!-- 커뮤니티 버튼 -->
+            <a href="/community/main">
+                <div class="buttons-group">
+                    <img class="icon-heroicons-outline-user-group"
+                         src="../../../resources/static/images/icon-heroicons-outline-user-group0.svg" />
+                </div>
+            </a>
+
+            <!-- 알람버튼 -->
+            <a href="/notification/list">
+                <div class="button">
+                    <img class="icon-jam-icons-outline-logos-bell"
+                         src="../../../resources/static/images/icon-jam-icons-outline-logos-bell0.svg" />
+                </div>
+            </a>
+
+            <!-- 유저프로필 -->
+            <a href="/myPage/info">
+                <div class="user-thumb">
+                    <img class="icon-jam-icons-outline-logos-user"
+                         src="../../../resources/static/images/icon-jam-icons-outline-logos-user0.svg" />
+                </div>
+
+            </a>
+
+
+            <!-- 로그인/회원가입버튼 -->
+            <a href="/login.jsp">
+                <div class="button2">
+
+                    <div class="text-container">
+                        <div class="button-text">시작하기</div>
+                    </div>
+
+                </div>
+            </a>
+
+
+        </div>
+    </div>
+
+    <div class="menu">
+
+        <div class="left">
+
+            <a href="/rec/recBooks">
+                <div class="menu-item">
+                    <div class="menu-item2">도서 추천</div>
+                </div>
+            </a>
+
+
+            <a href="/myPage/info">
+                <div class="menu-item">
+                    <div class="menu-item2">마이 컨텐츠</div>
+                </div>
+            </a>
+
+            <a href="/community/main">
+                <div class="menu-item">
+                    <div class="menu-item2">커뮤니티</div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+    </div>
+
+</header>
+
+    <section>
+        <div class="container2">
+            <button class="new-post-btn">+ 새 글 작성</button>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <header class="header">
+                <h1>
+                    <img src="../../../resources/static/images/community/fire-icon.svg" class="header-icon">
+                    실시간 인기 게시글
+                </h1>
+            </header>
+    
+            <div class="post-slider">
+                <button class="slider-btn prev">‹</button>
+                <div class="post-grid">
+                    <div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-btn next">›</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="container3">
+    </div>
+
+    <section>
+        <div class="container">
+            <header class="header">
+                <h1>
+                    <img src="../../../resources/static/images/community/group-icon.svg" class="header-icon">
+                    팔로잉 게시글
+                </h1>
+            </header>
+    
+            <div class="post-slider">
+                <button class="slider-btn prev">‹</button>
+                <div class="post-grid">
+                    <div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="post-card">
+                        <div class="image-placeholder"></div>
+                        <div class="post-info">
+                            <p class="category">Category</p>
+                            <h3 class="title">Title</h3>
+                            <p class="description">
+                                Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.
+                            </p>
+                            <div class="author">
+                                <div class="avatar-placeholder"></div>
+                                <div>
+                                    <p class="name">Jane Doe</p>
+                                    <p class="role">Senior Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-btn next">›</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="container3">
+    </div>
+
+    <section>
+        <div class="container">
+            <header class="header">
+                <h1>
+                    <img src="../../../resources/static/images/community/entire-icon.svg" class="header-icon">
+                    전체 게시글
+                </h1>
+                <div class="sort-dropdown">
+                    <select name="sort" onchange="window.location.href='?sort=' + this.value;">
+                        <option value="latest" selected>최신순</option>
+                        <option value="popular">인기순</option>
+                    </select>
+                </div>
+            </header>
+            <div class="post-list">
+                <c:forEach var="post" items="${postList}">
+                    <div class="post-item">
+                        <div class="post-image">
+                            <img src="${post.image}" alt="${post.title}">
+                        </div>
+                        <div class="post-content">
+                            <div>
+                                <span class="post-category">${post.category}</span>
+                                <span class="post-id">no. ${post.id}</span>
+                            </div>
+                            <h2 class="post-title">${post.title}</h2>
+                            <p class="post-snippet">${post.snippet}</p>
+                        </div>
+                        <div class="post-meta">
+                            <span class="post-author">${post.authorName}</span>
+                            <span class="post-date">${post.date}</span>
+                            <span class="post-likes">❤️ ${post.likes}</span>
+                        </div>
+                    </div>
+                </c:forEach>
+
+                <div class="pagination-wrapper">
+                    <a href="?allPage=${allCurrentPage - 1}&followPage=${followCurrentPage}&communityPage=${communityCurrentPage}&bookPage=${bookCurrentPage}" 
+                       class="pagination-btn ${allCurrentPage == 1 ? 'disabled' : ''}">&lt; Previous</a>
+                    <c:forEach begin="1" end="${allTotalPages}" var="page">
+                        <a href="?allPage=${page}&followPage=${followCurrentPage}&communityPage=${communityCurrentPage}&bookPage=${bookCurrentPage}" 
+                           class="pagination-btn ${page == allCurrentPage ? 'active' : ''}">${page}</a>
+                    </c:forEach>
+                    <a href="?allPage=${allCurrentPage + 1}&followPage=${followCurrentPage}&communityPage=${communityCurrentPage}&bookPage=${bookCurrentPage}" 
+                       class="pagination-btn ${allCurrentPage == allTotalPages ? 'disabled' : ''}">Next &gt;</a>
+                </div>
+                
+                
+            </div>
+        
+        </div>
+    </section>
+
+    <div class="container3">
+    </div>
+
+    <section>
+        <div class="container">
+            <header class="header">
+                <h1>
+                    <img src="../../../resources/static/images/community/book-icon.svg" class="header-icon">
+                    도서 리뷰
+                </h1>
+                <div class="sort-dropdown">
+                    <select name="sort" onchange="window.location.href='?sort=' + this.value;">
+                        <option value="latest" selected>최신순</option>
+                        <option value="popular">인기순</option>
+                    </select>
+                </div>
+            </header>
+            <div class="post-list">
+                <c:forEach var="post" items="${postList}">
+                    <div class="post-item">
+                        <div class="post-image">
+                            <img src="${post.image}" alt="${post.title}">
+                        </div>
+                        <div class="post-content">
+                            <div>
+                                <span class="post-category">${post.category}</span>
+                                <span class="post-id">no. ${post.id}</span>
+                            </div>
+                            <h2 class="post-title">${post.title}</h2>
+                            <p class="post-snippet">${post.snippet}</p>
+                        </div>
+                        <div class="post-meta">
+                            <span class="post-author">${post.authorName}</span>
+                            <span class="post-date">${post.date}</span>
+                            <span class="post-likes">❤️ ${post.likes}</span>
+                        </div>
+                    </div>
+                </c:forEach>
+
+                <div class="pagination-wrapper">
+                    <a href="?allPage=${allCurrentPage}&followPage=${followCurrentPage}&communityPage=${communityCurrentPage}&bookPage=${bookCurrentPage - 1}" 
+                       class="pagination-btn ${bookCurrentPage == 1 ? 'disabled' : ''}">&lt; Previous</a>
+                    <c:forEach begin="1" end="${bookTotalPages}" var="page">
+                        <a href="?allPage=${allCurrentPage}&followPage=${followCurrentPage}&communityPage=${communityCurrentPage}&bookPage=${page}" 
+                           class="pagination-btn ${page == bookCurrentPage ? 'active' : ''}">${page}</a>
+                    </c:forEach>
+                    <a href="?allPage=${allCurrentPage}&followPage=${followCurrentPage}&communityPage=${communityCurrentPage}&bookPage=${bookCurrentPage + 1}" 
+                       class="pagination-btn ${bookCurrentPage == bookTotalPages ? 'disabled' : ''}">Next &gt;</a>
+                </div>
+                
+                
+            </div>
+        
+        </div>
+    </section>
+
+    <div class="container3">
+    </div>
+
+    <section>
+        <div class="container">
+            <header class="header">
+                <h1>
+                    <img src="../../../resources/static/images/community/community-icon.svg" class="header-icon">
+                     커뮤니티
+                </h1>
+                <div class="sort-dropdown">
+                    <select name="sort" onchange="window.location.href='?sort=' + this.value;">
+                        <option value="latest" selected>최신순</option>
+                        <option value="popular">인기순</option>
+                    </select>
+                </div>
+            </header>
+            <div class="post-list">
+                <c:forEach var="post" items="${postList}">
+                    <div class="post-item">
+                        <div class="post-image">
+                            <img src="${post.image}" alt="${post.title}">
+                        </div>
+                        <div class="post-content">
+                            <div>
+                                <span class="post-category">${post.category}</span>
+                                <span class="post-id">no. ${post.id}</span>
+                            </div>
+                            <h2 class="post-title">${post.title}</h2>
+                            <p class="post-snippet">${post.snippet}</p>
+                        </div>
+                        <div class="post-meta">
+                            <span class="post-author">${post.authorName}</span>
+                            <span class="post-date">${post.date}</span>
+                            <span class="post-likes">❤️ ${post.likes}</span>
+                        </div>
+                    </div>
+                </c:forEach>
+
+                <div class="pagination-wrapper">
+                    <a href="?allPage=${allCurrentPage}&followPage=${followCurrentPage}&communityPage=${communityCurrentPage - 1}&bookPage=${bookCurrentPage}" 
+                       class="pagination-btn ${communityCurrentPage == 1 ? 'disabled' : ''}">&lt; Previous</a>
+                    <c:forEach begin="1" end="${communityTotalPages}" var="page">
+                        <a href="?allPage=${allCurrentPage}&followPage=${followCurrentPage}&communityPage=${page}&bookPage=${bookCurrentPage}" 
+                           class="pagination-btn ${page == communityCurrentPage ? 'active' : ''}">${page}</a>
+                    </c:forEach>
+                    <a href="?allPage=${allCurrentPage}&followPage=${followCurrentPage}&communityPage=${communityCurrentPage + 1}&bookPage=${bookCurrentPage}" 
+                       class="pagination-btn ${communityCurrentPage == communityTotalPages ? 'disabled' : ''}">Next &gt;</a>
+                </div>
+                
+                
+            </div>
+        
+        </div>
+    </section>
+
+    <div class="container3">
+    </div>
+
+</body>
+
+</html>

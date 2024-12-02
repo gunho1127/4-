@@ -1,0 +1,190 @@
+.div,
+.div * {
+  box-sizing: border-box;
+}
+.div {
+  background: var(--coolgray-10, #f2f4f8);
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 49.5625rem;
+  position: relative;
+}
+.icon-heroicons-outline-lock-open {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.icon-heroicons-outline-user {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.table {
+  background: var(--default-white, #ffffff);
+  border-style: solid;
+  border-color: var(--coolgray-20, #dde1e6);
+  border-width: 0.0625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 65.8125rem;
+  height: 49.1875rem;
+  position: relative;
+  overflow: hidden;
+}
+.header {
+  padding: 3.125rem 1.875rem 3.125rem 1.875rem;
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-space-24, 1.5rem);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 51.4375rem;
+  position: relative;
+}
+.auto-layout-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-space-4, 0.25rem);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  height: 45.1875rem;
+  position: relative;
+}
+.div2 {
+  color: var(--color-secondary-100, #283747);
+  text-align: left;
+  position: relative;
+  align-self: stretch;
+  height: 5.0625rem;
+}
+.div-2-span {
+  color: var(--color-secondary-100, #283747);
+  font-family: "PlusJakartaSans-Bold", sans-serif;
+  font-size: 2.5rem;
+  line-height: 1.875rem;
+  font-weight: 700;
+}
+.div-2-span2 {
+  color: var(--color-secondary-100, #283747);
+  font-family: "PlusJakartaSans-Medium", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  font-weight: 500;
+}
+.page-content {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 40.4375rem;
+  position: relative;
+}
+.icon-jam-icons-outline-logos-rocket {
+  flex-shrink: 0;
+  width: 7.75rem;
+  height: 7.75rem;
+  position: relative;
+  overflow: visible;
+}
+.section-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 55.5625rem;
+  position: relative;
+}
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.main-headline {
+  color: var(--coolgray-90, #21272a);
+  text-align: center;
+  font-family: var(--heading-1-font-family, "Roboto-Bold", sans-serif);
+  font-size: var(--heading-1-font-size, 3.375rem);
+  line-height: var(--heading-1-line-height, 110%);
+  font-weight: var(--heading-1-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+}
+.secondary-headline {
+  color: var(--coolgray-90, #21272a);
+  text-align: center;
+  font-family: var(--heading-2-font-family, "Roboto-Bold", sans-serif);
+  font-size: var(--heading-2-font-size, 2.625rem);
+  line-height: var(--heading-2-line-height, 110%);
+  font-weight: var(--heading-2-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+}
+.paragraph {
+  color: var(--coolgray-90, #21272a);
+  text-align: center;
+  font-family: var(--body-l-font-family, "Roboto-Regular", sans-serif);
+  font-size: var(--body-l-font-size, 1.125rem);
+  line-height: var(--body-l-line-height, 140%);
+  font-weight: var(--body-l-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+.button {
+  border-style: solid;
+  border-color: var(--primary-60, #0f62fe);
+  border-width: 0.125rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 3.5rem;
+  position: relative;
+}
+.text-container {
+  padding: 0rem 1rem 0rem 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.div3 {
+  color: var(--primary-60, #0f62fe);
+  text-align: left;
+  font-family: var(--button-l-font-family, "Roboto-Medium", sans-serif);
+  font-size: var(--button-l-font-size, 1.25rem);
+  line-height: var(--button-l-line-height, 100%);
+  letter-spacing: var(--button-l-letter-spacing, 0.03125rem);
+  font-weight: var(--button-l-font-weight, 500);
+  position: relative;
+}
