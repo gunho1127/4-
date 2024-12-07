@@ -1,0 +1,5 @@
+.exception-field {
+    font-size: 12px; /* 글씨 크기를 작게 설정 (필요에 따라 조정 가능) */
+    color: red; /* 붉은 색 설정 */
+    font-weight: 400; /* 글씨를 얇게 설정 */
+}

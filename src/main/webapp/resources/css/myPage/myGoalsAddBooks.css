@@ -1,0 +1,295 @@
+.page-content,
+.page-content * {
+  box-sizing: border-box;
+}
+.page-content {
+  
+  background: #f2f4f8;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+
+.table {
+  background: var(--default-white, #ffffff);
+  border-style: solid;
+  border-color: var(--coolgray-20, #dde1e6);
+  border-width: 0.0625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 45.4375rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.form {
+  background: var(--default-white, #ffffff);
+  border-style: solid;
+  border-color: var(--coolgray-20, #dde1e6);
+  border-width: 0.0625rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: fit-content;
+  position: relative;
+}
+.section-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.secondary-headline {
+  color: var(--coolgray-90, #21272a);
+  text-align: left;
+  font-family: var(--heading-2-font-family, "Roboto-Bold", sans-serif);
+  font-size: var(--heading-2-font-size, 2.625rem);
+  line-height: var(--heading-2-line-height, 110%);
+  font-weight: var(--heading-2-font-weight, 700);
+  position: relative;
+  align-self: stretch;
+}
+.paragraph {
+  color: var(--coolgray-90, #21272a);
+  text-align: left;
+  font-family: var(--body-l-font-family, "Roboto-Regular", sans-serif);
+  font-size: var(--body-l-font-size, 1.125rem);
+  line-height: var(--body-l-line-height, 140%);
+  font-weight: var(--body-l-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+.fields-group {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-end;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.text-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.label-and-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.label {
+  color: var(--coolgray-90, #21272a);
+  text-align: left;
+  font-family: var(--body-s-font-family, "Roboto-Regular", sans-serif);
+  font-size: var(--body-s-font-size, 0.875rem);
+  line-height: var(--body-s-line-height, 140%);
+  font-weight: var(--body-s-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+.field {
+  background: var(--coolgray-10, #f2f4f8);
+  border-style: solid;
+  border-color: var(--coolgray-30, #c1c7cd);
+  border-width: 0rem 0rem 0.0625rem 0rem;
+  padding: 0.75rem 1rem 0.75rem 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 3rem;
+  position: relative;
+}
+.text {
+  color: var(--coolgray-60, #697077);
+  text-align: left;
+  font-family: var(--body-m-font-family, "Roboto-Regular", sans-serif);
+  font-size: var(--body-m-font-size, 1rem);
+  line-height: var(--body-m-line-height, 140%);
+  font-weight: var(--body-m-font-weight, 400);
+  position: relative;
+  flex: 1;
+}
+.button {
+  background: var(--primary-60, #0f62fe);
+  border-style: solid;
+  border-color: var(--primary-60, #0f62fe);
+  border-width: 0.125rem;
+  padding: 1rem 0.75rem 1rem 0.75rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 3rem;
+  position: relative;
+}
+.text-container {
+  padding: 0rem 1rem 0rem 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.button-text {
+  color: var(--default-white, #ffffff);
+  text-align: left;
+  font-family: var(--button-m-font-family, "Roboto-Bold", sans-serif);
+  font-size: var(--button-m-font-size, 1rem);
+  line-height: var(--button-m-line-height, 100%);
+  letter-spacing: var(--button-m-letter-spacing, 0.03125rem);
+  font-weight: var(--button-m-font-weight, 700);
+  position: relative;
+}
+.fields-group2 {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.form-5-fields-checkbox-button {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 38.5rem;
+  position: relative;
+}
+.field2 {
+  background: var(--coolgray-10, #f2f4f8);
+  border-style: solid;
+  border-color: var(--coolgray-30, #c1c7cd);
+  border-width: 0rem 0rem 0.0625rem 0rem;
+  padding: 0.75rem 1rem 0.75rem 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 38.3125rem;
+  height: 3rem;
+  position: relative;
+}
+.buttons-group {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.field input {
+  width: 100%; /* 부모 컨테이너인 .field에 꽉 차도록 */
+  height: 100%;
+  box-sizing: border-box; /* 패딩과 테두리도 포함하여 크기 계산 */
+}
+
+.field2 input {
+  width: 100%; /* 부모 컨테이너인 .field에 꽉 차도록 */
+  height: 100%;
+  box-sizing: border-box; /* 패딩과 테두리도 포함하여 크기 계산 */
+}
+
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%; /* 부모 요소의 가로 길이에 맞춤 */
+}
+.book-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0.5rem;
+  background-color: #f9f9f9;
+  gap: 1rem;
+  width: 100%; /* 부모 요소의 가로 길이에 맞춤 */
+  box-sizing: border-box; /* 패딩과 보더를 포함하여 너비 계산 */
+}
+.book-item img {
+  height: 7rem; /* 직사각형 크기로 조정 */
+  width: 4rem; /* 직사각형 크기로 조정 */
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+.book-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.book-info .title {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.book-info .author {
+  color: #555;
+  font-size: 1rem;
+}
+.select-button {
+  padding: 0.5rem 1rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}

@@ -1,0 +1,254 @@
+
+
+.desktop-vertical-logged-in-buttons-bottom,
+.desktop-vertical-logged-in-buttons-bottom * {
+  box-sizing: border-box;
+}
+
+/* 특정 요소에 대해 드래그 불가능 설정 */
+* {
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+
+.desktop-vertical-logged-in-buttons-bottom {
+  background: var(--default-white, #ffffff);
+  border-style: solid;
+  border-color: var(--coolgray-20, #dde1e6);
+  border-width: 0rem 0.0625rem 0rem 0.0625rem;
+  padding: 1.5rem 1rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16rem;
+  height: 48.0625rem;
+  position: relative;
+}
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.webby-frames {
+  color: var(--coolgray-60, #697077);
+  text-align: left;
+  font-family: var(--heading-4-font-family, "Roboto-Bold", sans-serif);
+  font-size: var(--heading-4-font-size, 1.5rem);
+  line-height: var(--heading-4-line-height, 110%);
+  font-weight: var(--heading-4-font-weight, 700);
+  position: relative;
+}
+.buttons-group {
+  display: flex;
+  flex-direction: row;
+  border-radius: 50%;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.user-thumb {
+  background: var(--coolgray-10, #f2f4f8);
+  border-radius: 50%; /* 원형으로 만들기 */
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+}
+
+.icon-jam-icons-outline-logos-user {
+  flex-shrink: 0;
+  border-radius: 50%; /* 원형으로 만들기 */
+  width: 100%; /* 부모 요소의 너비에 맞춰 조정 */
+  height: 100%; /* 부모 요소의 높이에 맞춰 조정 */
+  position: relative;
+  overflow: visible;
+}
+
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.menu-item {
+  background: #ffffff;
+  border-style: solid;
+  border-color: var(--coolgray-10, #f2f4f8);
+  border-width: 0rem 0rem 0.0625rem 0rem;
+  padding: 0.75rem 0.5rem 0.75rem 0.875rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.icon {
+  flex-shrink: 0;
+  width: 0.875rem;
+  height: 1.125rem;
+  position: relative;
+  overflow: visible;
+}
+.div {
+  color: var(--coolgray-90, #21272a);
+  text-align: left;
+  font-family: var(--other-menu-m-font-family, "Roboto-Bold", sans-serif);
+  font-size: var(--other-menu-m-font-size, 1rem);
+  line-height: var(--other-menu-m-line-height, 100%);
+  font-weight: var(--other-menu-m-font-weight, 700);
+  position: relative;
+}
+.menu-item2 {
+  background: #ffffff;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 0rem 0rem 0.0625rem 0.125rem;
+  padding: 0.75rem 0.5rem 0.75rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.icon-heroicons-outline-sparkles {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.div2 {
+  color: var(--coolgray-90, #21272a);
+  text-align: left;
+  font-family: var(--other-menu-m-font-family, "Roboto-Bold", sans-serif);
+  font-size: var(--other-menu-m-font-size, 1rem);
+  line-height: var(--other-menu-m-line-height, 100%);
+  font-weight: var(--other-menu-m-font-weight, 700);
+  position: relative;
+  flex: 1;
+}
+.menu-item3 {
+  border-style: solid;
+  border-color: var(--coolgray-10, #f2f4f8);
+  border-width: 0rem 0rem 0.0625rem 0rem;
+  padding: 0.75rem 0.5rem 0.75rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.icon-jam-icons-outline-logos-tags {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.menu-item4 {
+  border-style: solid;
+  border-color: var(--coolgray-10, #f2f4f8);
+  border-width: 0.0625rem;
+  padding: 0.75rem 0.5rem 0.75rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.icon-jam-icons-outline-logos-users {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-jam-icons-outline-logos-pictures {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+.menu-item5 {
+  border-style: solid;
+  border-color: var(--coolgray-10, #f2f4f8);
+  border-width: 0rem 0rem 0.0625rem 0rem;
+  padding: 0.75rem 0.625rem 0.75rem 0.8125rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 13.5rem;
+  position: relative;
+}
+.icon2 {
+  border-radius: 0rem;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1.125rem;
+  position: relative;
+  overflow: visible;
+}
+.icon-jam-icons-outline-logos-plane {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  overflow: visible;
+}

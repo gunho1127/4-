@@ -1,0 +1,356 @@
+/* web font */
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+        .follow-button, .following-button {
+            border-radius: 12px;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 4px;
+            transition: background-color 0.3s;
+        }
+        .follow-button {
+            background-color: #007bff;
+            color: white;
+        }
+        .follow-button:hover {
+            background-color: #0056b3;
+        }
+
+/* /web font */
+
+:root {
+  --color-blue: #001d6c;
+  --color-black: #333;
+  --color-red: #ff0000;
+  --color-sky: #a6c8ff;
+  --color-white: #fff;
+  --color-0f62fe: #0f62fe;
+  --color-cbcbcb: #cbcbcb;
+  --color-f4f4f4: #f4f4f4;
+  --color-f2f4f8: #f2f4f8;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  font-family: "pretendard" !important;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+.profile-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+.post-image {
+    max-width: 100%;
+    height: auto;
+    float: right;
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+    margin: 12px 0 0 16px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+button {
+  border: none;
+  box-shadow: none;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+#wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  color: var(--color-black);
+}
+
+
+/* start tab_menu style */
+
+.tab_menu ul li .tm_a {
+  color: var(--color-black);
+}
+
+.tab_menu ul li.active .tm_a {
+  color: var(--color-blue);
+  border-bottom: 2px solid var(--color-blue);
+}
+
+/* end tab_menu style */
+
+/* start container style */
+
+.container .post button {
+  color: var(--color-cbcbcb);
+}
+
+.container .post button.active {
+  color: var(--color-black);
+}
+
+.container .author .swiper-slide {
+  padding: 0 1rem;
+}
+
+.container .author .swiper-slide img {
+  width: 100%;
+}
+
+.container .author .swiper .swiper-button-next, .swiper-button-prev {
+  top: var(--swiper-navigation-top-offset,35%) !important;
+}
+
+.container .users .userFollow {
+  background: var(--color-0f62fe);
+  color: var(--color-white);
+}
+
+.container .users .userFollow.following {
+  background: var(--color-white);
+  color: var(--color-0f62fe);
+  border: 1px solid var(--color-0f62fe);
+}
+
+.cont_desc {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: normal !important;
+
+}
+
+/* end container style */
+
+/* start pagination */
+
+.pagination li.active a {
+  background-color: var(--color-sky);
+  color: var(--color-black);
+}
+
+.pagination > li:first-child a::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  display: inline-block;
+  margin-right: 10px;
+  transform: rotate(225deg);
+}
+
+.pagination > li:last-child a::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  display: inline-block;
+  margin-left: 10px;
+  transform: rotate(45deg);
+}
+
+/* end pagination */
+
+
+/* 책 상세페이지 review 별점 체크 */
+
+.rate {
+  display: inline-block;
+  border: 0;
+  margin-right: 15px;
+}
+.rate > input {
+  display: none;
+}
+.rate > label {
+  float: right;
+  color: #ddd;
+}
+.rate > label:before {
+  display: inline-block;
+  font-size: 1.9rem;
+  padding: 0 0.3rem;
+  margin: 0;
+  cursor: pointer;
+  font-family: "FontAwesome";
+  content: "\f005 ";
+}
+.rate .half:before {
+  content: "\f089 ";
+  position: absolute;
+  padding-right: 0;
+}
+.rate input:checked ~ label,
+.rate label:hover,
+.rate label:hover ~ label {
+  color: var(--color-blue);
+}
+.rate input:checked + .rate label:hover,
+.rate input input:checked ~ label:hover,
+.rate input:checked ~ .rate label:hover ~ label,
+.rate label:hover ~ input:checked ~ label {
+  color: var(--color-blue);
+}
+
+
+
+/* 책 상세페이지 review 별점 체크 */
+
+.heart-icon {
+  font-size: 1.5rem;
+  color: var(--color-0f62fe); /* 기본 상태: 파란색 빈 하트 */
+  transition: color 0.3s ease; /* 색상 전환 애니메이션 */
+}
+
+.heart-icon.active {
+  color: var(--color-0f62fe); /* 클릭 상태: 파란색 꽉 찬 하트 */
+}
+
+/* 작가 프로필 섹션 */
+.author_profile {
+  font-family: Arial, sans-serif;
+}
+
+.profile-img img {
+  width: 200px; /* 기존보다 크기 증가 */
+  height: 200px; /* 기존보다 크기 증가 */
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.profile-info {
+  background-color: #f5f5f5;
+  border: 1px solid #000;
+  border-radius: 8px;
+  width: calc(100% - 220px); /* 프로필 사진 크기에 맞춰 정보 박스 너비 조정 */
+}
+
+.profile-info h5 {
+  font-size: 18px;
+  color: #000;
+}
+
+.profile-info p {
+  font-size: 14px;
+  color: #555;
+}
+
+.profile-info ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.profile-info ul li {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.py-5_py5{
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+    margin-top: -40px;
+}
+
+.search {
+    padding-top: 3rem !important;
+    padding-bottom: 1rem !important;
+    margin-top: -30px;
+}
+.list {
+    padding-top: 2rem !important;
+    padding-bottom: 1rem !important;
+}
+.py-5 {
+    padding-top: 2rem !important;
+    padding-bottom :0 !important;
+}
+
+.mainProfileImage {
+    border-radius: 100% !important;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+.col2 {
+    padding-left: 20px !important;
+}
+
+.mainUser{
+    padding-top: 10px;
+}
+.fs-5_fs5{
+    font-size: 1.3rem !important;
+    margin-left: -90px !important;
+}
+.mb5{
+    margin-bottom: 0.5rem !important;
+}
+.mb-1_mb1{
+    padding-left: 8px !important;
+    padding-top: 10px;
+}
+.col_post{
+    padding-top: 10px !important;
+}
+.me-5_username{
+    margin-left: -15px;
+}
+/*.mb-0 {
+    margin-left: -15px;
+}*/
+
+.rounded-4{
+margin: 15px;
+
+}
+
+.mb-5_mb5{
+    margin-bottom: 1rem !important;
+}
+
+.userImage{
+border-radius: 50%;
+width: 100px;
+height: 100px !important;
+max-width: 100%;
+height: auto;
+object-fit: cover;
+}
+
+
