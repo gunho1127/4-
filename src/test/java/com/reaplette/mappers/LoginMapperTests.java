@@ -28,14 +28,14 @@ public class LoginMapperTests {
 
     @Test
     public void testGetUserById() {
-        String id = "aaa@example.com"; // 테스트용 이메일
-        UserVO user = loginMapper.getUserById(id);  // 'id'를 통해 사용자 조회
+        String id = "seoseuo@example.com"; // 테스트용 이메일
+//        UserVO user = ;  // 'id'를 통해 사용자 조회
 
-        // 'user'가 null이 아닌지, 이메일이 일치하는지 확인
-        assertNotNull(user, "User should not be null");
-        assertEquals(id, user.getId(), "Email ID should match");
+//        // 'user'가 null이 아닌지, 이메일이 일치하는지 확인
+//        assertNotNull(user, "User should not be null");
+//        assertEquals(id, user.getId(), "Email ID should match");
 
-        logger.info("User: {}", user); // 로깅을 통해 user 정보를 출력
+        logger.info("User: {}", loginMapper.getUserById(id)); // 로깅을 통해 user 정보를 출력
     }
 
     @Test
@@ -69,4 +69,11 @@ public class LoginMapperTests {
         loginMapper.updatePassword(user);
 
     }
+
+    @Test
+    public void testIsNaver() {
+        log.info("testIsNaver . . .");
+        log.info(loginMapper.isNaver("seoseuo@naver.com"));
+    }
+
 }

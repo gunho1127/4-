@@ -21,13 +21,16 @@
                         <div class="mb-3">
                             <label for="id" class="form-label">아이디</label>
                             <div class="input-container">
-                                <input type="text" class="form-control" id="id" name="id" placeholder="이메일을 입력하세요." maxlength="320" aria-label="이메일 입력란" required>
+                                <input type="text" class="form-control" id="id" name="id" placeholder="이메일을 입력하세요." maxlength="320" aria-label="이메일 입력란">
                                 <span class="clear-icon" id="clear-icon" aria-label="입력 내용 지우기">
                                     <img src="/resources/images/signup/clear-icon.png" alt="지우기 아이콘" class="clear-icon-img">
                                 </span>
                             </div>
-                            <!-- 오류 메시지 텍스트 -->
-                            <span id="email-error" class="text-danger mt-2" style="display: none;"></span>
+                            <!-- 오류 메시지 텍스트 -->                  
+                                                         
+                            <span id="email-error" class="text-danger mt-2"></span>
+
+
                         </div>
                         <button type="submit" class="w-100" id="start-button">시작하기</button>
                         <p class="mt-3 text-center social-login-text">소셜 계정으로 간편 로그인:</p>

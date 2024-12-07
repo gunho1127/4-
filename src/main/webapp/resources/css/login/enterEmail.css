@@ -183,7 +183,6 @@ button:hover {
     font-size: 14px; /* 메시지 글자 크기 */
     color: #DA1E28; /* 빨간색 오류 메시지 */
     margin-top: 5px; /* 입력칸과 메시지 간 간격 */
-    display: none; /* 기본적으로 숨김 */
     transition: visibility 0.3s, opacity 0.3s ease-in-out;
     text-align: left; /* 오류 메시지 왼쪽 정렬 */
 }

@@ -208,7 +208,7 @@ public class LoginService {
                     <body>
                         <h2>임시 비밀번호 발급 안내</h2>
                         <p>안녕하세요,</p>
-                        <p>귀하의 임시 비밀번호는 : <strong>%s</strong> 입니다.</p>
+                        <p>귀하의 임시 비밀번호는 <strong>%s</strong> 입니다.</p>
                         <p>로그인 후 반드시 비밀번호를 변경하세요.</p>
                         <p>감사합니다.</p>
                     </body>
@@ -224,6 +224,11 @@ public class LoginService {
             log.error("임시 비밀번호 이메일 전송 실패", e);
             throw new RuntimeException("이메일 발송 실패", e);
         }
+    }
+
+    public boolean isNaver(String id) {
+        log.info("isNaver - - -");
+        return loginMapper.isNaver(id);
     }
 }
 

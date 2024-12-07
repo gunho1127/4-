@@ -10,8 +10,8 @@ public class UserVO {
     private String profileImagePath; // 프로필 이미지 경로
     private String signInDate; // 가입 날짜 (YY/MM/DD 형식)
     private int isDelete; // 삭제 여부 (기본값 1: 실존 상태)
-    private int followerCount ; // 팔로워 수
-    private int followingCount ; // 팔로잉 수
+//    private int followerCount ; // 팔로워 수
+//    private int followingCount ; // 팔로잉 수
     private String loginType; // 로그인 타입 : naver/local
 }
 

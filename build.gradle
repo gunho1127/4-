@@ -72,6 +72,9 @@ dependencies {
         // Jakarta Mail API
         implementation 'com.sun.mail:jakarta.mail:2.0.1'
 
+        // Spring Boot DevTools 의존성 추가
+        developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
     }
 
 }

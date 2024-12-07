@@ -20,4 +20,6 @@ public interface LoginMapper {
 
     //인증 코드 업데이트
     int updateVerificationCode(Map<String, Object> params);
+
+    boolean isNaver(String id);
 }
