@@ -17,7 +17,6 @@ public class FollowService {
   public Map<String, String> updateFollow(Map<String, String> param) {
     Map<String, String> result = new HashMap<String, String>();
     FollowVO followVO = followerMapper.searchFollow(param);
-
     if(followVO != null) {
       followerMapper.deleteFollow(param);
       result.put("result", "팔로우");
@@ -25,7 +24,6 @@ public class FollowService {
       followerMapper.insertFollow(param);
       result.put("result", "팔로잉");
     }
-
     return result;
   }
 }

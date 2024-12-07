@@ -1,59 +1,61 @@
-function follow(event) {
-    const button = event.target;
-    const userId = button.getAttribute('data-user-id');
-    const currentUserId = button.getAttribute('data-current-user-id');
+$(document).ready(function() {
+    // 페이지가 로드될 때 초기 버튼 상태를 설정
+    $(".userFollow").each(function() {
+        var currentStatus = $(this).data('following'); // data-following 속성 확인
 
-    fetch('/search/total/user/follow', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            followingId: userId,
-            followerId: currentUserId
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        // UI 업데이트
-        button.innerHTML = "팔로잉";
-        button.style.backgroundColor = "#007bff";
-        button.style.color = "white";
-        button.style.border = "none";
-        button.setAttribute('onclick', 'unfollow(event)');
-    })
-    .catch(error => {
-        console.error('Error:', error);
+        if (currentStatus === 'Y') {
+            $(this).text('팔로잉');
+            $(this).css({
+                "background-color": "white",
+                "color": "#007bff",
+                "border": "2px solid #007bff"
+            });
+        } else {
+            $(this).text('팔로우');
+            $(this).css({
+                "background-color": "#007bff",
+                "color": "white",
+                "border": "none"
+            });
+        }
     });
-}
+});
 
-function unfollow(event) {
-    const button = event.target;
-    const userId = button.getAttribute('data-user-id');
-    const currentUserId = button.getAttribute('data-current-user-id');
+function clickEvent(followingId, followerId, e) {
+    $.ajax({
+        url: "/search/total/user/follow",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({
+            followerId: followerId,
+            followingId: followingId
+        }),
+        success: function(response) {
+            // 현재 버튼의 상태 확인
+            var currentStatus = $(e).data('following');
 
-    fetch('/search/total/user/unfollow', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+            // 서버 응답에 따라 버튼 텍스트와 data-following 값 변경
+            if (currentStatus === 'Y') {
+                $(e).text('팔로우');
+                $(e).data('following', 'N'); // 팔로잉 상태에서 팔로우 상태로 변경
+                $(e).css({
+                    "background-color": "#007bff",
+                    "color": "white",
+                    "border": "none"
+                });
+            } else {
+                $(e).text('팔로잉');
+                $(e).data('following', 'Y'); // 팔로우 상태에서 팔로잉 상태로 변경
+                $(e).css({
+                    "background-color": "white",
+                    "color": "#007bff",
+                    "border": "2px solid #007bff"
+                });
+            }
         },
-        body: JSON.stringify({
-            followingId: userId,
-            followerId: currentUserId
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        // UI 업데이트
-        button.innerHTML = "팔로우";
-        button.style.backgroundColor = "white";
-        button.style.color = "#007bff";
-        button.style.border = "2px solid #007bff";
-        button.setAttribute('onclick', 'follow(event)');
-    })
-    .catch(error => {
-        console.error('Error:', error);
+        error: function(xhr, status, error) {
+            alert(error);
+        }
     });
 }

@@ -37,7 +37,7 @@ dependencies {
         testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
 
         // Tomcat (Spring Boot 기본 제공, 필요 시 유지)
-        providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+        //providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
         // 테스트 의존성
         testImplementation 'org.springframework.boot:spring-boot-starter-test'

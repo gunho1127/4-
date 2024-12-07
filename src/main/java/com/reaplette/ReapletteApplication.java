@@ -7,11 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@MapperScan("com.reaplette.community.mappers") // 매퍼가 위치한 패키지
+@MapperScan("com.reaplette") // 매퍼가 위치한 패키지
 public class ReapletteApplication {
 	public static void main(String[] args) {
+
 		SpringApplication.run(ReapletteApplication.class, args);
 	}
 }
-
 

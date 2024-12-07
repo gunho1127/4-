@@ -13,6 +13,8 @@ public class ReviewVO {
     private String date;  // 리뷰 작성 날짜 (YY/MM/DD 형식)
     private int isDelete = 1; // 삭제 여부 (기본값 1: 삭제되지 않음)
     private int likeCount ;
+    private String username; // 사용자 이름
+
     private String type = "독서 리뷰"; // 게시글 유형 (커뮤니티: "board", 독서 리뷰: "review")
 }
 

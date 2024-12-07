@@ -31,13 +31,13 @@ public class MyPageController {
                                 HttpSession session) {
         log.info("GET /myPage/info - Accessing MyPage Info");
 
-        //테스트 볼 때만 넣는 test@naver.com
-        UserVO user = myPageService.getUser("test@naver.com");
-        log.info(user);
-
-        model.addAttribute("user", user);
-
-        session.setAttribute("user",user); // 나는 로그인 상태가 되어있다.
+//        //테스트 볼 때만 넣는 test@naver.com
+//        UserVO user = myPageService.getUser("test@naver.com");
+//        log.info(user);
+//
+//        model.addAttribute("user", user);
+//
+//        session.setAttribute("user",user); // 나는 로그인 상태가 되어있다.
 
         return "myPage/myPageInfo";
     }
