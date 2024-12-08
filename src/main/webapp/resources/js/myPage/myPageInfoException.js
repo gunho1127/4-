@@ -19,10 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
       isNameChecked = true;
       if (data.exists) {
         isNameUnique = false;
-        document.getElementById("name-exception-field").innerHTML = "중복된 이름입니다.";
+        document.getElementById("name-exception-field").innerHTML = "중복된 활동명 입니다.";
       } else {
         isNameUnique = true;
-        document.getElementById("name-exception-field").innerHTML = "사용 가능한 이름입니다.";
+        document.getElementById("name-exception-field").innerHTML = "사용 가능한 활동명 입니다.";
         document.getElementById("name-exception-field").style.color = "blue";
       }
     })
@@ -103,13 +103,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // 이름 검증 함수
   function validateName(name) {
     if (name.trim() === "") {
-      document.getElementById("name-exception-field").textContent = "이름을 입력해주세요.";
+      
+      document.getElementById("name-exception-field").textContent = "활동명을 입력해주세요.";
+      document.getElementById("name-exception-field").style = "color = red";
       return false;
     }
 
     const nameRegex = /^[a-zA-Z가-힣]{1,10}$/;
     if (!nameRegex.test(name)) {
-      document.getElementById("name-exception-field").textContent = "이름은 한글 또는 영어 10글자 이내로 작성해주세요.";
+      document.getElementById("name-exception-field").textContent = "활동명은 한글 또는 영어 10글자 이내로 작성해주세요.";
       return false;
     }
 

@@ -90,4 +90,16 @@ public class MyPageMapperTests {
         String id = "test@naver.com";
         log.info(myPageMapper.getBookmarkList(id));
     }
+
+    @Test
+    public void testGetFollowingList() {
+        String id = "test@naver.com";
+        log.info(myPageMapper.getFollowingList(id));
+    }
+
+    @Test
+    public void testGetFollowerList() {
+        String id = "test@naver.com";
+        log.info(myPageMapper.getFollowerList(id));
+    }
 }

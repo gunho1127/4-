@@ -1,9 +1,6 @@
 package com.reaplette.mypage.mappers;
 
-import com.reaplette.domain.BookmarkVO;
-import com.reaplette.domain.GoalVO;
-import com.reaplette.domain.TranscriptionVO;
-import com.reaplette.domain.UserVO;
+import com.reaplette.domain.*;
 import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,6 +22,8 @@ public interface MyPageMapper {
     void deleteTranscription(String transcriptionId);
     void deleteGoal(String id, String bookId);
     List<BookmarkVO> getBookmarkList(String id);
+    List<FollowVO> getFollowingList(String id);
+    List<FollowVO> getFollowerList(String id);
 }
 
 

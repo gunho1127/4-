@@ -108,7 +108,6 @@
 
 .auto-layout-horizontal4 {  
   /* border: red 1px solid; */
-  height: 10rem;
   display: flex;
   flex-direction: row;
   gap: var(--space-space-40, 5rem);
@@ -155,6 +154,7 @@
 
 
 .book-card-view {
+  margin-top: 3rem;
   /* border: rgb(255, 61, 148) 10px solid; */
   background: var(--color-main-100, #ffffff);
   border-radius: var(--space-space-4, 0.25rem);

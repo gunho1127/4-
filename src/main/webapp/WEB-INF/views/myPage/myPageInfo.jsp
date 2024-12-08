@@ -106,7 +106,7 @@
                     이메일
                     <br />
                     <br />
-                    이름
+                    활동명
                     <br />
                     <span class="exception-field" id="name-exception-field"></span>
                     <br />

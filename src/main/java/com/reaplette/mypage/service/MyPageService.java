@@ -1,9 +1,6 @@
 package com.reaplette.mypage.service;
 
-import com.reaplette.domain.BookmarkVO;
-import com.reaplette.domain.GoalVO;
-import com.reaplette.domain.TranscriptionVO;
-import com.reaplette.domain.UserVO;
+import com.reaplette.domain.*;
 import com.reaplette.mypage.mappers.MyPageMapper;
 import jakarta.servlet.ServletContext;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +17,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Log4j2
@@ -308,5 +307,34 @@ public class MyPageService {
     public List<BookmarkVO> getBookmarkList(String id) {
         log.info("getBookmarkList....." + id);
         return myPageMapper.getBookmarkList(id);
+    }
+
+    public Map<String,List> getFollowList(String id) {
+        log.info("getFollowList....."+id);
+
+        Map<String,List> followList = new HashMap<>();
+
+        // followingID을 기준으로 계정을 필터링
+        List<FollowVO> followinglist = myPageMapper.getFollowingList(id);
+        List<UserVO> followingUserList = new ArrayList<>();
+
+        for(FollowVO follow : followinglist) {
+            //User리스트에 내가 팔로우 하고 있는 유저의 정보 주입.
+            followingUserList.add(myPageMapper.getUser(follow.getFollowerId()));
+        }
+        followList.put("following",followingUserList);
+
+        // followerId를 기준으로 계정을 필터링
+        List<FollowVO> followerList = myPageMapper.getFollowerList(id);
+        List<UserVO> followerUserList = new ArrayList<>();
+
+        for(FollowVO follow : followerList) {
+            //User리스트에 나를 팔로우 하고 있는 유저의 정보 주입.
+            followerUserList.add(myPageMapper.getUser(follow.getFollowingId()));
+        }
+
+        followList.put("follower",followerUserList);
+
+        return followList;
     }
 }

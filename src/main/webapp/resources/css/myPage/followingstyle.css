@@ -386,8 +386,10 @@
   flex-shrink: 0;
   width: 26.1875rem;
   position: relative;
+  overflow: hidden;
 }
 .user-thumb {
+  overflow: hidden;
   background: var(--coolgray-10, #f2f4f8);
   border-radius: 6.25rem;
   display: flex;
@@ -401,6 +403,7 @@
   position: relative;
 }
 .icon-jam-icons-outline-logos-user {
+  overflow: hidden;
   flex-shrink: 0;
   width: 1.5rem;
   height: 1.5rem;

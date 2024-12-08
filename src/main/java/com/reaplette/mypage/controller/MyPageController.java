@@ -222,8 +222,22 @@ public class MyPageController {
     }
 
     @GetMapping("/following")
-    public String getFollowing() {
+    public String getFollowing(HttpSession session,
+                               Model  model) {
         log.info("GET /myPage/following - Fetching Following List");
+
+        UserVO user = (UserVO)session.getAttribute("user");
+
+        Map<String,List> followList = myPageService.getFollowList(user.getId());
+
+        log.info("followList {}",followList);
+
+        List<UserVO> followingUserList = followList.get("following");
+        List<UserVO> followerUserList = followList.get("follower");
+
+        session.setAttribute("followingUserList",followingUserList);
+        session.setAttribute("followerUserList",followerUserList);
+
         return "myPage/following";
     }
 
