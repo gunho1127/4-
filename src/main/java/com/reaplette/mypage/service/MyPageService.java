@@ -29,8 +29,7 @@ public class MyPageService {
 
     private final MyPageMapper myPageMapper; // 자동 주입
 
-    @Autowired
-    private ServletContext servletContext;
+    private final  ServletContext servletContext;
 
     @Value("${client.id}")
     String CLIENT_ID;
@@ -287,5 +286,10 @@ public class MyPageService {
         log.info("getTranscriptionList....." + id);
         log.info("getTranscriptionList....." + bookId);
         return myPageMapper.getTranscriptionList(id,bookId);
+    }
+
+    public void setTranscription(TranscriptionVO transcription) {
+        log.info("setTranscription....." + transcription);
+        myPageMapper.setTranscription(transcription);
     }
 }

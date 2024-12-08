@@ -16,20 +16,20 @@ document.querySelector('#goalForm').addEventListener('submit', function(event) {
 
   // 시작 날짜와 목표 날짜 검증
   if (!startDate) {
-    document.getElementById('startDate-exception-field').textContent = '을 입력해주세요.';
+    document.getElementById('startDate-exception-field').textContent = '를 입력해주세요.';
     errorMessages.push('을 입력해주세요.');
   } else if (!datePattern.test(startDate)) {
-    document.getElementById('startDate-exception-field').textContent = '은 YYYY-MM-DD 형태로 입력해주세요.';
+    document.getElementById('startDate-exception-field').textContent = '는 YYYY-MM-DD 형태로 입력해주세요.';
     errorMessages.push('은 YYYY-MM-DD 형태로 입력해주세요.');
   } else {
     document.getElementById('startDate-exception-field').textContent = ''; // 오류 메시지 초기화
   }
 
   if (!goalDate) {
-    document.getElementById('goalDate-exception-field').textContent = '을 입력해주세요.';
+    document.getElementById('goalDate-exception-field').textContent = '를 입력해주세요.';
     errorMessages.push('을 입력해주세요.');
   } else if (!datePattern.test(goalDate)) {
-    document.getElementById('goalDate-exception-field').textContent = '은 YYYY-MM-DD 형태로 입력해주세요.';
+    document.getElementById('goalDate-exception-field').textContent = '는 YYYY-MM-DD 형태로 입력해주세요.';
     errorMessages.push('은 YYYY-MM-DD 형태로 입력해주세요.');
   } else {
     document.getElementById('goalDate-exception-field').textContent = ''; // 오류 메시지 초기화
@@ -40,7 +40,7 @@ document.querySelector('#goalForm').addEventListener('submit', function(event) {
     const start = new Date(startDate);
     const goal = new Date(goalDate);
     if (start > goal) {
-      document.getElementById('startDate-exception-field').textContent = '이 목표일자보다 이후입니다.';
+      document.getElementById('startDate-exception-field').textContent = '가 목표일자보다 이후입니다.';
       errorMessages.push('이 목표일자보다 이후입니다.');
     }
   }

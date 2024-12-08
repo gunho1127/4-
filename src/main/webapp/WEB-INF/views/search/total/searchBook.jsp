@@ -31,35 +31,35 @@
   </head>
   <body>
   <header>
-      <jsp:include page="/WEB-INF/views/includes/header.jsp" />
+      <jsp:include page="/WEB-INF/views/includes/headerBook.jsp" />
   </header>
 
   <div id="wrapper" class="py-3">
         <div class="tab_menu">
           <ul class="d-flex justify-content-center gap-4 fw-bold">
-            <li><a class="tm_a py-2" href="/search/total">Overview</a></li>
+            <li><a class="tm_a py-2" href="/search/total?keyword=${param.keyword}">Overview</a></li>
             <li class="active"><a class="tm_a py-2" href="#">Book</a></li>
-            <li><a class="tm_a py-2" href="/search/total/author">Author</a></li>
-            <li><a class="tm_a py-2" href="/search/total/post">Post</a></li>
-            <li><a class="tm_a py-2" href="/search/total/user">User</a></li>
+            <li><a class="tm_a py-2" href="/search/total/author?keyword=${param.keyword}">Author</a></li>
+            <li><a class="tm_a py-2" href="/search/total/post?keyword=${param.keyword}">Post</a></li>
+            <li><a class="tm_a py-2" href="/search/total/user?keyword=${param.keyword}">User</a></li>
           </ul>
         </div>
         <!-- /tab_menu -->
 
-      <div class="container py-5 px-0 overflow-hidden">
-        <section class="book">
-            <!-- 검색 결과 -->
-            <div class="book_sch pb-3 border-bottom">
-                <h5>총 검색 결과 <span class="fw-bold">${bookList.size()}</span>건</h5>
-            </div>
+  <div class="container py-5 px-0 overflow-hidden">
+    <section class="book">
+        <!-- 검색 결과 -->
+        <div class="book_sch pb-3 border-bottom">
+            <h5>총 검색 결과 <span class="fw-bold">${bookList.size()}</span>건</h5>
+        </div>
 
-            <!-- 도서 목록 없을 때 메시지 표시 -->
-            <c:if test="${empty bookList}">
-             <p class="text-center py-5">도서 목록이 없습니다.</p>
-            </c:if>
+        <!-- 도서 목록 없을 때 메시지 표시 -->
+        <c:if test="${empty bookList}">
+            <p class="text-center py-5">도서 목록이 없습니다.</p>
+        </c:if>
 
-            <!-- 도서 목록 있을 때 리스트 표시 -->
-            <c:if test="${not empty bookList}">
+        <!-- 도서 목록 있을 때 리스트 표시 -->
+        <c:if test="${not empty bookList}">
 
             <!-- 도서 목록 -->
             <ul class="book_list p-0">
@@ -84,30 +84,30 @@
                     </li>
                 </c:forEach>
             </ul>
-            </c:if>
-            <!-- /book_list -->
+        </c:if>
+        <!-- /book_list -->
 
-          <!-- pagination -->
-          <div class="mt-5">
-            <ul class="pagination d-flex justify-content-center gap-4 fw-bold">
-                <!-- Previous 버튼 -->
-                <li class="${currentPage == 1 ? 'disabled' : ''}">
-                    <a class="px-2 py-1" href="?page=${currentPage - 1}" ${currentPage == 1 ? 'onclick="return false;"' : ''}>Previous</a>
+      <!-- pagination -->
+      <div class="mt-5">
+        <ul class="pagination d-flex justify-content-center gap-4 fw-bold">
+            <!-- Previous 버튼 -->
+            <li class="${currentPage == 1 ? 'disabled' : ''}">
+                <a class="px-2 py-1" href="?page=${currentPage - 1}" ${currentPage == 1 ? 'onclick="return false;"' : ''}>Previous</a>
+            </li>
+
+            <!-- 동적 페이지 번호 버튼 -->
+            <c:forEach begin="1" end="${totalPages}" var="page">
+                <li class="${currentPage == page ? 'active' : ''}">
+                    <a class="px-2 py-1" href="?page=${page}">${page}</a>
                 </li>
-        
-                <!-- 동적 페이지 번호 버튼 -->
-                <c:forEach begin="1" end="${totalPages}" var="page">
-                    <li class="${currentPage == page ? 'active' : ''}">
-                        <a class="px-2 py-1" href="?page=${page}">${page}</a>
-                    </li>
-                </c:forEach>
-        
-                <!-- Next 버튼 -->
-                <li class="${currentPage == totalPages ? 'disabled' : ''}">
-                    <a class="px-2 py-1" href="?page=${currentPage + 1}" ${currentPage == totalPages ? 'onclick="return false;"' : ''}>Next</a>
-                </li>
-            </ul>
-        </div>
+            </c:forEach>
+
+            <!-- Next 버튼 -->
+            <li class="${currentPage == totalPages ? 'disabled' : ''}">
+                <a class="px-2 py-1" href="?page=${currentPage + 1}" ${currentPage == totalPages ? 'onclick="return false;"' : ''}>Next</a>
+            </li>
+        </ul>
+    </div>
         
           <!-- /pagination -->
         </section>

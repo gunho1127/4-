@@ -13,5 +13,6 @@ public class UserVO {
 //    private int followerCount ; // 팔로워 수
 //    private int followingCount ; // 팔로잉 수
     private String loginType; // 로그인 타입 : naver/local
+    private String isFollowing;
 }
 

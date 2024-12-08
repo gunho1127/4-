@@ -12,3 +12,4 @@ public class TranscriptionVO {
     private String transcriptionDate;  // 전사 날짜 (YYYY-MM-DD 형식)
     private int isDelete = 1 ; // 삭제 여부 (기본값 1: 삭제되지 않음)
 }
+

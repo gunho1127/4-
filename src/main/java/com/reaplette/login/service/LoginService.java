@@ -7,10 +7,13 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 //import software.amazon.awssdk.regions.Region;
 //import software.amazon.awssdk.services.ses.model.*;
 //import software.amazon.awssdk.services.ses.SesClient;
@@ -22,12 +25,16 @@ import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
-@Service
 @Log4j2
+@Service
+@Transactional
+@RequiredArgsConstructor
 public class LoginService {
 
+
     private final LoginMapper loginMapper;
-    private final HttpSession session;
+
+    // 생성자 주입
 
     // application.properties에서 SMTP 설정값 주입
     @Value("${spring.mail.username}")
@@ -48,11 +55,7 @@ public class LoginService {
     @Value("${spring.mail.properties.mail.smtp.ssl.enable}")
     private String smtpSsl;
 
-    // 생성자 주입
-    public LoginService(LoginMapper loginMapper, HttpSession session) {
-        this.loginMapper = loginMapper;
-        this.session = session;
-    }
+
 
     // 이메일로 사용자 조회
     public UserVO getUserById(String id) {

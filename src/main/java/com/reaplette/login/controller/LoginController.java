@@ -1,11 +1,13 @@
 package com.reaplette.login.controller;
 
 import com.reaplette.domain.UserVO;
+
 import com.reaplette.login.service.LoginService;
 import com.reaplette.signup.service.SignUpService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,18 +20,20 @@ import java.util.Map;
 
 @Log4j2
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/login")
 public class LoginController {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
     private final LoginService loginService;
+
+
     private final SignUpService signUpService;
 
 
-    public LoginController(LoginService loginService, SignUpService signUpService) {
-        this.loginService = loginService;
-        this.signUpService = signUpService;
-    }
+//    public LoginController(LoginService loginService, SignUpService signUpService) {
+//        this.loginService = loginService;
+//        this.signUpService = signUpService;
+//    }
 
     // 이메일 입력 화면
     @GetMapping("/enterEmail")
@@ -127,7 +131,7 @@ public class LoginController {
                 }
             }
         } catch (Exception e) {
-            logger.error("로그인 처리 중 오류 발생: {}", e.getMessage());
+            log.info("로그인 처리 중 오류 발생: {}", e.getMessage());
             response.put("error", "서버 처리 중 문제가 발생했습니다. 다시 시도하세요.");
         }
 

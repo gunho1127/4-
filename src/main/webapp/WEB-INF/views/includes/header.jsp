@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-    <header>
-      <link rel="stylesheet" href="../../../../resources/css/headerstyle.css">
+<header>
+<link rel="stylesheet" href="../../../../resources/css/headerstyle.css">
 
 
-      <div class="desktop-horizontal-logo-left-not-logged-menu-bottom-search-icons-right">
-        <div class="top">
-          <div class="logo">
+  <div class="desktop-horizontal-logo-left-not-logged-menu-bottom-search-icons-right">
+    <div class="top">
+      <div class="logo">
 
             <!-- 메인 이동 -->
             <a href="/myPage/logout">
@@ -29,72 +29,72 @@
           </form>
 
 
-          <!-- 커뮤니티 버튼 -->
-          <a href="/community/main">
-            <div class="buttons-group">
-              <img class="icon-heroicons-outline-user-group"
-                src="../../../../resources/images/icon-heroicons-outline-user-group0.svg" />
-            </div>
-          </a>
+      <!-- 커뮤니티 버튼 -->
+      <a href="/community/main">
+        <div class="buttons-group">
+          <img class="icon-heroicons-outline-user-group"
+            src="../../../../resources/images/icon-heroicons-outline-user-group0.svg" />
+        </div>
+      </a>
 
-          <!-- 알람버튼 -->
-          <a href="/notification/list">
-            <div class="button">
-              <img class="icon-jam-icons-outline-logos-bell"
-                src="../../../../resources/images/icon-jam-icons-outline-logos-bell0.svg" />
-            </div>
-          </a>
+      <!-- 알람버튼 -->
+      <a href="/notification/list">
+        <div class="button">
+          <img class="icon-jam-icons-outline-logos-bell"
+            src="../../../../resources/images/icon-jam-icons-outline-logos-bell0.svg" />
+        </div>
+      </a>
 
-          <!-- 유저프로필 -->
-          <a href="/myPage/info">
-            <div class="user-thumb">
-              <img class="icon-jam-icons-outline-logos-user"
-                src="../../../../resources/images/icon-jam-icons-outline-logos-user0.svg" />
-            </div>
+      <!-- 유저프로필 -->
+      <a href="/myPage/info">
+        <div class="user-thumb">
+          <img class="icon-jam-icons-outline-logos-user"
+            src="../../../../resources/images/icon-jam-icons-outline-logos-user0.svg" />
+        </div>
 
-          </a>
+      </a>
 
 
           <!-- 로그인/회원가입버튼 -->
           <a href="/login/enterEmail">
             <div class="button2">
 
-              <div class="text-container">
-                <div class="button-text">시작하기</div>
-              </div>
-
-            </div>
-          </a>
-
+          <div class="text-container">
+            <div class="button-text">시작하기</div>
+          </div>
 
         </div>
-      </div>
-
-      <div class="menu">
-
-        <div class="left">
-
-          <a href="/rec/recBooks">
-            <div class="menu-item">
-              <div class="menu-item2">도서 추천</div>
-            </div>
-          </a>
+      </a>
 
 
-          <a href="/myPage/info">
-            <div class="menu-item">
-              <div class="menu-item2">마이 컨텐츠</div>
-            </div>
-          </a>
+    </div>
+  </div>
 
-          <a href="/community/main">
-            <div class="menu-item">
-              <div class="menu-item2">커뮤니티</div>
-            </div>
-          </a>
+  <div class="menu">
 
+    <div class="left">
+
+      <a href="/rec/recBooks">
+        <div class="menu-item">
+          <div class="menu-item2">도서 추천</div>
         </div>
-      </div>
-      </div>
+      </a>
 
-    </header>
+
+      <a href="/myPage/info">
+        <div class="menu-item">
+          <div class="menu-item2">마이 컨텐츠</div>
+        </div>
+      </a>
+
+      <a href="/community/main">
+        <div class="menu-item">
+          <div class="menu-item2">커뮤니티</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+  </div>
+
+</header>

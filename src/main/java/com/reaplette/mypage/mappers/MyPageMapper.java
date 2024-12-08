@@ -20,6 +20,7 @@ public interface MyPageMapper {
     GoalVO getGoal(String id, String bookId);
     void updateGoal(GoalVO goal);
     List<TranscriptionVO> getTranscriptionList(String id, String bookId);
+    void setTranscription(TranscriptionVO transcription);
 }
 
 

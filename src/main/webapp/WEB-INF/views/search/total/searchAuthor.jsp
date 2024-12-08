@@ -28,17 +28,17 @@
 </head>
 <body>
 <header>
-    <jsp:include page="/WEB-INF/views/includes/header.jsp" />
+    <jsp:include page="/WEB-INF/views/includes/headerAuthor.jsp" />
 </header>
 
 <div id="wrapper" class="py-3">
       <div class="tab_menu">
         <ul class="d-flex justify-content-center gap-4 fw-bold">
-          <li><a class="tm_a py-2" href="/search/total">Overview</a></li>
-          <li><a class="tm_a py-2" href="/search/total/book">Book</a></li>
+          <li><a class="tm_a py-2" href="/search/total?keyword=${param.keyword}">Overview</a></li>
+          <li><a class="tm_a py-2" href="/search/total/book?keyword=${param.keyword}">Book</a></li>
           <li class="active"><a class="tm_a py-2" href="#">Author</a></li>
-          <li><a class="tm_a py-2" href="/search/total/post">Post</a></li>
-          <li><a class="tm_a py-2" href="/search/total/user">User</a></li>
+          <li><a class="tm_a py-2" href="/search/total/post?keyword=${param.keyword}">Post</a></li>
+          <li><a class="tm_a py-2" href="/search/total/user?keyword=${param.keyword}">User</a></li>
         </ul>
       </div>
       <!-- /tab_menu -->
@@ -99,15 +99,12 @@
                                         <span style="color: var(--color-black)">${book.title}</span>
                                     </a>
                                 </p>
-                                <a class="abl_more" href="/bookDetail?bookId=${book.id}">
-                                    자세히 보기 &rarr;
-                                </a>
+                                <a class="abl_more" href="/bookDetail?bookId=${book.id}"> 자세히 보기 &rarr;</a>
                             </div>
                         </div>
                     </c:forEach>
                 </div>
                 <!-- swiper-wrapper -->
-
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>

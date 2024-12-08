@@ -14,7 +14,7 @@
   gap: 3rem;
   align-items: center;
   justify-content: center;
-  height: 27.25rem;
+  height: fit-content;
   position: relative;
 }
 .section-text-modal {

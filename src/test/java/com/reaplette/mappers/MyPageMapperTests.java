@@ -1,6 +1,7 @@
 package com.reaplette.mappers;
 
 import com.reaplette.domain.GoalVO;
+import com.reaplette.domain.TranscriptionVO;
 import com.reaplette.domain.UserVO;
 import com.reaplette.mypage.mappers.MyPageMapper;
 
@@ -70,5 +71,17 @@ public class MyPageMapperTests {
         String id="test@naver.com";
         String bookId="9788926770054";
         log.info(myPageMapper.getTranscriptionList(id,bookId));
+    }
+
+    @Test
+    public void testSetTranscriptionList() {
+        TranscriptionVO transcription = new TranscriptionVO();
+        transcription.setId("test@naver.com"); // 사용자 ID
+        transcription.setBookId("9788926770054"); // 책 ID (더미 값)
+        transcription.setTranscriptionSentence("이 문장은 테스트 필사 문장입니다."); // 필사 문장
+        transcription.setTranscriptionContent("이 내용은 테스트 생각 내용입니다."); // 나의 생각
+        transcription.setTranscriptionDate("2024-12-08"); // 오늘 날짜
+        transcription.setIsDelete(1); // 삭제 여부 기본값
+        myPageMapper.setTranscription(transcription);
     }
 }

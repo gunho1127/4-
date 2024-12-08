@@ -162,21 +162,25 @@ public class MyPageController {
     }
 
     @PostMapping("/myGoals/bookInfo/postTrans")
-    public String postTransBookInfo() {
+    public String postTransBookInfo(TranscriptionVO transcription) {
         log.info("POST /myPage/myGoals/bookInfo/postTrans - Posting Translated Book Info");
-        return "myPage/myGoals/myGoalBookInfo";
+        transcription.setIsDelete(1);
+        log.info("transcription {}",transcription);
+        myPageService.setTranscription(transcription);
+
+        return "myPage/myGoals/myGoalsBookInfo";
     }
 
-    @PostMapping("/myGoals/bookInfo/editTrans")
-    public String postEditTransBookInfo() {
-        log.info("POST /myPage/myGoals/bookInfo/editTrans - Editing Translated Book Info");
-        return "myPage/myGoals/myGoalBookInfo";
-    }
+//    @PostMapping("/myGoals/bookInfo/editTrans")
+//    public String postEditTransBookInfo() {
+//        log.info("POST /myPage/myGoals/bookInfo/editTrans - Editing Translated Book Info");
+//        return "myPage/myGoals/myGoalBookInfo";
+//    }
 
     @GetMapping("/myGoals/bookInfo/deleteTrans")
     public String getDeleteTransBookInfo() {
         log.info("GET /myPage/myGoals/bookInfo/deleteTrans - Deleting Translated Book Info");
-        return "myPage/myGoals/myGoalBookInfo";
+        return "myPage/myGoals/myGoalsBookInfo";
     }
 
     @GetMapping("/bookmark")
