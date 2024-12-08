@@ -231,7 +231,7 @@
                           <div class="bottom">
                             <div class="icons-container">
                               <a
-                                href="/myPage/myGoals/bookInfo/deleteTrans?transcriptionId=${transcription.transcriptionId}">
+                              href="/myPage/myGoals/bookInfo/deleteTrans?transcriptionId=${transcription.transcriptionId}&id=${goal.id}&bookId=${goal.bookId}">
                                 <img class="icon-heroicons-outline-trash4"
                                   src="../../../../resources/images/myPage/icon-heroicons-outline-trash3.svg" />
                               </a>
@@ -255,7 +255,7 @@
                           <div class="bottom">
                             <div class="icons-container">
                               <a
-                                href="/myPage/myGoals/bookInfo/deleteTrans?transcriptionId=${transcription.transcriptionId}">
+                                href="/myPage/myGoals/bookInfo/deleteTrans?transcriptionId=${transcription.transcriptionId}&id=${goal.id}&bookId=${goal.bookId}">
                                 <img class="icon-heroicons-outline-trash4"
                                   src="../../../../resources/images/myPage/icon-heroicons-outline-trash3.svg" />
                               </a>

@@ -292,4 +292,9 @@ public class MyPageService {
         log.info("setTranscription....." + transcription);
         myPageMapper.setTranscription(transcription);
     }
+
+    public void deleteTranscription(String transcriptionId) {
+        log.info("deleteTranscription....." + transcriptionId);
+        myPageMapper.deleteTranscription(transcriptionId);
+    }
 }

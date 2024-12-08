@@ -21,6 +21,7 @@ public interface MyPageMapper {
     void updateGoal(GoalVO goal);
     List<TranscriptionVO> getTranscriptionList(String id, String bookId);
     void setTranscription(TranscriptionVO transcription);
+    void deleteTranscription(String transcriptionId);
 }
 
 

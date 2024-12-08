@@ -178,9 +178,12 @@ public class MyPageController {
 //    }
 
     @GetMapping("/myGoals/bookInfo/deleteTrans")
-    public String getDeleteTransBookInfo() {
+    public String getDeleteTransBookInfo(@RequestParam("transcriptionId")String transcriptionId,
+                                         @RequestParam("id")String id,
+                                         @RequestParam("bookId")String bookId) {
         log.info("GET /myPage/myGoals/bookInfo/deleteTrans - Deleting Translated Book Info");
-        return "myPage/myGoals/myGoalsBookInfo";
+        myPageService.deleteTranscription(transcriptionId);
+        return "redirect:/myPage/myGoals/bookInfo?id="+id+"&bookId="+bookId;
     }
 
     @GetMapping("/bookmark")
