@@ -39,6 +39,7 @@
 </head>
 <body>
   <div class="ui-020">
+
     <div class="desktop-vertical-logged-in-buttons-bottom">
       <div class="logo-container">
         <div class="logo">

@@ -1,20 +1,36 @@
 package com.reaplette.admin.controller;
 
 
+import com.reaplette.admin.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.reaplette.domain.BoardVO;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
+import jakarta.servlet.http.HttpServletRequest;
+
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/admin")
 public class AdminController {
+
+    private final AdminService adminService;
+
+    //관리자 페이지 게시글 리스트
     @GetMapping("/postList")
-        public String postList(){
+        public String postList(Model model){
+            List<BoardVO> boardVOList = this.adminService.getBoardList();
+            model.addAttribute("list", boardVOList);
             return "admin/adminPostList";
     }
+    //view-> list 객체
+
     @GetMapping("/member/post/delete")
         public String deletePost(){
         return "redirect:admin/adminPostList";
@@ -33,8 +49,20 @@ public class AdminController {
         return "admin/adminMemberInfo";
     }
     @PostMapping("/member/delete")
-    public String memberDelete(){
-        return "redirect:admin/adminMemberList";//adminmemberlist, adminmemberinfo
+    public String memberDelete(@RequestParam("id") String id, HttpServletRequest request){
+        adminService.deleteMember(id);
+
+        //현재 페이지 경로 확인
+        String currentPage = request.getServletPath();
+
+        //현재 페이지에 따라 adminmemberlist, adminmemberinfo로 리다이렉트 분기
+        if(currentPage.contains("adminMemberInfo")){
+            return "redirect:/admin/admin/MemberInfo";
+        }else{
+            return "redirect:/admin/adminMemberList";
+
+        }
+
     }
     @GetMapping("/member/review/delete")
     public String reviewDelete(){

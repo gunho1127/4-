@@ -752,9 +752,13 @@
           </div>
         </div>
       </div>
+      <!--수정:삭제 버튼 form url 전송-->
+      <form action="/admin/member/delete" method="Post">
       <div class="type-primary-size-medium-status-enable">
-        <div class="button">삭제</div>
+        <button type="submit" class="button">삭제</button>
       </div>
+      </form>
+      <!--수정:삭제 버튼 form url 전송-->
       <div class="pagination">
         <div class="pagination2">
           <img
