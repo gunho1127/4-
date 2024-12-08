@@ -5,7 +5,9 @@ package com.reaplette.search.controller;
 import com.reaplette.domain.BoardVO;
 import com.reaplette.domain.FollowVO;
 import com.reaplette.domain.UserVO;
+import com.reaplette.search.model.NaverSearchModel.BookItem;
 import com.reaplette.search.service.BoardService;
+import com.reaplette.search.service.BookService;
 import com.reaplette.search.service.FollowService;
 import com.reaplette.search.service.SearchService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,6 +30,7 @@ public class SearchController {
     private final SearchService searchService;
     private final FollowService followService;
     private final BoardService boardService;
+    private final BookService bookService;  //bookService 책정보
 
 
 
@@ -97,6 +100,13 @@ public class SearchController {
         System.out.println(userList);
         model.addAttribute("boardList" , boardList);
         model.addAttribute("keyword", keyword);
+
+        /*
+        BookItem 책의 정보를 담고있는 DTO
+        스프링이라는 단어를 검색했을때 키워드가 포함된 책 나열
+         */
+        List<BookItem> bookList = bookService.getBookList("스프링");
+        model.addAttribute("bookList", bookList);
 
         // 세션 사용자 정보 디버깅 출력
         System.out.println("Session user: " + session.getAttribute("user"));

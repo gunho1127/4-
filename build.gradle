@@ -72,8 +72,16 @@ dependencies {
         // Jakarta Mail API
         implementation 'com.sun.mail:jakarta.mail:2.0.1'
 
+        // Openfeign 추가
+        implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
     }
 
+}
+dependencyManagement { //의존성추가
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2023.0.4" // 최신 BOM 버전 사용
+    }
 }
 
 tasks.named('test') {

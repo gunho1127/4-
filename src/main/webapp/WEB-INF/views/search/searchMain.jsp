@@ -57,6 +57,7 @@
               </c:if>
               <c:forEach var="book" items="${bookList}">
                 <li>
+                    <img src="${book.image}" width="200" height="200"/>
                   <p>제목: ${book.title}</p>
                   <p>저자: ${book.author}</p>
                 </li>
