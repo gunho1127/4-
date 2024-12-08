@@ -180,7 +180,7 @@
                         <div class="buttons-group" style="margin-left:15px;">
                           <div class="button">
                             <div class="text-container">
-                              <button class="button-text">목표 삭제</button>
+                              <a href="/myPage/myGoals/bookInfo/delete?id=${goal.id}&bookId=${goal.bookId}" class="button-text">목표 삭제</a>
                             </div>
                           </div>
                         </div>

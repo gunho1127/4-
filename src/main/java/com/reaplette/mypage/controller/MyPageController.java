@@ -150,9 +150,16 @@ public class MyPageController {
     }
 
     @GetMapping("/myGoals/bookInfo/delete")
-    public String getDeleteBookInfo() {
+    public String getDeleteBookInfo(@RequestParam("id") String id,
+                                    @RequestParam("bookId")String bookId) {
+
         log.info("GET /myPage/myGoals/bookInfo/delete - Deleting Book Info");
-        return "myPage/myGoals/myGoalsList";
+        log.info("id {}",id);
+        log.info("bookId {}",bookId);
+
+        myPageService.deleteGoal(id,bookId);
+
+        return "redirect:/myPage/myGoalsList";
     }
 
     @GetMapping("/myGoals/myGoalsWriteTranscription")

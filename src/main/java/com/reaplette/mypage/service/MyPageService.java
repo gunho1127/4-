@@ -297,4 +297,10 @@ public class MyPageService {
         log.info("deleteTranscription....." + transcriptionId);
         myPageMapper.deleteTranscription(transcriptionId);
     }
+
+    public void deleteGoal(String id, String bookId) {
+        log.info("deleteGoal....." + id);
+        log.info("deleteGoal....." + bookId);
+        myPageMapper.deleteGoal(id,bookId);
+    }
 }
