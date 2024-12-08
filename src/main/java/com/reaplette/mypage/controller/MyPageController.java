@@ -177,20 +177,19 @@ public class MyPageController {
         return "redirect:/myPage/myGoalsList";
     }
 
-    @GetMapping("/myGoals/myGoalsWriteTranscription")
-    public String getMyGoalsWriteTranscription() {
-        log.info("GET /myPage//myGoals/myGoalsWriteTranscription - Fetching MyGoals Write Transcription");
-        return "/myPage/myGoals/myGoalsWriteTranscription";
-    }
+//    @GetMapping("/myGoals/myGoalsWriteTranscription")
+//    public String getMyGoalsWriteTranscription() {
+//        log.info("GET /myPage/myGoals/myGoalsWriteTranscription - Fetching MyGoals Write Transcription");
+//        return "/myPage/myGoals/myGoalsWriteTranscription";
+//    }
 
     @PostMapping("/myGoals/bookInfo/postTrans")
     public String postTransBookInfo(TranscriptionVO transcription) {
         log.info("POST /myPage/myGoals/bookInfo/postTrans - Posting Translated Book Info");
-        transcription.setIsDelete(1);
         log.info("transcription {}",transcription);
         myPageService.setTranscription(transcription);
 
-        return "myPage/myGoals/myGoalsBookInfo";
+        return "redirect:/myPage/myGoals/bookInfo?id="+transcription.getId()+"&bookId="+transcription.getBookId();
     }
 
 //    @PostMapping("/myGoals/bookInfo/editTrans")

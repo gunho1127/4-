@@ -69,7 +69,7 @@ public class MyPageMapperTests {
     @Test
     public void testGetTranscriptionList() {
         String id="test@naver.com";
-        String bookId="9788926770054";
+        String bookId="9788986621136";
         log.info(myPageMapper.getTranscriptionList(id,bookId));
     }
 
