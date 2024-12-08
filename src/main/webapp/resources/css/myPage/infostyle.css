@@ -21,7 +21,7 @@
   
   flex: 1;
   position: relative;
-  height: 100vh;
+  height: fit-content;
 }
 .nav {
   display: flex;
@@ -284,8 +284,8 @@
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
-  width: 100%;
-  height: 49.5625rem;
+  width: 102%;
+  height: 46.5625rem;
   position: relative;
   overflow: hidden;
 }

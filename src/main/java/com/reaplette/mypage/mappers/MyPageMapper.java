@@ -1,5 +1,6 @@
 package com.reaplette.mypage.mappers;
 
+import com.reaplette.domain.BookmarkVO;
 import com.reaplette.domain.GoalVO;
 import com.reaplette.domain.TranscriptionVO;
 import com.reaplette.domain.UserVO;
@@ -23,6 +24,7 @@ public interface MyPageMapper {
     void setTranscription(TranscriptionVO transcription);
     void deleteTranscription(String transcriptionId);
     void deleteGoal(String id, String bookId);
+    List<BookmarkVO> getBookmarkList(String id);
 }
 
 

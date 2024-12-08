@@ -9,7 +9,7 @@
   gap: 0rem;
   align-items: flex-start;
   justify-content: flex-start;
-  height: 49.5625rem;
+  height: fit-content;
   position: relative;
 }
 .icon-heroicons-outline-lock-open {
@@ -40,19 +40,22 @@
   border-style: solid;
   border-color: var(--coolgray-20, #dde1e6);
   border-width: 0.0625rem;
+
+  margin:1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0rem;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   flex-shrink: 0;
-  width: 71rem;
-  height: 48.8125rem;
+  width: 81%;
+  height: 46.8rem;
   position: relative;
   overflow: hidden;
 }
 .header {
-  padding: 3.125rem 1.875rem 3.125rem 1.875rem;
+  border: deeppink 1px solid;
+  padding: 2.125rem 3.125rem 3.125rem 1.875rem;
   display: flex;
   flex-direction: row;
   gap: var(--space-space-24, 1.5rem);
@@ -60,19 +63,10 @@
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
-  height: 51.4375rem;
+  height: fit-content;
   position: relative;
 }
-.auto-layout-vertical {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-space-4, 0.25rem);
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex: 1;
-  height: 69.4375rem;
-  position: relative;
-}
+
 .div22 {
   color: var(--color-secondary-100, #283747);
   text-align: left;

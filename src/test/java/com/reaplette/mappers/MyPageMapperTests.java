@@ -84,4 +84,10 @@ public class MyPageMapperTests {
         transcription.setIsDelete(1); // 삭제 여부 기본값
         myPageMapper.setTranscription(transcription);
     }
+
+    @Test
+    public void testGetBookmarkList() {
+        String id = "test@naver.com";
+        log.info(myPageMapper.getBookmarkList(id));
+    }
 }

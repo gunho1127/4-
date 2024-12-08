@@ -1,5 +1,6 @@
 package com.reaplette.mypage.controller;
 
+import com.reaplette.domain.BookmarkVO;
 import com.reaplette.domain.GoalVO;
 import com.reaplette.domain.TranscriptionVO;
 import com.reaplette.domain.UserVO;
@@ -32,14 +33,28 @@ public class MyPageController {
         log.info("GET /myPage/info - Accessing MyPage Info");
 
         //테스트 볼 때만 넣는 test@naver.com
-        UserVO user = myPageService.getUser("test@naver.com");
-        log.info(user);
 
-        model.addAttribute("user", user);
+        //병합시엔 코드를 지우세요
+        // test@naver.com 으로 세션 등록해주는 코드.
+        session.setAttribute("user",myPageService.getUser("test@naver.com"));
+        //병합시엔 코드를 지우세요
 
-        session.setAttribute("user",user); // 나는 로그인 상태가 되어있다.
 
-        return "myPage/myPageInfo";
+        if((UserVO)session.getAttribute("user")==null) {
+            // 로그인 안된 회원의 접근
+            log.info("NOT LOGIN ! ! ! : GUEST ! ! GO TO LOGIN");
+            // 로그인 페이지로 리디렉션
+            return "redirect:/login/enterEamil";
+        }
+        else {
+            log.info("LOGIN ! ! ! USER ! ! ");
+            UserVO user = (UserVO)session.getAttribute("user");
+            log.info("user {}", user);
+            model.addAttribute("user", user);
+            return "myPage/myPageInfo";
+        }
+
+
     }
 
     @PostMapping("/editInfo")
@@ -194,8 +209,16 @@ public class MyPageController {
     }
 
     @GetMapping("/bookmark")
-    public String getBookmarkBooks() {
+    public String getBookmarkBooks(Model model,
+                                   HttpSession session) {
         log.info("GET /myPage/bookmark - Fetching Bookmark");
+        UserVO user = (UserVO) session.getAttribute("user");
+        List<BookmarkVO> bookmarkList = myPageService.getBookmarkList(user.getId());
+        Collections.reverse(bookmarkList);// 역순으로 보여주기 위해서
+
+        log.info("bookmarkList{}",bookmarkList);
+        model.addAttribute("bookmarkList",bookmarkList);
+
         return "myPage/bookmarkBooks";
     }
 

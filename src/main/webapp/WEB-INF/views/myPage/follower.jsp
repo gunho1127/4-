@@ -54,20 +54,18 @@
 
     <div class="table">
       <div class="header">
-        <div class="auto-layout-vertical">
-          <div class="div22">
-            <span>
-              <span class="div-22-span">
-                팔로우
-                <br />
-              </span>
-              <span class="div-22-span2">
-                회원님의 팔로잉, 팔로워 목록을 볼 수 있습니다.
-              </span>
-            </span>
-          </div>
-        </div>
-      </div>
+        
+        <span>
+          <span class="div-22-span">
+            팔로우
+            <br />
+          </span>
+          <span class="div-22-span2">
+            회원님의 팔로잉, 팔로워 목록을 볼 수 있습니다.
+          </span>
+        </span>
+    
+  </div>
       <div class="dashboard-tabs">
         
           <div class="tab">

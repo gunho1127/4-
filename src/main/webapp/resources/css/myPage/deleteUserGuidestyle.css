@@ -6,27 +6,15 @@
   background: var(--coolgray-10, #f2f4f8);
   display: flex;
   flex-direction: row;
-  gap: 0.625rem;
+  
   align-items: flex-start;
   justify-content: flex-start;
-  height: 49.5625rem;
+  height: fit-content;
   position: relative;
 }
-.icon-heroicons-outline-lock-open {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
-.icon-heroicons-outline-user {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
+
 .table {
+  margin: 1.5rem;
   background: var(--default-white, #ffffff);
   border-style: solid;
   border-color: var(--coolgray-20, #dde1e6);
@@ -37,13 +25,14 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 65.8125rem;
-  height: 49.1875rem;
+  width: 81%;
+  height: 46.875rem;
   position: relative;
   overflow: hidden;
 }
 .header {
-  padding: 3.125rem 1.875rem 3.125rem 1.875rem;
+  
+  padding: 3.125rem 1.875rem 0rem 1.875rem;
   display: flex;
   flex-direction: row;
   gap: var(--space-space-24, 1.5rem);
@@ -51,7 +40,7 @@
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
-  height: 51.4375rem;
+  height: fit-content;
   position: relative;
 }
 .auto-layout-vertical {

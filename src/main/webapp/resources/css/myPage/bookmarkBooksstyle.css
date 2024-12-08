@@ -13,20 +13,7 @@
   position: relative;
   
 }
-.icon-heroicons-outline-lock-open {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
-.icon-heroicons-outline-user {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
+
 .table {
   background: var(--default-white, #ffffff);
   border-style: solid;
@@ -42,7 +29,7 @@
   position: relative;
   overflow: hidden;
   margin: 1.5rem;
-  width: 82%;
+  width: 81.2%;
   height: 46.78rem;
 }
 .header {
@@ -93,6 +80,7 @@
   font-weight: 500;
 }
 .auto-layout-horizontal {
+  /* border:#7476ff 1px solid; */
   padding: 1.875rem 3.125rem 1.875rem 3.125rem;
   display: flex;
   flex-direction: column;
@@ -102,8 +90,10 @@
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
+  height: fit-content;
 }
 .frame-2 {  
+  /* border: black 1px solid; */
   width: 75rem;
   flex-direction: column; /* 세로 방향 배치 */
   align-items: center; /* 자식 요소를 가로 중앙에 정렬 */
@@ -113,130 +103,12 @@
   position: relative;
 }
 
-.auto-layout-vertical2 {
-  border: 1px black solid;
-  padding: 0.625rem 1.5rem 0.625rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-space-16, 1rem);
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  height: fit-content;
-  position: relative;
-}
-.div3 {
-  color: var(--color-secondary-100, #283747);
-  text-align: left;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.div-3-span {
-  color: var(--color-secondary-100, #283747);
-  font-family: var(
-    --heading-20-medium-font-family,
-    "PlusJakartaSans-Bold",
-    sans-serif
-  );
-  font-size: var(--heading-20-medium-font-size, 1.25rem);
-  line-height: var(--heading-20-medium-line-height, 1.875rem);
-  font-weight: var(--heading-20-medium-font-weight, 700);
-}
-.div-3-span2 {
-  color: var(--color-secondary-100, #283747);
-  font-family: "PlusJakartaSans-Medium", sans-serif;
-  font-size: 1rem;
-  line-height: 1.875rem;
-  font-weight: 500;
-}
-.div4 {
-  background: #d9d9d9;
-  flex-shrink: 0;
-  width: 4.8125rem;
-  height: 0.625rem;
-  position: relative;
-}
-.book-card-view2 {
-  background: var(--color-main-100, #ffffff);
-  border-radius: var(--space-space-4, 0.25rem);
-  border-style: solid;
-  border-color: var(--color-main-80, #e7e8eb);
-  border-width: 0.0625rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0rem;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  width: 15.4375rem;
-  height: 23.625rem;
-  position: relative;
-  overflow: hidden;
-}
 
 
-.div5 {
-  color: var(--color-secondary-100, #283747);
-  text-align: left;
-  position: relative;
-  align-self: stretch;
-  height: 3.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.div-5-span {
-  color: var(--color-secondary-100, #283747);
-  font-family: var(
-    --heading-20-medium-font-family,
-    "PlusJakartaSans-Bold",
-    sans-serif
-  );
-  font-size: var(--heading-20-medium-font-size, 1.25rem);
-  line-height: var(--heading-20-medium-line-height, 1.875rem);
-  font-weight: var(--heading-20-medium-font-weight, 700);
-}
-.div-5-span2 {
-  color: var(--color-secondary-100, #283747);
-  font-family: "PlusJakartaSans-Medium", sans-serif;
-  font-size: 1rem;
-  line-height: 1.875rem;
-  font-weight: 500;
-}
-
-.div-5-span3 {
-  color: var(--color-secondary-100, #283747);
-  font-family: var(
-    --heading-20-medium-font-family,
-    "PlusJakartaSans-Bold",
-    sans-serif
-  );
-  font-size: var(--heading-20-medium-font-size, 1.25rem);
-  line-height: var(--heading-20-medium-line-height, 1.875rem);
-  font-weight: var(--heading-20-medium-font-weight, 700);
-}
-.div-5-span4 {
-  color: var(--color-secondary-100, #283747);
-  font-family: "PlusJakartaSans-Medium", sans-serif;
-  font-size: 1rem;
-  line-height: 1.875rem;
-  font-weight: 500;
-}
-.div7 {
-  background: #7476ff;
-  flex-shrink: 0;
-  width: 8.1875rem;
-  height: 0.625rem;
-  position: relative;
-}
 
 .auto-layout-horizontal4 {  
-  border: red 1px solid;
-  height: fit-content;
+  /* border: red 1px solid; */
+  height: 10rem;
   display: flex;
   flex-direction: row;
   gap: var(--space-space-40, 5rem);
@@ -245,6 +117,7 @@
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
+  height: fit-content;
   overflow-x: scroll; /* 항상 가로 스크롤바 표시 */
 }
 
@@ -279,49 +152,10 @@
   line-height: 1.875rem;
   font-weight: 500;
 }
-.div-5-span5 {
-  color: var(--color-secondary-100, #283747);
-  font-family: var(
-    --heading-20-medium-font-family,
-    "PlusJakartaSans-Bold",
-    sans-serif
-  );
-  font-size: var(--heading-20-medium-font-size, 1.25rem);
-  line-height: var(--heading-20-medium-line-height, 1.875rem);
-  font-weight: var(--heading-20-medium-font-weight, 700);
-}
-.div-5-span6 {
-  color: var(--color-secondary-100, #283747);
-  font-family: "PlusJakartaSans-Medium", sans-serif;
-  font-size: 1rem;
-  line-height: 1.875rem;
-  font-weight: 500;
-}
-.div-5-span7 {
-  color: var(--color-secondary-100, #283747);
-  font-family: var(
-    --heading-20-medium-font-family,
-    "PlusJakartaSans-Bold",
-    sans-serif
-  );
-  font-size: var(--heading-20-medium-font-size, 1.25rem);
-  line-height: var(--heading-20-medium-line-height, 1.875rem);
-  font-weight: var(--heading-20-medium-font-weight, 700);
-}
-.div-5-span8 {
-  color: var(--color-secondary-100, #283747);
-  font-family: "PlusJakartaSans-Medium", sans-serif;
-  font-size: 1rem;
-  line-height: 1.875rem;
-  font-weight: 500;
-}
-
-
-
 
 
 .book-card-view {
-  border: black 1px solid;
+  /* border: rgb(255, 61, 148) 10px solid; */
   background: var(--color-main-100, #ffffff);
   border-radius: var(--space-space-4, 0.25rem);
   border-style: solid;
@@ -340,6 +174,7 @@
 }
 
 .style-square {
+  /* border: rebeccapurple 1px solid; */
   background: var(--color-main-80, #e7e8eb);
   border-radius: var(--space-space-4, 0.25rem);
   align-self: stretch;
@@ -349,13 +184,15 @@
   overflow: hidden;
 }
 .auto-layout-vertical3 {
+  /* border: blue 1px solid; */
   
   padding: 0.625rem 1.5rem 0.625rem 1.5rem;
   display: flex;
   flex-direction: column;
   gap: var(--space-space-16, 1rem);
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   align-self: stretch;
   flex-shrink: 0;
   height: fit-content;
@@ -394,4 +231,13 @@
   width: 100%; /* 진행률을 반영하려면 동적으로 조정 가능 */
   height: 0.625rem;
   position: relative;
+}
+
+.div-4-span2 {
+  color: var(--color-secondary-100, #283747);
+  font-family: "PlusJakartaSans-Medium", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  font-weight: 500;
+  margin-top: -0.5rem;
 }

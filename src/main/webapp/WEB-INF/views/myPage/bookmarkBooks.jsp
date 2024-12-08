@@ -64,7 +64,7 @@
                     찜 도서
                     <br />
                   </span>
-                  <span class="div-22-span2">
+                  <span class="div-4-span2">
                     내가 찜한 도서를 확인할 수 있어요 !
                     <br />
                     나의 개인 맞춤 추천에 반영됩니다 !
@@ -76,28 +76,40 @@
 
           <!-- 첫 번째 카드뷰 행 -->
           <div class="auto-layout-horizontal">
+
             <div class="frame-2">
+
+
               <!-- Book Card Views -->
-              <div class="auto-layout-horizontal4">                
-                <!-- <c:forEach var="goal" items="${goalList}"> -->
-                  <a href="/myPage/myGoals/bookInfo?id=${goal.id}&bookId=${goal.bookId}">
-                    <div class="book-card-view">   
-                                       
-                      <img class="style-square" src="${goal.bookImageUrl}" />
-                      <div class="auto-layout-vertical3">
-                        <div class="div6">
-                          <span>
-                            <span class="div-6-span">${goal.bookTitle}<br></span>
-                            <span class="div-6-span2">${goal.author}</span>
-                          </span>
-                        </div>
-                        <div class="div7" data-pages-read="${goal.pagesRead}" data-total-page="${goal.totalPage}">
+              <div class="auto-layout-horizontal4">
+
+
+                <!-- 반복 -->
+                <c:if test="${not empty bookmarkList}">
+                  <c:forEach var="bookmark" items="${bookmarkList}">
+                    <a href="">
+                      <!-- 해당 도서 정보로 : 승연님 도서 정보 조회 요청 코드 가져올 것-->
+                      <div class="book-card-view">
+                        <img class="style-square" src="${bookmark.bookImageUrl}">
+                        <div class="auto-layout-vertical3">
+                          <div class="div6">
+                            <span>
+                              <span class="div-6-span">${bookmark.bookTitle}<br></span>
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <br><br>
-                  </a>
-                <!-- </c:forEach> -->
+                      <br><br>
+                    </a>
+                  </c:forEach>
+                </c:if>
+                <c:if test="${empty bookmarkList}">
+                  찜 도서가 없습니다!
+                </c:if>
+
+                <!-- 반복 -->
+
+
               </div>
               <!-- End of Book Card Views -->
             </div>

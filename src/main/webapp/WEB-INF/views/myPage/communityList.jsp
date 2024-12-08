@@ -1,75 +1,71 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="../../../resources/css/myPage/communitystyle.css">
+      <link rel="stylesheet" href="../../../resources/css/myPage/communitystyle.css">
 
 
-  <style>
-    a,
-    button,
-    input,
-    select,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      border: none;
-      text-decoration: none;
-      background: none;
+      <style>
+        a,
+        button,
+        input,
+        select,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          border: none;
+          text-decoration: none;
+          background: none;
 
-      -webkit-font-smoothing: antialiased;
-    }
+          -webkit-font-smoothing: antialiased;
+        }
 
-    menu,
-    ol,
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-  </style>
-  <title>리플렛 - 커뮤니티</title>
-</head>
+        menu,
+        ol,
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
+      <title>리플렛 - 커뮤니티</title>
+    </head>
 
-<body>
-  <div class="div">
+    <body>
+      <div class="div">
 
-    <!-- nav -->
-                  <jsp:include page="/WEB-INF/views/includes/mypagenav/myPageNav.jsp" />
-                  <!-- nav -->
+        <!-- nav -->
+        <jsp:include page="/WEB-INF/views/includes/mypagenav/myPageNav.jsp" />
+        <!-- nav -->
 
-    <div class="icon-heroicons-outline-lock-open"></div>
-    <div class="nav">
-      <div class="icon-heroicons-outline-user"></div>
-    </div>
-    <div class="icon-heroicons-outline-user"></div>
-    <div class="table">
-      <div class="header">
-        <div class="auto-layout-vertical">
-          <div class="div22">
-            <span>
+
+        <div class="table">
+          <div class="header"> <span>
               <span class="div-22-span">
                 커뮤니티
                 <br />
               </span>
               <span class="div-22-span2">
-                커뮤나티에 작성한 글을 볼 수 있습니다.
+                커뮤니티에 작성한 글을 볼 수 있습니다.
               </span>
             </span>
           </div>
+
+
+
 
           <div class="div3">
             <ul>
@@ -82,8 +78,7 @@
                   <img class="frame" src="../../../resources/images/myPage/frame-600.svg" />
                   <div class="_99">99</div>
                 </div>
-                <img class="rectangle-copy-7"
-                  src="" />
+                <img class="rectangle-copy-7" src="" />
                 <div class="group-144">
                   <div class="div6">한강 작가님의 &lt;소년이 온다&gt; 를 읽어...</div>
                   <div class="div7">소년이 온다 - 한강</div>
@@ -153,9 +148,9 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+      </div>
+      </div>
 
-</body>
+    </body>
 
-</html>
+    </html>

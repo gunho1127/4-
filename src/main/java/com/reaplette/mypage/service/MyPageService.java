@@ -1,5 +1,6 @@
 package com.reaplette.mypage.service;
 
+import com.reaplette.domain.BookmarkVO;
 import com.reaplette.domain.GoalVO;
 import com.reaplette.domain.TranscriptionVO;
 import com.reaplette.domain.UserVO;
@@ -302,5 +303,10 @@ public class MyPageService {
         log.info("deleteGoal....." + id);
         log.info("deleteGoal....." + bookId);
         myPageMapper.deleteGoal(id,bookId);
+    }
+
+    public List<BookmarkVO> getBookmarkList(String id) {
+        log.info("getBookmarkList....." + id);
+        return myPageMapper.getBookmarkList(id);
     }
 }

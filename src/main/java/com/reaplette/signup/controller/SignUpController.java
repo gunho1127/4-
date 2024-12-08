@@ -4,6 +4,7 @@ import com.reaplette.domain.UserVO;
 import com.reaplette.mypage.service.MyPageService;
 import com.reaplette.signup.service.SignUpService;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
@@ -17,12 +18,13 @@ import java.util.Map;
 
 @Log4j2
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/signup")
 public class SignUpController {
 
-    @Autowired
-    SignUpService signUpService;
-    MyPageService myPageService;
+
+    private final SignUpService signUpService;
+    private final MyPageService myPageService;
 
     @GetMapping("/verifyEmail")
     public String showVerifyEamil() { return "signup/verifyEmail";}

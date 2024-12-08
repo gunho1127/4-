@@ -5,6 +5,7 @@ import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.util.Properties;
 
+@RequiredArgsConstructor
 @Service
 public class SignUpService {
 
@@ -36,9 +38,6 @@ public class SignUpService {
     @Value("${spring.mail.properties.mail.smtp.ssl.enable}")
     private String smtpSsl;
 
-    public SignUpService(SignUpMapper signUpMapper) {
-        this.signUpMapper = signUpMapper;
-    }
 
     public String generateVerificationCode () {
         SecureRandom random = new SecureRandom();  // 보안성을 강화한 랜덤 생성기
