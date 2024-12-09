@@ -46,17 +46,10 @@
   <div class="div">
     <div class="icon-heroicons-outline-lock-open"></div>
     <div class="icon-heroicons-outline-user"></div>
-    <div class="table">
+    <div class="table7">
       <div class="header">
         <div class="auto-layout-vertical">
-          <div class="div2">
-            <span>
-              <span class="div-2-span">
-                회원탈퇴
-                <br />
-              </span>
-              <span class="div-2-span2">정말 탈퇴하시겠습니까 ?</span>
-            </span>
+          <div class="div2">            
           </div>
           <div class="page-content">
             <img
@@ -81,7 +74,7 @@
             </div>
             <div class="button">
               <div class="text-container">
-                <a href="">
+                <a href="/myPage/logout">
                   <div class="div3">홈 으로</div>
                 </a>
               </div>

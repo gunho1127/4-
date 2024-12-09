@@ -73,7 +73,7 @@
           <div class="secondary-headline">개인 맞춤형 독서관리 및 커뮤니티</div>
         </div>
         <div class="paragraph2">
-            본 웹 서비스는 사용자 개인의 독서 취향 분석을 기반으로<br>맞춤형 도서를 추천하고독서 성취를 독려하는 웹 서비스 입니다.<br>다양한 Open API를 사용하여 사용자가 좀 더 효과적인 독서활동을 할 수 있도록 지원합니다.
+            본 웹 서비스는 사용자 개인의 독서 취향 분석을 기반으로<br>맞춤형 도서를 추천하고 독서 성취를 독려하는 웹 서비스 입니다.<br>다양한 Open API를 사용하여 사용자가 좀 더 효과적인 독서활동을 할 수 있도록 지원합니다.
         </div>
       </div>
       <div class="row">
@@ -140,7 +140,7 @@
 
             </div>
           </div>
-        </div>JSP
+        </div>
       </div>
     </div>
     <div class="auto-layout-vertical">
@@ -341,137 +341,8 @@
         </div>
       </div>
     </div>
-    <div class="auto-layout-vertical">
-      <div class="auto-layout-horizontal">
-        <div class="auto-layout-vertical2">
-          <div class="auto-layout-vertical3">
-            <div class="memorisely-alumni">MEMORISELY ALUMNI</div>
-            <div class="div2">개인 맞춤형 도서 추천</div>
-          </div>
-          <div
-            class="we-re-mega-grateful-to-have-the-opportunity-to-educate-so-many-designers-and-developers-around-the-world-who-enjoy-the-energy-we-educate-with"
-          >
-            We&#039;re mega grateful to have the opportunity to educate so many
-            designers and developers around the world who enjoy the energy we
-            educate with
-          </div>
-        </div>
-        <div class="type-primary-size-large-status-enable2">
-          <div class="button5">Read Testimonials</div>
-        </div>
-      </div>
-      <div class="auto-layout-horizontal2">
-        <div class="type-only-icon-status-enable-size-large">
-          <img class="arrow-arrow-left-md2" src="arrow-arrow-left-md1.svg" />
-        </div>
-        <div class="type-only-icon-status-enable-size-large2">
-          <img class="arrow-arrow-right-md2" src="arrow-arrow-right-md1.svg" />
-        </div>
-        <div class="style-informative-orientation-vertical">
-          <div class="style-square"></div>
-          <div class="auto-layout-vertical4">
-            <div class="auto-layout-vertical5">
-              <div class="sharon">Sharon</div>
-              <div class="united-states">United States 🇺🇸</div>
-            </div>
-          </div>
-        </div>
-        <div class="style-informative-orientation-vertical">
-          <div class="style-square"></div>
-          <div class="auto-layout-vertical4">
-            <div class="auto-layout-vertical5">
-              <div class="sue">Sue</div>
-              <div class="canada">Canada 🇨🇦</div>
-            </div>
-          </div>
-        </div>
-        <div class="style-informative-orientation-vertical2">
-          <div class="style-square2"></div>
-          <div class="frame-2297"></div>
-          <div class="auto-layout-vertical6">
-            <div class="auto-layout-vertical5">
-              <div class="james">James</div>
-              <div class="united-kingdom">United Kingdom 🇬🇧</div>
-            </div>
-          </div>
-        </div>
-        <div class="style-informative-orientation-vertical">
-          <div class="style-square"></div>
-          <div class="auto-layout-vertical4">
-            <div class="auto-layout-vertical5">
-              <div class="cyril">Cyril</div>
-              <div class="france">France 🇫🇷</div>
-            </div>
-          </div>
-        </div>
-        <div class="style-informative-orientation-vertical">
-          <div class="style-square"></div>
-          <div class="auto-layout-vertical4">
-            <div class="auto-layout-vertical5">
-              <div class="lewis">Lewis</div>
-              <div class="united-states">United States 🇺🇸</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="desktop-m-logo-left-menu-icons-copy-layout-1">
-      <div class="top3">
-        <div class="logo-container">
-          <div class="logo">
-            <img class="icon-container2" src="icon-container4.svg" />
-            <div class="text">
-              <div class="webby-frames2">WebbyFrames</div>
-              <div class="for-figma2">for Figma</div>
-            </div>
-          </div>
-        </div>
-        <div class="menu2">
-          <div class="menu-item4">
-            <div class="menu-item5">Eleven</div>
-          </div>
-          <div class="menu-item4">
-            <div class="menu-item5">Twelve</div>
-          </div>
-          <div class="menu-item4">
-            <div class="menu-item5">Thirteen</div>
-          </div>
-          <div class="menu-item4">
-            <div class="menu-item5">Fourteen</div>
-          </div>
-          <div class="menu-item4">
-            <div class="menu-item5">Fifteen</div>
-          </div>
-          <div class="menu-item4">
-            <div class="menu-item5">Sixteen</div>
-          </div>
-        </div>
-        <div class="social-icons">
-          <img
-            class="icon-jam-icons-outline-logos-youtube"
-            src="icon-jam-icons-outline-logos-youtube0.svg"
-          />
-          <img
-            class="icon-jam-icons-outline-logos-facebook5"
-            src="icon-jam-icons-outline-logos-facebook4.svg"
-          />
-          <img
-            class="icon-jam-icons-outline-logos-twitter5"
-            src="icon-jam-icons-outline-logos-twitter4.svg"
-          />
-          <img
-            class="icon-jam-icons-outline-logos-instagram5"
-            src="icon-jam-icons-outline-logos-instagram4.svg"
-          />
-          <img
-            class="icon-jam-icons-outline-logos-linkedin5"
-            src="icon-jam-icons-outline-logos-linkedin4.svg"
-          />
-        </div>
-      </div>
-      <div class="company-name-202-x-all-rights-reserved">
-        CompanyName @ 202X. All rights reserved.
-      </div>
+    
+    
     </div>
   </div>
 

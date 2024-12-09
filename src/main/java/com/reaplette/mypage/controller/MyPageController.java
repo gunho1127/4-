@@ -5,6 +5,7 @@ import com.reaplette.domain.GoalVO;
 import com.reaplette.domain.TranscriptionVO;
 import com.reaplette.domain.UserVO;
 import com.reaplette.mypage.service.MyPageService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.net.http.HttpResponse;
 import java.util.*;
 
 @Controller
@@ -27,6 +29,7 @@ public class MyPageController {
 
     private final MyPageService myPageService;
 
+
     @GetMapping("/info")
     public String getMyPageInfo(Model model,
                                 HttpSession session) {
@@ -36,19 +39,18 @@ public class MyPageController {
 
         //병합시엔 코드를 지우세요
         // test@naver.com 으로 세션 등록해주는 코드.
-        session.setAttribute("user",myPageService.getUser("test@naver.com"));
+        session.setAttribute("user", myPageService.getUser("test@naver.com"));
         //병합시엔 코드를 지우세요
 
 
-        if((UserVO)session.getAttribute("user")==null) {
+        if ((UserVO) session.getAttribute("user") == null) {
             // 로그인 안된 회원의 접근
             log.info("NOT LOGIN ! ! ! : GUEST ! ! GO TO LOGIN");
             // 로그인 페이지로 리디렉션
             return "redirect:/login/enterEamil";
-        }
-        else {
+        } else {
             log.info("LOGIN ! ! ! USER ! ! ");
-            UserVO user = (UserVO)session.getAttribute("user");
+            UserVO user = (UserVO) session.getAttribute("user");
             log.info("user {}", user);
             model.addAttribute("user", user);
             return "myPage/myPageInfo";
@@ -91,10 +93,10 @@ public class MyPageController {
     public String getMyGoalsList(Model model,
                                  HttpSession session) {
         log.info("GET /myPage/myGoalsList - Fetching My Goals List");
-        UserVO user = (UserVO)session.getAttribute("user");
+        UserVO user = (UserVO) session.getAttribute("user");
         List<GoalVO> goalList = myPageService.getUserGoalList(user.getId());
         Collections.reverse(goalList);
-        log.info(model.addAttribute("goalList",goalList));
+        log.info(model.addAttribute("goalList", goalList));
 
         return "myPage/myGoals/myGoalsList";
     }
@@ -107,7 +109,7 @@ public class MyPageController {
 
     @ResponseBody
     @GetMapping("/myGoals/search")
-    public List<GoalVO> getSearchMyGoals(@RequestParam("keyword")String keyword) {
+    public List<GoalVO> getSearchMyGoals(@RequestParam("keyword") String keyword) {
         log.info("GET /myPage/myGoals/search - Searching Goals");
         log.info("keyword : {}", keyword);
         return myPageService.getSearchGoalList(keyword);
@@ -126,13 +128,13 @@ public class MyPageController {
         log.info("POST /myPage/myGoals/register - Registering My Goals");
 
         //현재 로그인 한 계정 가져오기
-        UserVO user = (UserVO)session.getAttribute("user");
+        UserVO user = (UserVO) session.getAttribute("user");
         log.info(user);
 
         //현재 로그인 한 계정ID 를 goal 객체에 주입
         goal.setId(user.getId());
         //pagesRead 는 DB 초기 값이 0이기에 따로 설정하지 않는다.
-        log.info("register {} ",goal);
+        log.info("register {} ", goal);
 
         myPageService.setGoal(goal);
         return "redirect:/myPage/myGoalsList";
@@ -144,14 +146,14 @@ public class MyPageController {
                                     Model model) {
         log.info("GET /myPage/myGoals/bookInfo - Fetching My Goal Book Info");
 
-        GoalVO goal = myPageService.getGoal(id,bookId);
-        log.info("goal {}",goal);
+        GoalVO goal = myPageService.getGoal(id, bookId);
+        log.info("goal {}", goal);
 
-        List<TranscriptionVO> transcriptionList = myPageService.getTranscriptionList(id,bookId);
-        log.info("transcription {}",transcriptionList);
+        List<TranscriptionVO> transcriptionList = myPageService.getTranscriptionList(id, bookId);
+        log.info("transcription {}", transcriptionList);
 
-        model.addAttribute("goal",goal);
-        model.addAttribute("transcriptionList",transcriptionList);
+        model.addAttribute("goal", goal);
+        model.addAttribute("transcriptionList", transcriptionList);
 
         return "myPage/myGoals/myGoalsBookInfo";
     }
@@ -161,18 +163,18 @@ public class MyPageController {
         log.info("POST /myPage/myGoals/bookInfoRecord - Recording Book Info");
         log.info(goal);
         myPageService.updateGoal(goal);
-        return "redirect:/myPage/myGoals/bookInfo?id="+goal.getId()+"&bookId="+goal.getBookId();
+        return "redirect:/myPage/myGoals/bookInfo?id=" + goal.getId() + "&bookId=" + goal.getBookId();
     }
 
     @GetMapping("/myGoals/bookInfo/delete")
     public String getDeleteBookInfo(@RequestParam("id") String id,
-                                    @RequestParam("bookId")String bookId) {
+                                    @RequestParam("bookId") String bookId) {
 
         log.info("GET /myPage/myGoals/bookInfo/delete - Deleting Book Info");
-        log.info("id {}",id);
-        log.info("bookId {}",bookId);
+        log.info("id {}", id);
+        log.info("bookId {}", bookId);
 
-        myPageService.deleteGoal(id,bookId);
+        myPageService.deleteGoal(id, bookId);
 
         return "redirect:/myPage/myGoalsList";
     }
@@ -186,10 +188,10 @@ public class MyPageController {
     @PostMapping("/myGoals/bookInfo/postTrans")
     public String postTransBookInfo(TranscriptionVO transcription) {
         log.info("POST /myPage/myGoals/bookInfo/postTrans - Posting Translated Book Info");
-        log.info("transcription {}",transcription);
+        log.info("transcription {}", transcription);
         myPageService.setTranscription(transcription);
 
-        return "redirect:/myPage/myGoals/bookInfo?id="+transcription.getId()+"&bookId="+transcription.getBookId();
+        return "redirect:/myPage/myGoals/bookInfo?id=" + transcription.getId() + "&bookId=" + transcription.getBookId();
     }
 
 //    @PostMapping("/myGoals/bookInfo/editTrans")
@@ -199,12 +201,12 @@ public class MyPageController {
 //    }
 
     @GetMapping("/myGoals/bookInfo/deleteTrans")
-    public String getDeleteTransBookInfo(@RequestParam("transcriptionId")String transcriptionId,
-                                         @RequestParam("id")String id,
-                                         @RequestParam("bookId")String bookId) {
+    public String getDeleteTransBookInfo(@RequestParam("transcriptionId") String transcriptionId,
+                                         @RequestParam("id") String id,
+                                         @RequestParam("bookId") String bookId) {
         log.info("GET /myPage/myGoals/bookInfo/deleteTrans - Deleting Translated Book Info");
         myPageService.deleteTranscription(transcriptionId);
-        return "redirect:/myPage/myGoals/bookInfo?id="+id+"&bookId="+bookId;
+        return "redirect:/myPage/myGoals/bookInfo?id=" + id + "&bookId=" + bookId;
     }
 
     @GetMapping("/bookmark")
@@ -215,28 +217,28 @@ public class MyPageController {
         List<BookmarkVO> bookmarkList = myPageService.getBookmarkList(user.getId());
         Collections.reverse(bookmarkList);// 역순으로 보여주기 위해서
 
-        log.info("bookmarkList{}",bookmarkList);
-        model.addAttribute("bookmarkList",bookmarkList);
+        log.info("bookmarkList{}", bookmarkList);
+        model.addAttribute("bookmarkList", bookmarkList);
 
         return "myPage/bookmarkBooks";
     }
 
     @GetMapping("/following")
     public String getFollowing(HttpSession session,
-                               Model  model) {
+                               Model model) {
         log.info("GET /myPage/following - Fetching Following List");
 
-        UserVO user = (UserVO)session.getAttribute("user");
+        UserVO user = (UserVO) session.getAttribute("user");
 
-        Map<String,List> followList = myPageService.getFollowList(user.getId());
+        Map<String, List> followList = myPageService.getFollowList(user.getId());
 
-        log.info("followList {}",followList);
+        log.info("followList {}", followList);
 
         List<UserVO> followingUserList = followList.get("following");
         List<UserVO> followerUserList = followList.get("follower");
 
-        session.setAttribute("followingUserList",followingUserList);
-        session.setAttribute("followerUserList",followerUserList);
+        session.setAttribute("followingUserList", followingUserList);
+        session.setAttribute("followerUserList", followerUserList);
 
         return "myPage/following";
     }
@@ -259,15 +261,35 @@ public class MyPageController {
         return "myPage/communityDetail";
     }
 
-    @GetMapping("/logout")
-    public String logout() {
-        log.info("GET /myPage/logout - logout");
-        return "/index";
-    }
-
     @GetMapping("/deleteUserGuide")
     public String getDeleteUserGuide() {
         log.info("GET /myPage/deleteUserGuide - Accessing Delete User Guide");
         return "myPage/deleteUserGuide";
     }
+
+    @PostMapping("/deleteUser")
+    public String deleteUser(UserVO user) {
+        log.info("POST /myPage/deleteUser - Delete User");
+        log.info("user {}",user);
+
+        myPageService.deleteUser(user.getId());
+
+        return "myPage/deleteUserDone";
+    }
+
+    @GetMapping("/main")
+    public String getMain() {
+        log.info("GET /myPage/main - Fetching main");
+        return "index";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session, HttpServletResponse response) {
+        log.info("GET /myPage/logout - Fetching Logout main");
+
+        // 세션 무효화
+        session.invalidate();
+        return "logout";
+    }
 }
+

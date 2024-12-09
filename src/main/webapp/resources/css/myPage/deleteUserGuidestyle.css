@@ -30,6 +30,25 @@
   position: relative;
   overflow: hidden;
 }
+
+.table7 {
+  margin: 1.5rem;
+  background: var(--default-white, #ffffff);
+  border-style: solid;
+  border-color: var(--coolgray-20, #dde1e6);
+  border-width: 0.0625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 96.5%;
+  height: 46.875rem;
+  position: relative;
+  overflow: hidden;
+}
+
 .header {
   
   padding: 3.125rem 1.875rem 0rem 1.875rem;

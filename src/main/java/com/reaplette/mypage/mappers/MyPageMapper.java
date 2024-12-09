@@ -1,9 +1,7 @@
 package com.reaplette.mypage.mappers;
 
 import com.reaplette.domain.*;
-import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -24,6 +22,8 @@ public interface MyPageMapper {
     List<BookmarkVO> getBookmarkList(String id);
     List<FollowVO> getFollowingList(String id);
     List<FollowVO> getFollowerList(String id);
+    List<BoardVO> getPostList(String id);
+    void deleteUser(String id);
 }
 
 

@@ -337,4 +337,25 @@ public class MyPageService {
 
         return followList;
     }
+
+    // 실시간 인기 게시글 가져오기
+    public List<BoardVO> getPostList(String id) {
+        log.info("getPostList....."+id);
+        List<BoardVO> posts = myPageMapper.getPostList(id);
+
+        for (BoardVO post : posts) {
+            if ("board".equals(post.getType())) {
+                post.setType("커뮤니티");
+            } else {
+                post.setType("독서 리뷰");
+            }
+        }
+
+        return posts;
+    }
+
+    public void deleteUser(String id) {
+        log.info("deleteUser....."+id);
+        myPageMapper.deleteUser(id);
+    }
 }

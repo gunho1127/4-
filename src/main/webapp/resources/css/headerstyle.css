@@ -224,11 +224,12 @@ a,
   width: 48px;
   height: 48px;
   position: relative;
+  overflow: hidden;
 }
 .icon-jam-icons-outline-logos-user {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 3rem;
+  height: 3rem;
   position: relative;
   overflow: visible;
 }

@@ -62,7 +62,7 @@
               <span class="div-22-span2">정말 탈퇴하시겠습니까 ?</span>
             </span>
           </div>
-          
+
 
 
 
@@ -82,11 +82,12 @@
 
               </div>
             </div>
-            <div class="button">
+            <div class="button" >
               <div class="text-container">
-                <a href="">
-                  <div class="div3">탈퇴하기</div>
-                </a>
+                <form action="/myPage/deleteUser" method="post">
+                  <input type="submit" value="탈퇴하기" class="div3" style="cursor: pointer;"/>
+                  <input type="hidden" name="id" value="${user.id}" />
+                </form>
               </div>
             </div>
           </div>
