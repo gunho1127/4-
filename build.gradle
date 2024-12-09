@@ -74,6 +74,13 @@ dependencies {
 
         // Openfeign 추가
         implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+        implementation 'io.github.openfeign:feign-jackson:12.5' //jackson디코더
+
+        //JAXB 의존성 추가
+//        implementation 'io.github.openfeign:feign-jaxb:13.3'
+//        implementation 'javax.xml.bind:jaxb-api:2.3.1'
+//        implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
+//        implementation 'com.sun.xml.bind:jaxb-impl:2.3.1'
 
     }
 
