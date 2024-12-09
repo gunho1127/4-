@@ -38,8 +38,19 @@ public class MyPageMapperTests {
 
     @Test
     public void testIsUsernameExists() {
-        String username = "테스트";
-        log.info(myPageMapper.isUsernameExists(username));
+        String id = "test@naver.com";
+        // test@naver.com 의 이름은 리플렛
+
+        // 내 이름은 true가 나와야 함.
+        String username = "서승권";
+
+        // 중복 시 false 가 나와야 함.
+//        String username = "리플렛";
+
+        // 안 중복 시 true 가 나와야 함.
+//         String username = "고양이입니다.";
+
+        log.info("result {}",myPageMapper.isUsernameExists(id,username));
     }
 
     @Test

@@ -10,7 +10,7 @@ public interface MyPageMapper {
     // User 정보 가져오기
     UserVO getUser(String id);
     void setUser(UserVO user);
-    boolean isUsernameExists(String username);
+    boolean isUsernameExists(String id,String username);
     void setGoal(GoalVO goal);
     List<GoalVO> getUserGoalList(String id);
     GoalVO getGoal(String id, String bookId);

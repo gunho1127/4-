@@ -154,18 +154,15 @@
             </div>
 
             <div class="auto-layout-horizontal2">
-              <div class="auto-layout-horizontal3">
+
+              
+              <div class="auto-layout-horizontal3 ">
 
                 <c:forEach var="bookmark" items="${bestsallerList}">
                   <!-- 카드뷰 시작 -->
                   <a href="search/total/book/detail?bookId=${bookmark.bookId}">
-                    <div class="card-view">
-                      <div class="style-square">
-                        <img class="bookImage" src="${bookmark.bookImageUrl}">
-                      </div>
-                      <div class="auto-layout-vertical4">
-                        
-                      </div>
+                    <div class="card-view n1">
+                      <img class="bookImage" src="${bookmark.bookImageUrl}">
                     </div>
                   </a>
                   <!-- 카드뷰 끙 -->
@@ -191,19 +188,20 @@
             </div>
 
             <div class="auto-layout-horizontal2">
+
+
               <div class="auto-layout-horizontal3">
 
-                <!-- 카드뷰 시작 -->
-                <div class="card-view">
-                  <div class="style-square"></div>
-                  <div class="auto-layout-vertical4">
-                    <div class="auto-layout-vertical5">
-                      <div class="sharon">도서 제목</div>
-                      <div class="united-states">도서 작가</div>
+                <c:forEach var="bookmark" items="${itemnewList}">
+                  <!-- 카드뷰 시작 -->
+                  <a href="search/total/book/detail?bookId=${bookmark.bookId}">
+                    <div class="card-view n1">
+                      <img src="${bookmark.bookImageUrl}">
                     </div>
-                  </div>
-                </div>
-                <!-- 카드뷰 끙 -->
+
+                  </a>
+                  <!-- 카드뷰 끙 -->
+                </c:forEach>
 
               </div>
             </div>

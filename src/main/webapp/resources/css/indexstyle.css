@@ -5,7 +5,7 @@
 .div {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
@@ -387,7 +387,7 @@
   border-style: solid;
   border-color: var(--coolgray-20, #dde1e6);
   border-width: 0rem 0rem 0.0625rem 0rem;
-  padding: 1rem;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -398,6 +398,7 @@
   position: relative;
   opacity: 0;
   transition: all 3s;
+  
 }
 .secondary-headline {
   color: var(--coolgray-90, #21272a);
@@ -654,7 +655,6 @@
   padding-right: 2rem;
 }
 .auto-layout-horizontal3 {
-  
   display: flex;
   flex-direction: row;
   gap: var(--space-space-40, 2.5rem);
@@ -665,7 +665,11 @@
   width: 90rem;
   position: relative;
   overflow: hidden;
+  
 }
+
+
+
 .type-only-icon-status-enable-size-large {
   border-radius: var(--space-space-4, 0.25rem);
   padding: 0rem 1.5rem 0rem 1.5rem;
@@ -711,25 +715,43 @@
   overflow: visible;
 }
 .card-view {
-  background: var(--color-main-100, #ffffff);
+  animation: roll 60s linear infinite;
+
+  background: var(--color-main-100, #d1d1d1);
   border-radius: var(--space-space-4, 0.1rem);
   border-style: solid;
-  border-color: var(--color-main-80, #ffffff);
+  border-color: var(--color-main-80, #e1e1e1);
   border-width: 0.0001rem;
   display: flex;
   flex-direction: column;
   gap: 0rem;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 15rem;
-  height: 26rem;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
   position: relative;
   overflow: hidden;
 }
+
+/* 첫 번째 배너 리스트가 끝나면 뒤에 바로 두 번째 배너 리스트가 붙도록 설정 */
+.n1:last-child {
+  animation-delay: 0s;
+}
+
+ /* 롤링 애니메이션 정의 */
+ @keyframes roll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-2000%);
+  }
+}
+
 .style-square {
-  background: var(--color-main-80, #e7e8eb);
   border-radius: var(--space-space-4, 0.25rem);
   align-self: stretch;
+  justify-items: center;
+  align-items: center;
   flex: 1;
   position: relative;
   overflow: hidden;
@@ -891,7 +913,7 @@
 }
 .section3 {
   background: var(--default-white, #ffffff);
-  padding: 1rem;
+  padding: 0 1rem 0 1rem;
   display: flex;
   flex-direction: column;
   gap: 4rem;
@@ -1373,8 +1395,4 @@
   font-weight: var(--body-s-font-weight, 400);
   position: relative;
   align-self: stretch;
-}
-
-.bookImage {
-  
 }

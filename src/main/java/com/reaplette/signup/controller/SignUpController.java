@@ -27,51 +27,56 @@ public class SignUpController {
     private final MyPageService myPageService;
 
     @GetMapping("/verifyEmail")
-    public String showVerifyEamil() { return "signup/verifyEmail";}
+    public String showVerifyEamil() {
+        return "signup/verifyEmail";
+    }
 
     @GetMapping("/setPassword")
-    public String toSetPassWordPage() {return "/signup/setPassword";}
+    public String toSetPassWordPage() {
+        return "/signup/setPassword";
+    }
 
     @PostMapping("/setPassword")
-    public  String setPassword(UserVO fakeuser,
-                               HttpSession session) {
+    public String setPassword(UserVO fakeuser,
+                              HttpSession session) {
 
         log.info("/setPassword");
-        log.info("user {}",fakeuser);
+        log.info("user {}", fakeuser);
 
         UserVO user = (UserVO) session.getAttribute("user");
         user.setPw(fakeuser.getPw());
-        session.setAttribute("pw",user.getPw());
+        session.setAttribute("pw", user.getPw());
 
         return "/signup/setPreferences";
     }
+}
 
-    @GetMapping("/checkUsername")
-    public ResponseEntity<Map<String, Object>> checkUsername(@RequestParam String username,
-                                                             HttpSession session) {
-        log.info("GET /signup/checkUsername - Check User Name");
-        Map<String, Object> response = new HashMap<>();
+//    @GetMapping("/checkUsername")
+//    public ResponseEntity<Map<String, Object>> checkUsername(@RequestParam String username,
+//                                                             HttpSession session) {
+//        log.info("GET /signup/checkUsername - Check User Name");
+//        Map<String, Object> response = new HashMap<>();
+//
+//        log.info("username{} ", username);
+//
+//        // 결과를 맵에 추가
+//        //false면 중복
+//        boolean plag = myPageService.isUsernameExists(username);
+//
+//        if(plag) {
+//            UserVO user = (UserVO)session.getAttribute("user");
+//            user.setUsername(username);
+//            session.setAttribute("username",user.getUsername());
+//            response.put("exists",true);
+//
+//        } else {
+//            response.put("exists",false);
+//        }
 
-        log.info("username{} ", username);
-
-        // 결과를 맵에 추가
-        //false면 중복
-        boolean plag = myPageService.isUsernameExists(username);
-
-        if(plag) {
-            UserVO user = (UserVO)session.getAttribute("user");
-            user.setUsername(username);
-            session.setAttribute("username",user.getUsername());
-            response.put("exists",true);
-
-        } else {
-            response.put("exists",false);
-        }
-
-
-        // 응답 반환
-        return ResponseEntity.ok(response);
-    }
+//
+//        // 응답 반환
+//        return ResponseEntity.ok(response);
+//    }
 
 //    @PostMapping("/complete") {
 //        user.url ="../../../reas"
@@ -80,7 +85,7 @@ public class SignUpController {
 //    }
 
 
-}
+
 
 
 

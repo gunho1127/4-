@@ -76,14 +76,25 @@ public class MyPageController {
     }
 
     @GetMapping("/checkUsername")
-    public ResponseEntity<Map<String, Object>> checkUsername(@RequestParam String username) {
+    public ResponseEntity<Map<String, Object>> checkUsername(@RequestParam String username,
+                                                             HttpSession session) {
         log.info("GET /myPage/checkUsername - Check User Name");
         Map<String, Object> response = new HashMap<>();
-
+        UserVO user = (UserVO) session.getAttribute("user");
         // 결과를 맵에 추가
-        //false면 중복
-        response.put("exists", myPageService.isUsernameExists(username));
 
+        boolean plag = myPageService.isUsernameExists(user.getId(),username);
+        //false면 중복
+        //true면 안중복
+
+        if(plag) {
+            user.setUsername(username);
+            session.setAttribute("username",user.getUsername());
+            response.put("exists",true);
+
+        } else {
+            response.put("exists",false);
+        }
         // 응답 반환
         return ResponseEntity.ok(response);
     }
@@ -283,6 +294,7 @@ public class MyPageController {
 
         model.addAttribute("bestsallerList",myPageService.getAladinBestsallerList());
         model.addAttribute("itemnewList",myPageService.getAladiItemNewAllList());
+
 
         return "index";
     }

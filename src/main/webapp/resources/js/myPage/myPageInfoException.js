@@ -7,26 +7,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const username = document.getElementById("name").value;
 
     // AJAX 요청 생성
-    fetch('/myPage/checkUsername', {
+    fetch(`/myPage/checkUsername?username=${encodeURIComponent(username)}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
-      },
-      params: { username: username } // 쿼리 매개변수 추가
+      }
     })
     .then(response => response.json())
     .then(data => {
-      isNameChecked = true;
+      
       if (data.exists) {
-        isNameUnique = false;
-        document.getElementById("name-exception-field").innerHTML = "중복된 활동명 입니다.";
-      } else {
         isNameUnique = true;
+        isNameChecked = true;
         document.getElementById("name-exception-field").innerHTML = "사용 가능한 활동명 입니다.";
         document.getElementById("name-exception-field").style.color = "blue";
+        
+      } else {
+        isNameUnique = false;
+        document.getElementById("name-exception-field").innerHTML = "중복된 활동명 입니다.";
       }
     })
     .catch(error => console.error('Error:', error));
+    
   });
 
   // 폼 검증을 수행하는 함수
@@ -65,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       if (!isNameChecked) {
         document.getElementById("name-exception-field").textContent = "중복 검사 버튼을 눌러주세요.";
+        document.getElementById("name-exception-field").style.color = "red";
       }
       console.log("폼 제출 실패: 유효성 검증 오류");
     }

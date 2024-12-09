@@ -57,7 +57,7 @@
             <a href="/login/enterEmail">
               <div class="user-thumb">
                 <img class="icon-jam-icons-outline-logos-user"
-                  src="../../../resources/images/icon-jam-icons-outline-logos-user0.svg" />
+                  src="../../../resources/images/myPage/icon-jam-icons-outline-logos-user1.svg" />
               </div>
             </a>
           </c:if>

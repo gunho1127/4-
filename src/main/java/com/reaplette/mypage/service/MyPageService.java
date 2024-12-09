@@ -173,10 +173,10 @@ public class MyPageService {
     }
 
     // 활동명 중복검사
-    public boolean isUsernameExists(String username) {
+    public boolean isUsernameExists(String id,String username) {
         log.info("isUsernameExists....." + username);
         //false 면 중복
-        return myPageMapper.isUsernameExists(username);
+        return myPageMapper.isUsernameExists(id,username);
     }
 
     // 도서 검색
@@ -370,7 +370,7 @@ public class MyPageService {
                 + "&QueryType=Bestseller"
                 + "&SearchTarget=Book"
                 + "&MaxResults=20"
-                + "&Cover=Mid"
+                + "&Cover=Big"
                 + "&Output=JS"
                 + "&Version=20131101";
 
@@ -433,7 +433,7 @@ public class MyPageService {
                 + "&QueryType=ItemNewAll"
                 + "&SearchTarget=Book"
                 + "&MaxResults=20"
-                + "&Cover=Small"
+                + "&Cover=Big"
                 + "&Output=JS"
                 + "&Version=20131101";
 
