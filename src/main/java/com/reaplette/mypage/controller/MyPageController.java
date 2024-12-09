@@ -1,9 +1,6 @@
 package com.reaplette.mypage.controller;
 
-import com.reaplette.domain.BookmarkVO;
-import com.reaplette.domain.GoalVO;
-import com.reaplette.domain.TranscriptionVO;
-import com.reaplette.domain.UserVO;
+import com.reaplette.domain.*;
 import com.reaplette.mypage.service.MyPageService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -261,8 +258,17 @@ public class MyPageController {
     }
 
     @GetMapping("/community")
-    public String getCommunityList() {
+    public String getCommunityList(Model model,
+                                   HttpSession session) {
         log.info("GET /myPage/community - Fetching Community List");
+        UserVO user = (UserVO) session.getAttribute("user");
+
+        List<BoardVO> postList = myPageService.getPostList(user.getId());
+
+        log.info("post {}",postList);
+
+        model.addAttribute("postList",postList);
+
         return "myPage/communityList";
     }
 

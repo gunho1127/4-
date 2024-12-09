@@ -49,7 +49,7 @@
   justify-content: flex-start;
   flex-shrink: 0;
   width: 81%;
-  height: 46.8rem;
+  height: fit-content;
   position: relative;
   overflow: hidden;
 }
@@ -91,10 +91,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.9375rem;
-  align-items: flex-end;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  width: 60.125rem;
+  width: 100%;
   position: relative;
 }
 .div4 {
@@ -828,4 +828,139 @@
   overflow: hidden;
   mix-blend-mode: multiply;
   object-fit: cover;
+}
+
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 80%;
+  margin-bottom: 2rem;
+}
+
+.post-item {
+  
+  display: flex;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.post-item:hover {
+  transform: translateY(-2px);
+}
+
+.post-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.post-content {
+  flex: 1;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-right: solid 1px #bababa;
+}
+
+.post-category {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+.post-id {
+  font-size: 15px;
+  position: relative;
+  left: 700px;
+  font-weight: bold;
+}
+
+.post-title {
+  font-size: 18px;
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.post-snippet {
+  font-size: 14px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.post-meta {
+  display: flex;
+  width: 100px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 550;
+  color: #464646;
+  margin-left: 15px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.post-meta span {
+  display: block;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.pagination-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #007bff;
+  font-size: 14px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.pagination-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination-btn.active {
+  background-color: #e6f0ff;
+  color: #007bff;
+  pointer-events: none;
+  border-color: #007bff;
+}
+
+.pagination-btn.disabled {
+  color: #ccc;
+  pointer-events: none;
+  border-color: #f0f0f0;
+}
+
+.pagination-dots {
+  display: inline-block;
+  padding: 8px 12px;
+  color: #999;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.a {
+  text-decoration: none; /* Removes underline */
+  color: inherit;        /* Inherits the color from the parent */
+  background: none;      /* Removes background */
+  border: none;          /* Removes borders */
+  outline: none;         /* Removes the outline on focus */
 }

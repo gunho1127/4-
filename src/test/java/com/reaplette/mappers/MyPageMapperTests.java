@@ -119,4 +119,10 @@ public class MyPageMapperTests {
         String id = "test4@naver.com";
         myPageMapper.deleteUser(id);
     }
+
+    @Test
+    public void testGetPostList() {
+        String id = "test@naver.com";
+        log.info(myPageMapper.getPostList(id));
+    }
 }
