@@ -35,6 +35,7 @@ public class SearchService {
     }
 
     public List<UserVO> searchUsersByKeyword(String keyword, String id) {
+        String sanitizedKeyword = keyword.replaceAll("\\s+", "");
         log.info("searchUsersByKeyword 호출...");
         System.out.println("ID: " + id + ", Keyword: " + keyword);
 
