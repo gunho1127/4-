@@ -278,8 +278,12 @@ public class MyPageController {
     }
 
     @GetMapping("/main")
-    public String getMain() {
+    public String getMain(Model model) {
         log.info("GET /myPage/main - Fetching main");
+
+        model.addAttribute("bestsallerList",myPageService.getAladinBestsallerList());
+        model.addAttribute("itemnewList",myPageService.getAladiItemNewAllList());
+
         return "index";
     }
 
@@ -290,6 +294,13 @@ public class MyPageController {
         // 세션 무효화
         session.invalidate();
         return "logout";
+    }
+
+    @GetMapping("recBooks")
+    public String getRecBooks() {
+        log.info("GET /myPage/recBooks - Fetching recBooks");
+
+        return "recBooks";
     }
 }
 

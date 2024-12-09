@@ -28,14 +28,16 @@ import java.util.Map;
 public class MyPageService {
 
     private final MyPageMapper myPageMapper; // 자동 주입
-
-    private final  ServletContext servletContext;
+    private final ServletContext servletContext;
 
     @Value("${client.id}")
-    String CLIENT_ID;
+    private String CLIENT_ID;
 
     @Value("${client.secret}")
-    String CLIENT_SECRET;
+    private String CLIENT_SECRET;
+
+    @Value("${client.ttb}")
+    private String TTB;
 
     public UserVO getUser(String id) {
         log.info("getUser....." + id);
@@ -274,7 +276,7 @@ public class MyPageService {
     public GoalVO getGoal(String id, String bookId) {
         log.info("getGoal....." + id);
         log.info("getGoal....." + bookId);
-        return myPageMapper.getGoal(id,bookId);
+        return myPageMapper.getGoal(id, bookId);
     }
 
     public void updateGoal(GoalVO goal) {
@@ -285,7 +287,7 @@ public class MyPageService {
     public List<TranscriptionVO> getTranscriptionList(String id, String bookId) {
         log.info("getTranscriptionList....." + id);
         log.info("getTranscriptionList....." + bookId);
-        return myPageMapper.getTranscriptionList(id,bookId);
+        return myPageMapper.getTranscriptionList(id, bookId);
     }
 
     public void setTranscription(TranscriptionVO transcription) {
@@ -301,7 +303,7 @@ public class MyPageService {
     public void deleteGoal(String id, String bookId) {
         log.info("deleteGoal....." + id);
         log.info("deleteGoal....." + bookId);
-        myPageMapper.deleteGoal(id,bookId);
+        myPageMapper.deleteGoal(id, bookId);
     }
 
     public List<BookmarkVO> getBookmarkList(String id) {
@@ -309,38 +311,38 @@ public class MyPageService {
         return myPageMapper.getBookmarkList(id);
     }
 
-    public Map<String,List> getFollowList(String id) {
-        log.info("getFollowList....."+id);
+    public Map<String, List> getFollowList(String id) {
+        log.info("getFollowList....." + id);
 
-        Map<String,List> followList = new HashMap<>();
+        Map<String, List> followList = new HashMap<>();
 
         // followingID을 기준으로 계정을 필터링
         List<FollowVO> followinglist = myPageMapper.getFollowingList(id);
         List<UserVO> followingUserList = new ArrayList<>();
 
-        for(FollowVO follow : followinglist) {
+        for (FollowVO follow : followinglist) {
             //User리스트에 내가 팔로우 하고 있는 유저의 정보 주입.
             followingUserList.add(myPageMapper.getUser(follow.getFollowerId()));
         }
-        followList.put("following",followingUserList);
+        followList.put("following", followingUserList);
 
         // followerId를 기준으로 계정을 필터링
         List<FollowVO> followerList = myPageMapper.getFollowerList(id);
         List<UserVO> followerUserList = new ArrayList<>();
 
-        for(FollowVO follow : followerList) {
+        for (FollowVO follow : followerList) {
             //User리스트에 나를 팔로우 하고 있는 유저의 정보 주입.
             followerUserList.add(myPageMapper.getUser(follow.getFollowingId()));
         }
 
-        followList.put("follower",followerUserList);
+        followList.put("follower", followerUserList);
 
         return followList;
     }
 
-    // 실시간 인기 게시글 가져오기
+
     public List<BoardVO> getPostList(String id) {
-        log.info("getPostList....."+id);
+        log.info("getPostList....." + id);
         List<BoardVO> posts = myPageMapper.getPostList(id);
 
         for (BoardVO post : posts) {
@@ -355,7 +357,133 @@ public class MyPageService {
     }
 
     public void deleteUser(String id) {
-        log.info("deleteUser....."+id);
+        log.info("deleteUser....." + id);
         myPageMapper.deleteUser(id);
+    }
+
+    public List<BookmarkVO> getAladinBestsallerList() {
+        log.info("getAladinBestsallerList.....");
+        List<BookmarkVO> bestsellers = new ArrayList<>();
+
+        String apiURL = "http://www.aladin.co.kr/ttb/api/ItemList.aspx?"
+                + "TTBKey=" + TTB
+                + "&QueryType=Bestseller"
+                + "&SearchTarget=Book"
+                + "&MaxResults=20"
+                + "&Cover=Mid"
+                + "&Output=JS"
+                + "&Version=20131101";
+
+        try {
+            // URL 연결
+            URL url = new URL(apiURL);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            // 응답 코드 확인
+            int responseCode = con.getResponseCode();
+            if (responseCode != 200) {
+                System.out.println("HTTP 요청 실패: " + responseCode);
+            }
+
+            // 응답 데이터 읽기
+            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            StringBuilder response = new StringBuilder();
+            String inputLine;
+            while ((inputLine = br.readLine()) != null) {
+                response.append(inputLine);
+            }
+            br.close();
+
+            // JSON 데이터 파싱
+            JSONObject jsonResponse = new JSONObject(response.toString());
+            JSONArray items = jsonResponse.getJSONArray("item");
+
+            // 결과 출력
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject item = items.getJSONObject(i);
+
+                BookmarkVO bookmark = new BookmarkVO();
+
+                // ISBN 코드
+                bookmark.setBookId(item.getString("isbn13"));
+                // 책 제목
+                bookmark.setBookTitle(item.getString("title"));
+                // 작가
+                bookmark.setAuthor(item.getString("author"));
+                // 책 이미지 URL
+                bookmark.setBookImageUrl(item.getString("cover"));
+
+                log.info("bookmark{}", bookmark);
+                bestsellers.add(bookmark);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bestsellers;
+    }
+
+    public List<BookmarkVO> getAladiItemNewAllList() {
+        log.info("getAladiItemNewAllList.....");
+
+        List<BookmarkVO> newalliList = new ArrayList<>();
+
+        String apiURL = "http://www.aladin.co.kr/ttb/api/ItemList.aspx?"
+                + "TTBKey=" + TTB
+                + "&QueryType=ItemNewAll"
+                + "&SearchTarget=Book"
+                + "&MaxResults=20"
+                + "&Cover=Small"
+                + "&Output=JS"
+                + "&Version=20131101";
+
+        try {
+            // URL 연결
+            URL url = new URL(apiURL);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            // 응답 코드 확인
+            int responseCode = con.getResponseCode();
+            if (responseCode != 200) {
+                System.out.println("HTTP 요청 실패: " + responseCode);
+
+            }
+
+            // 응답 데이터 읽기
+            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            StringBuilder response = new StringBuilder();
+            String inputLine;
+            while ((inputLine = br.readLine()) != null) {
+                response.append(inputLine);
+            }
+            br.close();
+
+            // JSON 데이터 파싱
+            JSONObject jsonResponse = new JSONObject(response.toString());
+            JSONArray items = jsonResponse.getJSONArray("item");
+
+            // 결과 출력
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject item = items.getJSONObject(i);
+
+                BookmarkVO bookmark = new BookmarkVO();
+
+                // ISBN 코드
+                bookmark.setBookId(item.getString("isbn13"));
+                // 책 제목
+                bookmark.setBookTitle(item.getString("title"));
+                // 작가
+                bookmark.setAuthor(item.getString("author"));
+                // 책 이미지 URL
+                bookmark.setBookImageUrl(item.getString("cover"));
+
+                log.info("bookmark{}", bookmark);
+                newalliList.add(bookmark);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return newalliList;
     }
 }

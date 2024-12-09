@@ -1,6 +1,7 @@
 package com.reaplette.service;
 
 
+import com.reaplette.domain.BookmarkVO;
 import com.reaplette.domain.GoalVO;
 import com.reaplette.domain.UserVO;
 
@@ -35,6 +36,9 @@ public class MyPageServiceTests {
 
     @Value("${client.secret}")
     String CLIENT_SECRET;
+
+    @Value("${client.ttb}")
+    String TTB;
 
     @Test
     public void testSetUser() {
@@ -293,6 +297,130 @@ public class MyPageServiceTests {
         }
 
 
+    }
+
+    @Test
+    public void getAladinBestsallerList() {
+        List<BookmarkVO> bestsellers = new ArrayList<>();
+
+        String apiURL = "http://www.aladin.co.kr/ttb/api/ItemList.aspx?"
+                + "TTBKey=" + TTB
+                + "&QueryType=Bestseller"
+                + "&SearchTarget=Book"
+                + "&MaxResults=20"
+                + "&Cover=Mid"
+                + "&Output=JS"
+                + "&Version=20131101";
+
+        try {
+            // URL 연결
+            URL url = new URL(apiURL);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            // 응답 코드 확인
+            int responseCode = con.getResponseCode();
+            if (responseCode != 200) {
+                System.out.println("HTTP 요청 실패: " + responseCode);
+                return;
+            }
+
+            // 응답 데이터 읽기
+            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            StringBuilder response = new StringBuilder();
+            String inputLine;
+            while ((inputLine = br.readLine()) != null) {
+                response.append(inputLine);
+            }
+            br.close();
+
+            // JSON 데이터 파싱
+            JSONObject jsonResponse = new JSONObject(response.toString());
+            JSONArray items = jsonResponse.getJSONArray("item");
+
+            // 결과 출력
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject item = items.getJSONObject(i);
+
+                BookmarkVO bookmark = new BookmarkVO();
+
+                // ISBN 코드
+                bookmark.setBookId(item.getString("isbn13"));
+                // 책 제목
+                bookmark.setBookTitle(item.getString("title"));
+                // 작가
+                bookmark.setAuthor(item.getString("author"));
+                // 책 이미지 URL
+                bookmark.setBookImageUrl(item.getString("cover"));
+
+                log.info("bookmark{}",bookmark);
+                bestsellers.add(bookmark);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void getAladiItemNewAllList() {
+        List<BookmarkVO> bestsellers = new ArrayList<>();
+
+        String apiURL = "http://www.aladin.co.kr/ttb/api/ItemList.aspx?"
+                + "TTBKey=" + TTB
+                + "&QueryType=ItemNewAll"
+                + "&SearchTarget=Book"
+                + "&MaxResults=20"
+                + "&Cover=Mid"
+                + "&Output=JS"
+                + "&Version=20131101";
+
+        try {
+            // URL 연결
+            URL url = new URL(apiURL);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            // 응답 코드 확인
+            int responseCode = con.getResponseCode();
+            if (responseCode != 200) {
+                System.out.println("HTTP 요청 실패: " + responseCode);
+                return;
+            }
+
+            // 응답 데이터 읽기
+            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            StringBuilder response = new StringBuilder();
+            String inputLine;
+            while ((inputLine = br.readLine()) != null) {
+                response.append(inputLine);
+            }
+            br.close();
+
+            // JSON 데이터 파싱
+            JSONObject jsonResponse = new JSONObject(response.toString());
+            JSONArray items = jsonResponse.getJSONArray("item");
+
+            // 결과 출력
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject item = items.getJSONObject(i);
+
+                BookmarkVO bookmark = new BookmarkVO();
+
+                // ISBN 코드
+                bookmark.setBookId(item.getString("isbn13"));
+                // 책 제목
+                bookmark.setBookTitle(item.getString("title"));
+                // 작가
+                bookmark.setAuthor(item.getString("author"));
+                // 책 이미지 URL
+                bookmark.setBookImageUrl(item.getString("cover"));
+
+                log.info("bookmark{}",bookmark);
+                bestsellers.add(bookmark);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 } //MyPageServiceTests
