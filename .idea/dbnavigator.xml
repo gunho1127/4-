@@ -17,26 +17,51 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="adf5fa8b-61b6-48b1-a1df-179f8ac7c0b0">
-      <console name="reapletteDB" type="STANDARD" schema="" session="Main" />
+      <console name="reapletteDB" type="STANDARD" schema="reapletteDB" session="Main"><![CDATA[CREATE TABLE preference (
+    id VARCHAR(30) NOT NULL,
+    bookId VARCHAR(20),
+    category VARCHAR(20),
+    author VARCHAR(20),
+        isDelete INT DEFAULT 1,
+    FOREIGN KEY (id) REFERENCES user(id)
+);
+
+
+DELETE FROM preference;
+select * from preference; 
+
+DELETE FROM bookmark;
+
+
+SELECT * FROM bookmark;
+
+ALTER TABLE bookmark
+MODIFY bookTitle VARCHAR(225);
+
+
+
+-- 새로운 데이터를 삽입
+INSERT INTO bookmark (id, bookId, bookTitle, category, isDelete, bookImageUrl, author)
+VALUES 
+('test@naver.com', '9788994886060', '홀로서기', '에세이', 1, 'https://shopping-phinf.pstatic.net/main_4713729/47137298621.20240419071109.jpg', '엘레나 피렌테');]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="adf5fa8b-61b6-48b1-a1df-179f8ac7c0b0" object-ref="consoles/reapletteDB" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="adf5fa8b-61b6-48b1-a1df-179f8ac7c0b0" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="e665cf4c-da18-4bc4-96c0-9a94e568435a" dataset="reapletteSchema.user" active-filter-id="" />
-    <filter-actions connection-id="e665cf4c-da18-4bc4-96c0-9a94e568435a" dataset="reapletteSchema.board" active-filter-id="" />
-    <filter-actions connection-id="e665cf4c-da18-4bc4-96c0-9a94e568435a" dataset="reapletteDB.user" active-filter-id="" />
-    <filter-actions connection-id="e665cf4c-da18-4bc4-96c0-9a94e568435a" dataset="reapletteDB.follow" active-filter-id="" />
-    <filter-actions connection-id="e665cf4c-da18-4bc4-96c0-9a94e568435a" dataset="reapletteDB.transcription" active-filter-id="" />
     <filter-actions connection-id="adf5fa8b-61b6-48b1-a1df-179f8ac7c0b0" dataset="reaplettedb.follow" active-filter-id="" />
     <filter-actions connection-id="adf5fa8b-61b6-48b1-a1df-179f8ac7c0b0" dataset="reaplettedb.user" active-filter-id="" />
+    <filter-actions connection-id="adf5fa8b-61b6-48b1-a1df-179f8ac7c0b0" dataset="reapletteDB.preference" active-filter-id="" />
+    <filter-actions connection-id="adf5fa8b-61b6-48b1-a1df-179f8ac7c0b0" dataset="reapletteDB.bookmark" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
@@ -53,7 +78,7 @@
           <description value="reapletteDB" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
-          <database-version value="8.0" />
+          <database-version value="9.0" />
           <driver-source value="BUNDLED" />
           <driver-library value="" />
           <driver value="" />

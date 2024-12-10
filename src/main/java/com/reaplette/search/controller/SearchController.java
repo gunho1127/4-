@@ -3,9 +3,8 @@ package com.reaplette.search.controller;
 //import com.reaplette.dao.BoardDAO;
 //import com.reaplette.dao.UserDAO;
 
-import com.reaplette.domain.BoardVO;
-import com.reaplette.domain.FollowVO;
-import com.reaplette.domain.UserVO;
+import com.reaplette.domain.*;
+import com.reaplette.mypage.service.MyPageService;
 import com.reaplette.search.model.NaverSearchModel.BookItem;
 import com.reaplette.search.model.NaverSearchModel.Pagination;
 import com.reaplette.search.service.BoardService;
@@ -15,11 +14,13 @@ import com.reaplette.search.service.SearchService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -34,26 +35,27 @@ public class SearchController {
     private final FollowService followService;
     private final BoardService boardService;
     private final BookService bookService;  //bookService 책정보
-
+    private final MyPageService myPageService;
 
 
     private final List<FollowVO> followList = new ArrayList<>();  // 임시 팔로우 상태 저장
 
+    // 승연님 여기 수정 찜 도ㅅ
     // /search/total -> search/searchMain.jsp로 이동
     @GetMapping("/total")
     public String searchMain(@RequestParam("keyword") String keyword, HttpSession session,
                              Model model) {
 
         // 로그인된 사용자 정보를 세션에서 가져오기
-        UserVO userVO = (UserVO)session.getAttribute("user");
-
-        if( userVO == null) {
+        UserVO userVO = (UserVO) session.getAttribute("user");
+        if (userVO == null) {
+            // userVO가 null일 경우 기본값을 설정하거나 예외처리를 한다.
+            // 예를 들어, 임시 사용자 ID를 할당하거나 빈 값을 사용
             userVO = new UserVO();
-            userVO.setId("guest");
-            session.setAttribute("user", userVO);
+            userVO.setId("guest"); // 임시값 설정
+            // 다른 기본 값도 설정할 수 있다.
         }
         String nowUserId = userVO.getId();
-
         model.addAttribute("user", userVO);
         model.addAttribute("keyword", keyword);
 //
@@ -140,7 +142,7 @@ public class SearchController {
         // 검색 결과와 키워드를 Model에 추가
         model.addAttribute("userList", userList);
         System.out.println(userList);
-        model.addAttribute("boardList" , boardList);
+        model.addAttribute("boardList", boardList);
         model.addAttribute("keyword", keyword);
         model.addAttribute("bookList", bookList.getData());
 
@@ -205,7 +207,7 @@ public class SearchController {
 
     // /search/total/author -> search/total/searchAuthor.jsp로 이동
     @GetMapping("/total/author")
-    public String searchAuthor(){
+    public String searchAuthor() {
         return "search/total/searchAuthor";
     }
 
@@ -242,7 +244,7 @@ public class SearchController {
 
 
         //List<BoardVO> boardList = new ArrayList<>();
-        if (keyword == null || keyword.trim().isEmpty()|| !isValidKeyword(keyword)) {
+        if (keyword == null || keyword.trim().isEmpty() || !isValidKeyword(keyword)) {
             model.addAttribute("message", "검색어를 입력하지 않았습니다.");
             model.addAttribute("keyword", keyword);
             return "search/total/searchExceptionPost"; // 공백 안내 JSP 경로
@@ -262,7 +264,7 @@ public class SearchController {
 
         model.addAttribute("boardList", boardList);
         //model.addAttribute("currentPage", page);
-       // model.addAttribute("pageSize", pageSize);
+        // model.addAttribute("pageSize", pageSize);
         model.addAttribute("sort", sort); // 현재 정렬 기준 (recent or popular)
         model.addAttribute("keyword", keyword); // 현재 검색어
 
@@ -275,13 +277,13 @@ public class SearchController {
                              HttpSession session) {
 
         //사용자 정보를 세션에서 가져오기
-        UserVO user = (UserVO)session.getAttribute("user");
+        UserVO user = (UserVO) session.getAttribute("user");
         if (user == null) {
             throw new IllegalStateException("세션에 사용자 정보가 없습니다.");
         }
 
         // 공백 키워드 처리
-        if (keyword == null || keyword.trim().isEmpty()|| !isValidKeyword(keyword)) {
+        if (keyword == null || keyword.trim().isEmpty() || !isValidKeyword(keyword)) {
             model.addAttribute("message", "올바른 검색어를 입력하세요.");
             model.addAttribute("userList", new ArrayList<>()); // 빈 사용자 목록 전달
             model.addAttribute("keyword", keyword); // 검색어 유지
@@ -323,29 +325,79 @@ public class SearchController {
 
     // /search/total/user/follow -> search/total/searchUser.jsp로 이동 (POST 요청)
     @PostMapping("/total/user/follow")
-    public @ResponseBody Map<String, String> toggleFollow (@RequestBody Map<String, String> data) {
+    public @ResponseBody Map<String, String> toggleFollow(@RequestBody Map<String, String> data) {
         // 팔로우 상태 업데이트 추가
         Map<String, String> result = followService.updateFollow(data);
         return result;
     }
 
+    //승연 찜 도서 수정
     // /search/total/book/detail -> search/total/searchBook/bookDetail.jsp로 이동
     @GetMapping("/total/book/detail")
-    public String bookDetail(@RequestParam(name = "keyword") String keyword, Model model, @RequestParam(name = "isbn") String isbn) {
+    public String bookDetail(@RequestParam(name = "keyword") String keyword, Model model, @RequestParam(name = "isbn") String isbn,
+                             HttpSession session) {
         BookItem bookDetail = bookService.getBookDetail(isbn);
 
+        // 북마크 리스트 가져오기
+        // MypageService 랑 MyPageMapper 랑 MyPagerMapper.xml 가져가시면 됩니다.
+        UserVO user = (UserVO) session.getAttribute("user");
+        List<BookmarkVO> bookmarkList = myPageService.getBookmarkList(user.getId());
+
+        log.info("bookmarkList {}", bookmarkList);
+
+
         model.addAttribute("book", bookDetail);
+        model.addAttribute("bookmarkList", bookmarkList);
         //model.addAttribute("keyword", keyword != null ? keyword : "");
 
         return "search/total/searchBook/bookDetail";
     }
 
 
+    // 승연님 찜 도서 수정
     // /search/total/book/bookMark -> search/total/searchBook/bookDetail.jsp로 이동 (POST 요청)
     @PostMapping("/total/book/bookMark")
-    public String bookMark() {
-        return "search/total/searchBook/bookDetail";
+    public ResponseEntity<Map<String, String>> bookMark(HttpSession session,
+                                                        @RequestBody BookmarkVO bookmark) {
+        log.info("POST : /total/book/bookMark");
+
+        // 세션에 user가 없으면 로그인 페이지로 리디렉션
+        if ((UserVO) session.getAttribute("user") == null) {
+            Map<String, String> response = new HashMap<>();
+            response.put("redirectUrl", "/login/enterEmail");  // 리디렉션 URL 응답
+            return ResponseEntity.ok(response);  // 200 OK로 리디렉션 URL 보내기
+        } else {
+
+            // 만약 bookImageUrl 값이 없다면 찜 해제
+            if (bookmark.getBookImageUrl() == null) {
+                log.info("deleteBookmark");
+                searchService.deleteBookmark(bookmark);
+            } else {
+                log.info("setBookmark");
+                bookmark.setIsDelete(1);
+                bookmark.setCategory("카테고리 임의 값"); // 임의 값 설정
+                log.info("bookmark {}", bookmark);
+
+                // 취향 테이블에 정보 삽입
+                PreferenceVO preference = new PreferenceVO();
+                preference.setId(bookmark.getId());
+                preference.setBookId(bookmark.getBookId());
+                preference.setAuthor(bookmark.getAuthor());
+                preference.setCategory(bookmark.getCategory());
+                preference.setIsDelete(1);
+                searchService.setPreference(preference);
+
+                // 북마크 테이블에 정보 삽입
+                searchService.setBookmark(bookmark);
+            }
+
+            // 북마크 등록 후 리디렉션 URL을 응답으로 보내기
+            Map<String, String> response = new HashMap<>();
+            response.put("redirectUrl", "/search/total/book/detail?keyword=''&isbn=" + bookmark.getBookId());
+            return ResponseEntity.ok(response);  // 리디렉션 URL 반환
+        }
     }
+
 
     // /search/total/book/review -> search/total/searchBook/bookDetail.jsp로 이동 (POST 요청)
     @PostMapping("/total/book/review")
@@ -379,8 +431,10 @@ public class SearchController {
 //        String validPattern = "^[가-힣a-zA-Z0-9\\s]+$"; // 띄어쓰기 포함
 //        return keyword != null && keyword.matches(validPattern);
 //    }
+
     /**
      * 키워드에서 네이버 API에서 허용되지 않는 특수문자를 제거
+     *
      * @param keyword 원본 키워드
      * @return 허용된 문자만 포함된 키워드
      */
@@ -403,7 +457,6 @@ public class SearchController {
 //        String validPattern = "^[가-힣a-zA-Z0-9\\-_.!~*'()@#$%^&+=]*$";
 //        return keyword != null && !keyword.trim().isEmpty() && keyword.matches(validPattern);
 //    }
-
     private boolean isValidKeyword(String keyword) {
         String validPattern = "^[가-힣a-zA-Z0-9\\-_.!~*'()@#$%^&+=\\s]+$"; // 공백 포함
         return keyword != null && !keyword.trim().isEmpty() && keyword.matches(validPattern);

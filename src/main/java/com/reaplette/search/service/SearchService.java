@@ -1,6 +1,8 @@
 package com.reaplette.search.service;
 
+import com.reaplette.domain.BookmarkVO;
 import com.reaplette.domain.FollowVO;
+import com.reaplette.domain.PreferenceVO;
 import com.reaplette.domain.UserVO;
 import com.reaplette.search.mappers.SearchMapper;
 import lombok.RequiredArgsConstructor;
@@ -57,6 +59,19 @@ public class SearchService {
     }
 
 
+
+//    찜 도서 승연님 여기 추가 !!
+    public void setBookmark(BookmarkVO bookmark) {
+        searchMapper.setBookmark(bookmark);
+    }
+
+    public void deleteBookmark(BookmarkVO bookmark) {
+        searchMapper.deleteBookmark(bookmark);
+    }
+
+    public void setPreference(PreferenceVO preference) {
+        searchMapper.setPreference(preference);
+    }
 //    private final SearchMapper userMapper; // 자동 주입
 //
 //    public UserVO getUser(String id) {
