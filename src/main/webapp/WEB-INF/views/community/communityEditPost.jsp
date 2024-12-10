@@ -15,7 +15,7 @@
 
 <body>
     <!-- nav -->
-    <jsp:include page="/WEB-INF/views/includes/mypagenav/myPageNav.jsp" />
+    <jsp:include page="/WEB-INF/views/includes/header.jsp" />
     <!-- nav -->
 
     <div class="container4">
@@ -23,19 +23,16 @@
 
     <div class="container">
         <!-- 게시글 수정 폼 -->
-        <form id="editPostForm" action="/community/editPost" method="post" enctype="multipart/form-data">
+        <form id="editPostForm" action="/community/editPost/${postId}/save" method="post" enctype="multipart/form-data">
             <!-- 게시글 수정 헤더 -->
             <div class="post-header">
                 <h1>게시글 수정</h1>
             </div>
 
-            <!-- 게시글 ID (숨겨진 필드) -->
-            <input type="hidden" name="postId" value="${post.id}">
-
             <!-- 제목 입력 -->
             <div class="form-title">
                 <div class="form-title-title">제목</div>
-                <input type="text" id="title" name="title" value="${post.title}" placeholder="제목을 입력하세요." required>
+                <input type="text" id="title" name="title" value="${post.title}" required>
             </div>
 
             <!-- 사진 업로드 -->
@@ -44,7 +41,7 @@
                 <div class="image-upload-container">
                     <div class="image-preview-container">
                         <div class="image-preview">
-                            <img id="uploadedImage" src="${post.imagePath}" alt="미리보기">
+                            <img id="uploadedImage" src="${post.postImagePath}" alt="미리보기">
                         </div>
                         <div class="image-upload-buttons">
                             <button type="button" id="uploadButton" onclick="uploadImage()">사진 업로드</button>
@@ -65,13 +62,17 @@
             <!-- 본문 수정 -->
             <div class="section">
                 <label for="content">본문</label>
-                <textarea id="content" name="content" rows="10" placeholder="내용을 입력하세요." required>${post.content}</textarea>
+                <textarea id="content" name="content" rows="10" required>${post.content}</textarea>
             </div>
 
             <!-- 수정 완료 버튼 -->
             <div class="section-button">
                 <button type="submit" id="submitPost">수정 완료</button>
             </div>
+
+            <!-- 숨은 필드로  -->
+            <input type="hidden" name="hasImage" value="${hasImage}" />
+            <input type="hidden" name="removeImage" id="removeImage" value="false" />  <!-- 삭제 여부 -->
         </form>
     </div>
 

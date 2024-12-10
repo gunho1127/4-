@@ -15,6 +15,7 @@ function uploadImage() {
 }
 
 function removeImage() {
+    document.getElementById('removeImage').value = "true";  // removeImage 값을 true로 설정
     const uploadedImage = document.getElementById('uploadedImage');
     const imageInput = document.getElementById('imageInput');
     uploadedImage.src = ''; // 미리보기 초기화

@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상세 게시글 조회</title>
+    <!-- jQuery CDN 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../../resources/css/community/communityViewPost.css">
     <script src="../../../resources/js/community/communityViewPost.js"></script>
 </head>
@@ -26,8 +28,8 @@
             <h1>${post.title}</h1>
             <div class="buttons">
                 <c:if test="${isAuthor}">
-                    <button class="delete" onclick="openDeleteModal(${post.id})">삭제</button>
-                    <button class="edit">수정</button>
+                    <button class="delete" data-post-id="${post.postId}">삭제</button>
+                    <button class="edit" data-post-id="${post.postId}">수정</button>
                 </c:if>
             </div>
         </div>
@@ -47,9 +49,10 @@
             </div>
         </div>
         <!-- 좋아요 버튼 -->
-        <div class="like-section">
-            <button class="unliked">&#9825;</button> <!-- 빈 하트 -->
-            <button class="liked">&#9829;</button> <!-- 눌린 하트 -->
+        <div class="like-section" id="like-section" data-post-id="${post.postId}" data-user-id="${loggedInUserId}">
+            <button id="like-button">
+                <img id="like-img" src="../../../resources/images/community/unliked.png" alt="Like Button">
+            </button>
         </div>
 
         <!-- 댓글 섹션 -->
@@ -57,15 +60,14 @@
         <div class="comments-section">
             <!-- 댓글 입력 -->
             <form action="/community/viewPost/${post.postId}/commentWrite" method="post">
-                <input type="hidden" name="postId" value="${post.id}">
                 <div class="comment-input">
                     <!-- 로그인한 사용자의 아이디 출력 -->
                     <div class="comment-input-text">
                         <div class="user-id">
-                            ${loggedInUserId}
+                            ${user.username}
                         </div>
                         <!-- 댓글 입력창 -->
-                        <input type="text" name="commentContent" placeholder="댓글을 남겨보세요." required>
+                        <input type="text" name="comment" placeholder="댓글을 남겨보세요." required>
                     </div>
                     <!-- 전송 버튼 -->
                     <button type="submit">
@@ -80,7 +82,7 @@
                 <c:forEach var="comment" items="${comments}">
                     <div class="comment">
                         <div class="comment-info">
-                            <span class="comment-author">${comment.id}</span>
+                            <span class="comment-author">${comment.username}</span>
                             <span class="comment-date">${comment.date}</span>
                         </div>
                         <div class="comment-content">
@@ -89,7 +91,7 @@
                         <div class="comment-actions">
                             <!-- 삭제 버튼 -->
                             <c:if test="${comment.id == loggedInUserId}">
-                                <form action="/community/viewPost/${post.postId}/commentDelete/${comment.commentId}" method="post" style="display:inline;">
+                                <form action="/community/viewPost/${post.postId}/commentDelete/${comment.commentId}" method="post" style="display:inline;" onsubmit="return confirmDeleteComment();">
                                     <button type="submit" class="delete-button">
                                         <img src="../../../resources/images/community/Trash.svg" alt="댓글 삭제">
                                     </button>
@@ -125,8 +127,8 @@
         <div class="modal-content">
             <p>정말 삭제하시겠습니까?</p>
             <div class="modal-buttons">
-                <button id="confirmDelete" onclick="confirmDeletePost(${post.id})" class="button">예</button>
-                <button id="cancelDelete" onclick="closeDeleteModal()" class="button">아니오</button>
+                <button id="confirmDelete" class="button">예</button>
+                <button id="cancelDelete" class="button">아니오</button>
             </div>
         </div>
     </div>

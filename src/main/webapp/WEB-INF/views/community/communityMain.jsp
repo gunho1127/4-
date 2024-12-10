@@ -61,7 +61,7 @@
                                     <div class="avatar-placeholder"></div>
                                     <div>
                                         <!-- 작성자 이름 -->
-                                        <p class="name">${post.id}</p> <!-- 'id'는 작성자 ID -->
+                                        <p class="name">${post.username}</p>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                    <div class="author">
                                        <div class="avatar-placeholder"></div>
                                        <div>
-                                           <p class="name">${post.id}</p>
+                                           <p class="name">${post.username}</p>
                                        </div>
                                    </div>
                                </div>
@@ -168,7 +168,7 @@
                             </p>
                         </div>
                         <div class="post-meta">
-                            <span class="post-author">${post.id}</span>
+                            <span class="post-author">${post.username}</span>
                             <span class="post-date">${post.date}</span>
                             <span class="post-likes">❤️${post.likeCount}</span>
                         </div>
@@ -233,7 +233,7 @@
                             </p>
                         </div>
                         <div class="post-meta">
-                            <span class="post-author">${post.id}</span>
+                            <span class="post-author">${post.username}</span>
                             <span class="post-date">${post.date}</span>
                             <span class="post-likes">❤️${post.likeCount}</span>
                         </div>
