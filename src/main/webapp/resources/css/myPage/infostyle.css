@@ -11,17 +11,16 @@
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
+
 }
 .page-content {
   padding: 1.5rem;
   display: flex;
   flex-direction: row;
   gap: 1.9375rem;
-  
-  
   flex: 1;
   position: relative;
-  height: fit-content;
+  height: 100vh;
 }
 .nav {
   display: flex;

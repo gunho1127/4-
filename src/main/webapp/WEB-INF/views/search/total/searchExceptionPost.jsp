@@ -49,7 +49,7 @@
         <section class="noSearch py-5">
           <h3 class="mb-5 fw-bold">
             <span class="searchText" style="color: var(--color-red)">'${keyword}'</span
-            >에 대한 검색 결과가 없습니다
+            >에 대한 검색 결과가 없습니다.
           </h3>
 
           <ul>

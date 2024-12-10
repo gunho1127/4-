@@ -237,6 +237,21 @@ button {
 .heart-icon.active {
   color: var(--color-0f62fe); /* 클릭 상태: 파란색 꽉 찬 하트 */
 }
+/* 하트 기본 상태 (비어있는 상태) */
+.bookFav {
+  color: var(--color-blue);
+  background: var(--color-white);
+  cursor: pointer;
+  margin-left: 150px;
+  font-size: 22px;
+}
+
+/* 찜 클릭 후 꽉 찬 파란색 상태 */
+.bookFav.active {
+  color: white;
+  background: var(--color-0f62fe);
+  content: "찜♥"; /* 하트 모양 변경 */
+}
 
 /* 작가 프로필 섹션 */
 .author_profile {
@@ -353,4 +368,40 @@ height: auto;
 object-fit: cover;
 }
 
+.book_desc {
+  font-size: 15px !important;
+  max-height: 40px !important;
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+ }
+ .py-5_book{
+ padding-top: 3rem !important;
+ padding-bottom: 0.5rem !important;
+}
 
+.mb-3_title {
+    /* margin-top: 50px; */
+    padding-top: 50px;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
+    position: relative;
+    top: -180px;
+}
+.fs-5_author{
+margin-top: 0px;
+    padding-top: 0px;
+    position: relative;
+    top: -150px;
+    font-size: 20px;
+}
+align-items-center_review{
+margin-top: 0px;
+    padding-top: 0px;
+    position: relative;
+    top: -120px;
+    font-size: 20px;
+}

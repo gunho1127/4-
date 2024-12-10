@@ -69,6 +69,9 @@ public class NaverSearchModel {
 
     public static <T> Pagination<T> of(T data, int totalPage, int currentPage, int pageSize) {
       int beginPage = ((currentPage - 1) / pageSize ) * pageSize + 1;
+//      int endPage = Math.min(beginPage + pageSize - 1, totalPage);
+//
+//      return new Pagination<>(totalPage, currentPage, pageSize, beginPage, endPage, data);
       int endPage = beginPage + pageSize;
       if(beginPage + 5 > totalPage) {
         endPage = totalPage;

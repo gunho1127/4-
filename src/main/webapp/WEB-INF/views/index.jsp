@@ -119,7 +119,6 @@
                   <div class="title-container">
                     <div class="title">독서 정착</div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -154,26 +153,38 @@
             </div>
 
             <div class="auto-layout-horizontal2">
+              <div class="auto-layout-horizontal3">
+                <div class="banner-list banner-list1">
+                  <c:forEach var="bookmark" items="${bestsallerList}">
+                    <!-- 카드뷰 시작 -->
+                    <a href="/search/total/book/detail?isbn=${bookmark.bookId}&keyword=''">
+                      <div class="card-view">
+                        <img class="bookImage" src="${bookmark.bookImageUrl}">
+                      </div>
+                    </a>
+                    <!-- 카드뷰 끝 -->
+                  </c:forEach>
+                </div>
 
-              
-              <div class="auto-layout-horizontal3 ">
+                <div class="banner-list banner-list2">
+                  <c:forEach var="bookmark" items="${bestsallerList}">
+                    <!-- 카드뷰 시작 -->
+                    <a href="/search/total/book/detail?isbn=${bookmark.bookId}&keyword=''">
+                      <div class="card-view">
+                        <img class="bookImage" src="${bookmark.bookImageUrl}">
+                      </div>
+                    </a>
+                    <!-- 카드뷰 끙 -->
 
-                <c:forEach var="bookmark" items="${bestsallerList}">
-                  <!-- 카드뷰 시작 -->
-                  <a href="search/total/book/detail?bookId=${bookmark.bookId}">
-                    <div class="card-view n1">
-                      <img class="bookImage" src="${bookmark.bookImageUrl}">
-                    </div>
-                  </a>
-                  <!-- 카드뷰 끙 -->
-                </c:forEach>
-
-
+                  </c:forEach>
+                </div>
               </div>
             </div>
 
           </div>
+
         </div>
+
 
         <div class="section3" id="three">
           <div class="auto-layout-vertical">
@@ -188,21 +199,33 @@
             </div>
 
             <div class="auto-layout-horizontal2">
-
-
               <div class="auto-layout-horizontal3">
+                
+                <div class="banner-list banner-list1">
+                  <c:forEach var="bookmark" items="${itemnewList}">
+                    <!-- 카드뷰 시작 -->
+                    <!-- <a href="/search/total/book/detail?isbn=${bookmark.bookId}&keyword=''"> -->
+                      <div class="card-view">
+                        <img class="bookImage" src="${bookmark.bookImageUrl}">
+                      </div>
+                    <!-- </a> -->
+                    <!-- 카드뷰 끝 -->
+                  </c:forEach>
+                </div>
 
-                <c:forEach var="bookmark" items="${itemnewList}">
-                  <!-- 카드뷰 시작 -->
-                  <a href="search/total/book/detail?bookId=${bookmark.bookId}">
-                    <div class="card-view n1">
-                      <img src="${bookmark.bookImageUrl}">
-                    </div>
+                <div class="banner-list banner-list2">
+                  <c:forEach var="bookmark" items="${itemnewList}">
+                    <!-- 카드뷰 시작 -->
+                    <!-- <a href="/search/total/book/detail?isbn=${bookmark.bookId}&keyword=''"> -->
+                      <div class="card-view">
+                        <img class="bookImage" src="${bookmark.bookImageUrl}">
+                      </div>
+                    <!-- </a> -->
+                    <!-- 카드뷰 끙 -->
 
-                  </a>
-                  <!-- 카드뷰 끙 -->
-                </c:forEach>
-
+                  </c:forEach>
+                </div>
+                
               </div>
             </div>
 
@@ -212,7 +235,7 @@
 
 
       </div>
-      </div>
+
 
     </body>
 
@@ -245,6 +268,7 @@
       observer.observe(one);
       observer.observe(two);
       observer.observe(three);
+
     </script>
 
 

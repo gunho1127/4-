@@ -9,7 +9,6 @@ import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -25,16 +24,15 @@ import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
+
 @Log4j2
-@Service
 @Transactional
 @RequiredArgsConstructor
+@Service
 public class LoginService {
 
-
     private final LoginMapper loginMapper;
-
-    // 생성자 주입
+//    private final HttpSession session;
 
     // application.properties에서 SMTP 설정값 주입
     @Value("${spring.mail.username}")
@@ -55,7 +53,11 @@ public class LoginService {
     @Value("${spring.mail.properties.mail.smtp.ssl.enable}")
     private String smtpSsl;
 
-
+//    // 생성자 주입
+//    public LoginService(LoginMapper loginMapper, HttpSession session) {
+//        this.loginMapper = loginMapper;
+//        this.session = session;
+//    }
 
     // 이메일로 사용자 조회
     public UserVO getUserById(String id) {
@@ -150,36 +152,24 @@ public class LoginService {
         String tempPassword = generateTemporaryPassword();
 
         // 비밀번호 DB 업데이트
-//        try {
         user.setPw(tempPassword);
 
         if (loginMapper.updatePassword(user) == 0) {
-            log.error("비밀번호 업데이트 실패");
+//            log.error("비밀번호 업데이트 실패");
             return 0;
         } else {
-            log.info("비밀번호 업데이트 성공");
+//            log.info("비밀번호 업데이트 성공");
         }
-
         sendTemporaryPasswordEmail(user.getId(), tempPassword);
+//        log.info("임시 비밀번호 이메일 발송 성공: ID={}", user.getId());
 
-        log.info("임시 비밀번호 이메일 발송 성공: ID={}", user.getId());
-
-
-//        } catch (Exception e) {
-//            log.error("비밀번호 재설정 및 이메일 발송 실패: {}", e.getMessage());
-//
-//        }
         return 1;
     }
 
     @Async
     // 네이버 SMTP로 임시 비밀번호 발송
     public void sendTemporaryPasswordEmail(String id, String tempPassword) {
-        log.info("sendTemporaryPasswordEmail - - -");
-//        log.info(smtpHost);
-//        log.info(smtpPort);
-//        log.info(smtpAuth);
-//        log.info(smtpSsl);
+//        log.info("sendTemporaryPasswordEmail - - -");
 
         // SMTP 설정
         Properties props = new Properties();
@@ -210,7 +200,7 @@ public class LoginService {
                     <html>
                     <body>
                         <h2>임시 비밀번호 발급 안내</h2>
-                        <p>안녕하세요,</p>
+                        <p>안녕하세요.</p>
                         <p>귀하의 임시 비밀번호는 <strong>%s</strong> 입니다.</p>
                         <p>로그인 후 반드시 비밀번호를 변경하세요.</p>
                         <p>감사합니다.</p>
@@ -221,88 +211,16 @@ public class LoginService {
 
             // 이메일 전송
             Transport.send(message);
-            // log.info("임시 비밀번호 이메일 전송 성공");
+//            log.info("임시 비밀번호 이메일 전송 성공");
 
         } catch (MessagingException e) {
-            log.error("임시 비밀번호 이메일 전송 실패", e);
+//            log.error("임시 비밀번호 이메일 전송 실패", e);
             throw new RuntimeException("이메일 발송 실패", e);
         }
     }
 
     public boolean isNaver(String id) {
-        log.info("isNaver - - -");
+//        log.info("isNaver - - -");
         return loginMapper.isNaver(id);
     }
 }
-
-    /* 임시 비밀번호 이메일 발송 (AWS SES)
-    private void sendTemporaryPasswordEmail(String id, String tempPassword) {
-        Region region = Region.AP_NORTHEAST_2; // 서울 리전
-        SesClient sesClient = SesClient.builder()
-                .region(region)
-                .build();
-
-        try {
-            // 이메일 내용 구성
-            String subject = "Your Temporary Password";
-            String body = "Hello,\n\nYour temporary password is: " + tempPassword +
-                    "\n\nPlease log in and reset your password immediately.";
-
-            // SES 요청 생성
-            SendEmailRequest emailRequest = SendEmailRequest.builder()
-                    .source("your_verified_email@example.com") // AWS SES에 인증된 발신 이메일
-                    .destination(Destination.builder()
-                            .toAddresses(id) // 수신 이메일
-                            .build())
-                    .message(Message.builder()
-                            .subject(Content.builder().data(subject).build()) // 제목
-                            .body(Body.builder()
-                                    .text(Content.builder().data(body).build()) // 본문
-                                    .build())
-                            .build())
-                    .build();
-
-            // 이메일 발송
-            sesClient.sendEmail(emailRequest);
-            System.out.println("Email sent successfully to " + id);
-        } catch (SesException e) {
-            System.err.println("Email failed: " + e.awsErrorDetails().errorMessage());
-            throw new RuntimeException("이메일 발송에 실패했습니다.", e);
-        } finally {
-            sesClient.close();
-        }
-    } */
-
-
-    /*
-        // 인증 코드 생성 및 세션에 저장
-        public void sendVerificationCodeWithSession (String id){
-            String verificationCode = generateVerificationCode();  // 인증 코드 생성
-
-            // 세션에 인증 코드 저장
-            session.setAttribute("verificationCode", verificationCode);
-            session.setAttribute("verificationCodeEmail", id);
-
-            // 인증 코드 이메일 발송 (AWS SES로 이메일 보내는 로직이 이곳에 포함)
-            sendVerificationCodeEmail(id, verificationCode);
-        }
-
-        // 6자리 인증 코드 생성 (보안 강화)
-        private String generateVerificationCode () {
-            SecureRandom random = new SecureRandom();  // 보안성을 강화한 랜덤 생성기
-            return String.format("%06d", random.nextInt(1000000));  // 6자리 랜덤 인증 코드 생성
-        }
-
-        // 인증 코드 확인
-        public boolean validateVerificationCode (String inputCode, String id){
-            String storedCode = (String) session.getAttribute("verificationCode");
-            String storedEmail = (String) session.getAttribute("verificationCodeEmail");
-
-            // 인증 코드와 이메일을 비교
-            if (storedCode != null && storedCode.equals(inputCode) && storedEmail != null && storedEmail.equals(id)) {
-                return true;  // 코드 일치
-            }
-            return false;  // 코드 불일치
-        }
-    }
-    */

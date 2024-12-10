@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 수정</title>
     <link rel="stylesheet" href="../../../resources/css/community/communityEditPost.css">
-    <script src="../../../resources/js/community/communityEditPost.js"></script>
+    <script src="../../../resources/js/community/communityEditPost.js" defer></script>
 </head>
 
 
@@ -44,8 +44,8 @@
                             <img id="uploadedImage" src="${post.postImagePath}" alt="미리보기">
                         </div>
                         <div class="image-upload-buttons">
-                            <button type="button" id="uploadButton" onclick="uploadImage()">사진 업로드</button>
-                            <button type="button" id="removeButton" onclick="removeImage()">제거</button>
+                            <button type="button" id="uploadButton">사진 업로드</button>
+                            <button type="button" id="removeButton">제거</button>
                         </div>
                     </div>
                     <input type="file" id="imageInput" name="image" style="display: none;" accept="image/*">

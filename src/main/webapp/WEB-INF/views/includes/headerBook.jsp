@@ -8,7 +8,7 @@
         <div class="top">
           <div class="logo">
             <!-- 메인 이동 -->
-            <a href="/mypage/main">
+            <a href="/myPage/main">
               <div class="text">
                 <div class="webby-frames">REAPLETTE</div>
                 <div class="for-figma"></div>
@@ -21,6 +21,8 @@
             <div>
 
               <input type="text" class="text2" name="keyword" value="${param.keyword}" placeholder="검색어를 입력하세요 . . .">
+              <input type="hidden" name="page" value="1">
+
               <img class="icon-jam-icons-outline-logos-search"
                 src="../../../../resources/images/icon-jam-icons-outline-logos-search0.svg" />
             </div>

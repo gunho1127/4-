@@ -17,76 +17,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="adf5fa8b-61b6-48b1-a1df-179f8ac7c0b0">
-      <console name="Connection" type="STANDARD" schema="reaplettedb" session="Main"><![CDATA[select * from follow;
-select * from board;
-select * from user;
-
-UPDATE user
-SET username = '예슬예슬'
-WHERE id = 'ccccc@gmail.com';
-UPDATE user
-SET username = '승권승권'
-WHERE id = 'ddddd@naver.com';
-UPDATE user
-SET username = '거노거노'
-WHERE id = 'eeeee@gmail.com';
-UPDATE user
-SET profileImagePath = '/resources/images/search/profileImagePath7.jpg'
-WHERE id = 'aaaaa@gmail.com';
-UPDATE user
-SET profileImagePath = '/resources/images/search/profileImagePath6.jpg'
-WHERE id = 'test@naver.com';
-UPDATE user
-SET profileImagePath = '/resources/images/search/profileImagePath7.jpg'
-WHERE id = 'aaaaa@gmail.com';
-update board
-set title ='테스트',
-    content ='<좋아요 수 : 25 > 테스트 내용'
-where id ='aaaaa@gmail.com';
-update board
-set title ='책 읽기의 즐거움과 중요성 ',
-    content ='<좋아요 수 : 20 >책 읽기는 단순히 지식을 얻는 활동을 넘어, 우리의 삶에 긍정적인 영향을 미치는 소중한 습관입니다. 책을 통해 우리는 다양한 사람들의 삶을 엿보고, 자신이 경험하지 못한 세상을 간접적으로 탐험할 수 있습니다. 독서는 우리의 사고력을 키워주며, 언어 능력과 표현력을 향상시키는 데에도 큰 도움이 됩니다. 특히 소설이나 전기를 읽으며 타인의 감정을 이해하는 능력을 키우게 되고, 이는 대인관계에서도 긍정적인 영향을 미칩니다. 하루에 단 몇 장이라도 책을 읽는 습관을 들여보세요. 그 작은 변화가 우리의 삶을 얼마나 풍요롭게 만드는지 느낄 수 있을 것입니다.'
-where id ='test@naver.com';
-update board
-set title =' 삶의 전환점'
-    content='<좋아요 수 : 20 > 삶의 전환점이 필요할 때, 당신도 책 속에서 그 길을 찾아보는 건 어떨까요? 어떤 책이 당신을 기다리고 있을지 모릅니다.'
-where `postId` ='7';
-
-DELETE FROM board
-WHERE postid = 7;
-
-update board 
-set title ='여행을 떠나는 책들의 세계'
-where postId = 3;
-
-update board 
-set title ='소설 속 인물들이 주는 감동'
-where postId = 4;
-
-update board 
-set title ='책으로 배우는 다른 문화'
-where postId = 5;
-
-update board 
-set title ='책 읽기의 즐거움과 중요성'
-where postId = 6;
-
-update board 
-set title ='테스트'
-where postId = 1;
-
-INSERT INTO board (postId, id, title, content, postImagePath, date, likeCount, commentCount, viewCount, isDelete)
-VALUES (7, 'test@gmail.com', '고전 문학이 주는 깊은 울림', 
- '<좋아요 수 : 50 > 고전 문학은 시대를 초월한 지혜와 통찰을 담고 있습니다. 이번 게시글에서는 톨스토이와 셰익스피어의 작품을 통해 얻은 교훈에 대해 나눠보겠습니다.', 
- NULL, 2023-11-11, 50, 0, 0, 1);
-
-update board 
-set date =2023-11-11
-where postId = 7;
-
-UPDATE board
-SET date = '2023-11-11'
-WHERE postId = 7;]]></console>
+      <console name="reapletteDB" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -99,6 +30,11 @@ WHERE postId = 7;]]></console>
     <connection id="adf5fa8b-61b6-48b1-a1df-179f8ac7c0b0" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="e665cf4c-da18-4bc4-96c0-9a94e568435a" dataset="reapletteSchema.user" active-filter-id="" />
+    <filter-actions connection-id="e665cf4c-da18-4bc4-96c0-9a94e568435a" dataset="reapletteSchema.board" active-filter-id="" />
+    <filter-actions connection-id="e665cf4c-da18-4bc4-96c0-9a94e568435a" dataset="reapletteDB.user" active-filter-id="" />
+    <filter-actions connection-id="e665cf4c-da18-4bc4-96c0-9a94e568435a" dataset="reapletteDB.follow" active-filter-id="" />
+    <filter-actions connection-id="e665cf4c-da18-4bc4-96c0-9a94e568435a" dataset="reapletteDB.transcription" active-filter-id="" />
     <filter-actions connection-id="adf5fa8b-61b6-48b1-a1df-179f8ac7c0b0" dataset="reaplettedb.follow" active-filter-id="" />
     <filter-actions connection-id="adf5fa8b-61b6-48b1-a1df-179f8ac7c0b0" dataset="reaplettedb.user" active-filter-id="" />
   </component>

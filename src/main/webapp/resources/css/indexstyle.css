@@ -642,33 +642,6 @@
   font-weight: var(--body-16-medium-font-weight, 700);
   position: relative;
 }
-.auto-layout-horizontal2 {
-  display: flex;
-  flex-direction: row;
-  gap: var(--space-space-40, 2.5rem);
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-.auto-layout-horizontal3 {
-  display: flex;
-  flex-direction: row;
-  gap: var(--space-space-40, 2.5rem);
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  width: 90rem;
-  position: relative;
-  overflow: hidden;
-  
-}
-
-
 
 .type-only-icon-status-enable-size-large {
   border-radius: var(--space-space-4, 0.25rem);
@@ -714,9 +687,35 @@
   position: relative;
   overflow: visible;
 }
-.card-view {
-  animation: roll 60s linear infinite;
 
+
+.auto-layout-horizontal2 {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-space-40, 2.5rem);
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  padding-left: 2rem;
+  padding-right: 2rem;  
+  overflow: hidden;
+}
+
+.auto-layout-horizontal3 {
+  width: 90rem;
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-space-40, 2.5rem);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  
+}
+.card-view {
   background: var(--color-main-100, #d1d1d1);
   border-radius: var(--space-space-4, 0.1rem);
   border-style: solid;
@@ -724,26 +723,52 @@
   border-width: 0.0001rem;
   display: flex;
   flex-direction: column;
-  gap: 0rem;
   align-items: center;
   justify-content: center;
   height: fit-content;
   position: relative;
   overflow: hidden;
+
+  width: 13rem;
+}
+.banner-list {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-/* 첫 번째 배너 리스트가 끝나면 뒤에 바로 두 번째 배너 리스트가 붙도록 설정 */
-.n1:last-child {
-  animation-delay: 0s;
+/* .banner-list:hover {
+  animation-play-state: paused; /* 일시 중지 */
+/* } */
+
+.banner-list1{
+animation: roll 40s linear infinite; /* 롤링 애니메이션 */
+
+}
+
+.banner-list2{
+  animation: roll 40s linear infinite; /* 롤링 애니메이션 */
+  
 }
 
  /* 롤링 애니메이션 정의 */
- @keyframes roll {
+@keyframes roll {
   0% {
-    transform: translateX(0);
+    transform: translateX(6rem);
   }
   100% {
-    transform: translateX(-2000%);
+    transform: translateX(calc(-13rem * 20 - 3rem * 18)); /* 리스트 하나의 전체 길이 */
+  }
+}
+
+@keyframes roll-2 {
+  0% {
+    transform: translateX(calc(-3rem * 20 -3rem * 18));
+  }
+  100% {
+    transform: translateX(0); /* 리스트 하나의 전체 길이 */
   }
 }
 

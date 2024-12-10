@@ -43,11 +43,17 @@ public class BookService {
     BookSearch bookList = naverBookSearchClient.getBookList(clientId, clientSecret, query, display, start, "sim");
 
     List<BookItem> bookItems = bookList.getItems();
-    for(int i = 0; bookList.getItems().size() > i; i++) {
+    for(int i = 0;  bookList.getItems().size()>i ; i++) {  //bookList.제거
       bookItems.get(i).setBookNum((i + 1) + display * (start - 1));
+      //bookItems.get(i).setBookNum((start - 1) + i + 1);
     }
     //return Pagination.of(bookItems, bookList.getTotal()/display, bookList.getStart(), 5);
       return Pagination.of(bookItems, Math.min(100, bookList.getTotal()), bookList.getStart(), 5);
+//    List<BookItem> bookItems = bookList.getItems();
+//    for (int i = 0; i < bookItems.size(); i++) {
+//      bookItems.get(i).setBookNum(i + 1); // 단순히 리스트 순서 설정
+//    }
+//    return bookItems; // Pagination 대신 List<BookItem> 반환
   }
 
   public BookItem getBookDetail(String isbn) {

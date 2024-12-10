@@ -11,7 +11,7 @@
     <!-- jQuery CDN 추가 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../../resources/css/community/communityViewPost.css">
-    <script src="../../../resources/js/community/communityViewPost.js"></script>
+    <script src="../../../resources/js/community/communityViewPost.js" defer></script>
 </head>
 
 <body>

@@ -17,11 +17,11 @@ public interface BoardMapper {
     List<BoardVO> searchBoards (@Param("keyword") String keyword);//키워드로 게시글 조회
     List<BoardVO> getBoardsByPage(@Param("offset") int offset,@Param("pageSize") int pageSize);
     List<BoardVO> searchBoardsByKeywordAndSort(@Param("keyword") String keyword,
-                                               @Param("offset") int offset,
-                                               @Param("pageSize") int pageSize,
+//                                               @Param("offset") int offset,
+//                                               @Param("pageSize") int pageSize,
                                                @Param("sort") String sort);
-    List<BoardVO> getBoardsBySort(@Param("offset") int offset,
-                                  @Param("pageSize") int pageSize,
+    List<BoardVO> getBoardsBySort(//@Param("offset") int offset,
+                                  //@Param("pageSize") int pageSize,
                                   @Param("sort") String sort);
 
 

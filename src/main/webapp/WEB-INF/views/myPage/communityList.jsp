@@ -91,11 +91,11 @@
                     <a href="/community/viewPost/${post.postId}">
                   </c:when>
                   <c:when test="${post.type == '독서 리뷰'}">
-                    <a href="">
+                    <a href="/community/viewPost/${post.postId}">
                   </c:when>
                   <c:otherwise>
                     <!-- Default link or behavior for other types -->
-                    <a href="#">
+                    <a href="">
                   </c:otherwise>
                 </c:choose>
 
@@ -121,7 +121,7 @@
                     </p>
                   </div>
                   <div class="post-meta">
-                    <span class="post-author">${post.id}</span>
+                    <span class="post-author">${post.username}</span>
                     <span class="post-date">${post.date}</span>
                     <span class="post-likes">❤️${post.likeCount}</span>
                   </div>

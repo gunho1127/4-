@@ -6,16 +6,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.apache.catalina.User;
-import org.eclipse.tags.shaded.org.apache.xpath.operations.Mod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.net.http.HttpResponse;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @Log4j2
@@ -33,28 +33,17 @@ public class MyPageController {
         log.info("GET /myPage/info - Accessing MyPage Info");
 
         //테스트 볼 때만 넣는 test@naver.com
-
         //병합시엔 코드를 지우세요
         // test@naver.com 으로 세션 등록해주는 코드.
-        session.setAttribute("user", myPageService.getUser("test@naver.com"));
+        // session.setAttribute("user", myPageService.getUser("test@naver.com"));
         //병합시엔 코드를 지우세요
 
-
-        if ((UserVO) session.getAttribute("user") == null) {
-            // 로그인 안된 회원의 접근
-            log.info("NOT LOGIN ! ! ! : GUEST ! ! GO TO LOGIN");
-            // 로그인 페이지로 리디렉션
-            return "redirect:/login/enterEamil";
-        } else {
-            log.info("LOGIN ! ! ! USER ! ! ");
-            UserVO user = (UserVO) session.getAttribute("user");
-            log.info("user {}", user);
-            model.addAttribute("user", user);
-            return "myPage/myPageInfo";
-        }
-
-
+        UserVO user = (UserVO) session.getAttribute("user");
+        log.info("user {}", user);
+        model.addAttribute("user", user);
+        return "myPage/myPageInfo";
     }
+
 
     @PostMapping("/editInfo")
     public String postEditInfo(UserVO user,
@@ -80,17 +69,17 @@ public class MyPageController {
         UserVO user = (UserVO) session.getAttribute("user");
         // 결과를 맵에 추가
 
-        boolean plag = myPageService.isUsernameExists(user.getId(),username);
+        boolean plag = myPageService.isUsernameExists(user.getId(), username);
         //false면 중복
         //true면 안중복
 
-        if(plag) {
+        if (plag) {
             user.setUsername(username);
-            session.setAttribute("username",user.getUsername());
-            response.put("exists",true);
+            session.setAttribute("username", user.getUsername());
+            response.put("exists", true);
 
         } else {
-            response.put("exists",false);
+            response.put("exists", false);
         }
         // 응답 반환
         return ResponseEntity.ok(response);
@@ -265,9 +254,9 @@ public class MyPageController {
 
         List<BoardVO> postList = myPageService.getPostList(user.getId());
 
-        log.info("post {}",postList);
+        log.info("post {}", postList);
 
-        model.addAttribute("postList",postList);
+        model.addAttribute("postList", postList);
 
         return "myPage/communityList";
     }
@@ -287,7 +276,7 @@ public class MyPageController {
     @PostMapping("/deleteUser")
     public String deleteUser(UserVO user) {
         log.info("POST /myPage/deleteUser - Delete User");
-        log.info("user {}",user);
+        log.info("user {}", user);
 
         myPageService.deleteUser(user.getId());
 
@@ -295,11 +284,12 @@ public class MyPageController {
     }
 
     @GetMapping("/main")
-    public String getMain(Model model) {
+    public String getMain(Model model,
+                          HttpSession session) {
         log.info("GET /myPage/main - Fetching main");
 
-        model.addAttribute("bestsallerList",myPageService.getAladinBestsallerList());
-        model.addAttribute("itemnewList",myPageService.getAladiItemNewAllList());
+        model.addAttribute("bestsallerList", myPageService.getAladinBestsallerList());
+        model.addAttribute("itemnewList", myPageService.getAladiItemNewAllList());
 
 
         return "index";
@@ -321,4 +311,3 @@ public class MyPageController {
         return "recBooks";
     }
 }
-

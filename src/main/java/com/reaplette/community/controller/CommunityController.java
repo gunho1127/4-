@@ -157,7 +157,7 @@ public class CommunityController {
         // 로그인하지 않은 경우 로그인 페이지로 리다이렉트
         if (loggedInUserId == null) {
             log.info("No user logged in. Redirecting to login.");
-            return "redirect:/login/enterPassword";
+            return "redirect:/login/enterEmail";
         }
 
         // 게시글 조회

@@ -2,6 +2,7 @@ package com.reaplette.search.controller;
 
 //import com.reaplette.dao.BoardDAO;
 //import com.reaplette.dao.UserDAO;
+
 import com.reaplette.domain.BoardVO;
 import com.reaplette.domain.FollowVO;
 import com.reaplette.domain.UserVO;
@@ -18,10 +19,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 @Controller
 @Log4j2
@@ -52,7 +53,6 @@ public class SearchController {
             session.setAttribute("user", userVO);
         }
         String nowUserId = userVO.getId();
-
 
         model.addAttribute("user", userVO);
         model.addAttribute("keyword", keyword);
@@ -92,6 +92,19 @@ public class SearchController {
             model.addAttribute("keyword", keyword);
             return "search/searchException"; // 공백일 때  이동
         }
+
+
+        // 승연님 오면 보여주기 12월 10일
+        // 특수 문자를 포함하는지 확인하는 정규식
+        String specialCharsRegex = "[!@#$%^&*(),.?\":{}|<>]";
+        // keyword가 빈 문자열이거나 특수 문자를 포함하는지 확인
+        if (keyword.isEmpty() || Pattern.compile(specialCharsRegex).matcher(keyword).find()) {
+            // 특수 문자를 포함하거나 keyword가 빈 문자열인 경우 처리
+            model.addAttribute("message", "특수문자는 포함될 수 없습니다.");
+            model.addAttribute("keyword", keyword);
+            return "search/searchException"; // 특수 문자 예외 처리
+        }
+
         // 사용자 검색 결과 처리
         List<UserVO> userList = new ArrayList<>();
         if (keyword != null && !keyword.trim().isEmpty()) {
@@ -159,6 +172,17 @@ public class SearchController {
             return "search/total/searchExceptionBook"; // 공백일 때  이동
         }
 
+        // 승연님 오면 보여주기 12월 10일
+        // 특수 문자를 포함하는지 확인하는 정규식
+        String specialCharsRegex = "[!@#$%^&*(),.?\":{}|<>]";
+        // keyword가 빈 문자열이거나 특수 문자를 포함하는지 확인
+        if (keyword.isEmpty() || Pattern.compile(specialCharsRegex).matcher(keyword).find()) {
+            // 특수 문자를 포함하거나 keyword가 빈 문자열인 경우 처리
+            model.addAttribute("message", "특수문자는 포함될 수 없습니다.");
+            model.addAttribute("keyword", keyword);
+            return "search/total/searchExceptionBook"; // 특수 문자 예외 처리
+        }
+
 //        if (keyword.trim().isEmpty() || !isValidKeyword(keyword)) {
 //            model.addAttribute("message", "검색어를 입력하지 않았습니다.");
 //            model.addAttribute("keyword", keyword);
@@ -224,6 +248,8 @@ public class SearchController {
             return "search/total/searchExceptionPost"; // 공백 안내 JSP 경로
 
         }
+
+
 //        else {
 //            // 검색어가 있을 경우 해당 게시글 반환
 //            boardList = boardService.searchBoardsByKeywordAndSort(keyword, sort);
@@ -260,6 +286,17 @@ public class SearchController {
             model.addAttribute("userList", new ArrayList<>()); // 빈 사용자 목록 전달
             model.addAttribute("keyword", keyword); // 검색어 유지
             return "search/total/searchExceptionUser"; // 공백일 때 noKeyword.jsp로 이동
+        }
+
+        // 승연님 오면 보여주기 12월 10일
+        // 특수 문자를 포함하는지 확인하는 정규식
+        String specialCharsRegex = "[!@#$%^&*(),.?\":{}|<>]";
+        // keyword가 빈 문자열이거나 특수 문자를 포함하는지 확인
+        if (keyword.isEmpty() || Pattern.compile(specialCharsRegex).matcher(keyword).find()) {
+            // 특수 문자를 포함하거나 keyword가 빈 문자열인 경우 처리
+            model.addAttribute("message", "특수문자는 포함될 수 없습니다.");
+            model.addAttribute("keyword", keyword);
+            return "search/total/searchExceptionUser"; // 특수 문자 예외 처리
         }
         // 공백을 제거한 검색어
         String sanitizedKeyword = keyword.replaceAll("\\s+", "");
@@ -302,6 +339,7 @@ public class SearchController {
 
         return "search/total/searchBook/bookDetail";
     }
+
 
     // /search/total/book/bookMark -> search/total/searchBook/bookDetail.jsp로 이동 (POST 요청)
     @PostMapping("/total/book/bookMark")

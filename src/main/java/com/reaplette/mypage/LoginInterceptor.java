@@ -14,7 +14,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         UserVO user = (UserVO) request.getSession().getAttribute("user");
 
         // 사용자 정보가 없으면 로그인 페이지로 리디렉션
-        if (user == null) {
+        if (user == null || user.getId().equals("guest")) {
             response.sendRedirect("/login/enterEmail");
             return false;  // 요청을 중단하고 로그인 페이지로 리디렉션
         }
