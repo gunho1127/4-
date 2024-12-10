@@ -8,7 +8,7 @@
   border-color: var(--coolgray-20, #ffffff);
   border-width: 0.0625rem;
   padding: 1rem;
-  
+
   display: flex;
   flex-direction: column;
   gap: 3rem;
