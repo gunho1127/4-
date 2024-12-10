@@ -87,7 +87,7 @@
                 <!-- 반복 -->
                 <c:if test="${not empty bookmarkList}">
                   <c:forEach var="bookmark" items="${bookmarkList}">
-                    <a href="/search/total/book/detail?bookId=${bookmark.bookId}">
+                    <a href="/search/total/book/detail?isbn=${bookmark.bookId}&keyword=''">
                       <!-- 해당 도서 정보로 : 승연님 도서 정보 조회 요청 코드 가져올 것-->
                       <div class="book-card-view">
                         <img class="style-square" src="${bookmark.bookImageUrl}">
