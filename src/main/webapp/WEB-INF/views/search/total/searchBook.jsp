@@ -29,15 +29,15 @@
     <script src="/resources/js/search/cookie.js"></script>
     <script src="/resources/js/search/book.js"></script>
     <style>
-      .book_desc {
-      font-size: 15px;
-      max-height: 40px;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      }
-    </style>
+          .book_desc {
+          font-size: 15px;
+          max-height: 40px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+ }
+  </style>
   </head>
   <body>
   <header>
@@ -50,7 +50,7 @@
           <ul class="d-flex justify-content-center gap-4 fw-bold">
             <li><a class="tm_a py-2" href="/search/total?keyword=${param.keyword}">Overview</a></li>
             <li class="active"><a class="tm_a py-2" href="#">Book</a></li>
-            <li><a class="tm_a py-2" href="/search/total/author?keyword=${param.keyword}">Author</a></li>
+            <%--<li><a class="tm_a py-2" href="/search/total/author?keyword=${param.keyword}">Author</a></li>--%>
             <li><a class="tm_a py-2" href="/search/total/post?keyword=${param.keyword}">Post</a></li>
             <li><a class="tm_a py-2" href="/search/total/user?keyword=${param.keyword}">User</a></li>
           </ul>
@@ -100,29 +100,30 @@
         <!-- /book_list -->
 
       <!-- pagination -->
-      <c:if test="${bookList.data.size() > 0}">
-      <div class="mt-5">
-          <ul class="pagination d-flex justify-content-center gap-4 fw-bold">
-              <!-- Previous 버튼 -->
-              <c:if test="${bookList.beginPage != 1}">
-                  <li class="${bookList.currentPage == 1 ? 'disabled' : ''}">
-                      <a class="px-2 py-1" href="?keyword=${keyword}&page=${bookList.currentPage - 1}" ${bookList.currentPage == 1 ? 'onclick="return false;"' : ''}>Previous</a>
-                  </li>
-              </c:if>
-              <!-- 동적 페이지 번호 버튼 -->
-              <c:forEach begin="${bookList.beginPage}" end="${bookList.beginPage + 5}" var="page">
-                  <li class="${bookList.currentPage == page ? 'active' : ''}">
-                      <a class="px-2 py-1" href="?keyword=${keyword}&page=${page}">${page}</a>
-                  </li>
-              </c:forEach>
+        <c:if test="${bookList.data.size() > 0}">
+              <div class="mt-5">
+                  <ul class="pagination d-flex justify-content-center gap-4 fw-bold">
+                      <!-- Previous 버튼 -->
+                      <c:if test="${bookList.beginPage != 1}">
+                          <li class="${bookList.currentPage == 1 ? 'disabled' : ''}">
+                              <a class="px-2 py-1" href="?keyword=${keyword}&page=${bookList.currentPage - 1}" ${bookList.currentPage == 1 ? 'onclick="return false;"' : ''}>Previous</a>
+                          </li>
+                      </c:if>
+                      <!-- 동적 페이지 번호 버튼 -->
+                      <c:forEach begin="${bookList.beginPage}" end="${bookList.beginPage + 5}" var="page">
+                          <li class="${bookList.currentPage == page ? 'active' : ''}">
+                              <a class="px-2 py-1" href="?keyword=${keyword}&page=${page}">${page}</a>
+                          </li>
+                      </c:forEach>
 
-              <!-- Next 버튼 -->
-              <li class="${bookList.currentPage == bookList.totalPage ? 'disabled' : ''}">
-                  <a class="px-2 py-1" href="?keyword=${keyword}&page=${bookList.currentPage + 1}" ${bookList.currentPage == bookList.totalPage ? 'onclick="return false;"' : ''}>Next</a>
-              </li>
-          </ul>
-          </div>
-      </c:if>
+                      <!-- Next 버튼 -->
+                      <li class="${bookList.currentPage == bookList.totalPage ? 'disabled' : ''}">
+                          <a class="px-2 py-1" href="?keyword=${keyword}&page=${bookList.currentPage + 1}" ${bookList.currentPage == bookList.totalPage ? 'onclick="return false;"' : ''}>Next</a>
+                      </li>
+                  </ul>
+                  </div>
+              </c:if>
+
           <!-- /pagination -->
         </section>
         <!-- /book -->

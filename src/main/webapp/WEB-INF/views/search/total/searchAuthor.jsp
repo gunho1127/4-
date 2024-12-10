@@ -35,7 +35,7 @@
       <div class="tab_menu">
         <ul class="d-flex justify-content-center gap-4 fw-bold">
           <li><a class="tm_a py-2" href="/search/total?keyword=${param.keyword}">Overview</a></li>
-          <li><a class="tm_a py-2" href="/search/total/book?keyword=${param.keyword}">Book</a></li>
+          <li><a class="tm_a py-2" href="/search/total/book?keyword=${param.keyword}&page=1">Book</a></li>
           <li class="active"><a class="tm_a py-2" href="#">Author</a></li>
           <li><a class="tm_a py-2" href="/search/total/post?keyword=${param.keyword}">Post</a></li>
           <li><a class="tm_a py-2" href="/search/total/user?keyword=${param.keyword}">User</a></li>

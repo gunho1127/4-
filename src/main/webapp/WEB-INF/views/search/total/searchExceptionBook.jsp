@@ -29,15 +29,16 @@
   </head>
   <body>
   <header>
-    <jsp:include page="/WEB-INF/views/includes/header.jsp" />
+   <jsp:include page="/WEB-INF/views/includes/headerBook.jsp" />
+
   </header>
 
     <div id="wrapper" class="py-3">
       <div class="tab_menu">
         <ul class="d-flex justify-content-center gap-4 fw-bold">
-          <li class="active" data-path="searchMain"><a class="tm_a py-2" href="#">Overview</a></li>
-          <li data-path="searchBook"><a class="tm_a py-2" href="/search/total/book?keyword=${param.keyword}&page=1"> Book </a></li>
-         <%--<li><a class="tm_a py-2" href="/search/total/author?keyword=${param.keyword}">Author</a></li>--%>
+          <li data-path="searchMain"><a class="tm_a py-2" href="/search/total?keyword=${param.keyword}">Overview</a></li>
+          <li class="active" data-path="searchBook"><a class="tm_a py-2" href="#"> Book </a></li>
+          <%--<li><a class="tm_a py-2" href="/search/total/author?keyword=${param.keyword}">Author</a></li>--%>
           <li data-path="searchPost"><a class="tm_a py-2" href="/search/total/post?keyword=${param.keyword}">Post</a></li>
           <li data-path="searchUsers"><a class="tm_a py-2" href="/search/total/user?keyword=${param.keyword}">User</a></li>
         </ul>
@@ -57,6 +58,7 @@
             <li>&#183; 검색어는 한글, 영어, 숫자만 포함해야 합니다.</li>
 
           </ul>
+
         </section>
         <!-- /noSearch -->
       </div>

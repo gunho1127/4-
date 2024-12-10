@@ -34,15 +34,16 @@
   </head>
   <body>
   <header>
-    <jsp:include page="/WEB-INF/views/includes/headerUser.jsp" />
+   <jsp:include page="/WEB-INF/views/includes/headerUser.jsp" />
+
   </header>
 
   <div id="wrapper" class="py-3">
       <div class="tab_menu">
           <ul class="d-flex justify-content-center gap-4 fw-bold">
               <li><a class="tm_a py-2" href="/search/total?keyword=${keyword}">Overview</a></li>
-              <li><a class="tm_a py-2" href="/search/total/book?keyword=${keyword}">Book</a></li>
-              <li><a class="tm_a py-2" href="/search/total/author?keyword=${keyword}">Author</a></li>
+              <li><a class="tm_a py-2" href="/search/total/book?keyword=${param.keyword}&page=1">Book</a></li>
+              <%--<li><a class="tm_a py-2" href="/search/total/author?keyword=${param.keyword}">Author</a></li>--%>
               <li><a class="tm_a py-2" href="/search/total/post?keyword=${keyword}">Post</a></li>
               <li class="active"><a class="tm_a py-2" href="#">User</a></li>
           </ul>
@@ -74,7 +75,7 @@
             <ul class="py-5 px-3">
             <!-- 사용자 목록 출력 -->
 
-          <c:forEach var="user" items="${userList}">
+          <c:forEach var="user" items="${userList}" varStatus="num">
             <li class="row align-items-center mb-5">
               <!-- 프로필 사진 -->
               <div class="col-2 ul_icon">
@@ -83,19 +84,21 @@
               <!-- 활동자명 -->
               <p class="col ul_title mb-0 fs-5">${user.username}</p>
               <!-- 팔로우/팔로잉 버튼 -->
+              <c:if test="${sessionScope.user.id ne 'guest'}"> <!-- 게스트일시 버튼 숨김 -->
+                <div class="col-2">
+                  <button
+                      class="rounded-5 py-2 fw-bold userFollow"
+                      type="button"
+                      name="followButton"
+                      style="background-color: ${'Y'.equals(user.isFollowing) ? 'white' : '#007bff'}; color: ${'Y'.equals(user.isFollowing) ? '#007bff' : 'white'}; border: ${'Y'.equals(user.isFollowing) ? '2px solid #007bff' : 'none'};"
+                      onclick="clickEvent('${sessionScope.user.id}', '${user.id}', this, ${num.count})"
+                      data-following="${user.isFollowing}">
+                      ${'Y'.equals(user.isFollowing) ? '팔로잉' : '팔로우'}
+                  </button>
+                  <span id="${num.count}follow">${user.isFollowing}</span> <!-- 팔로우 버튼 옆 N일때 팔로우 Y일때 팔로잉 -->
+                </div>
+              </c:if>
               <!-- 팔로우/팔로잉 버튼 -->
-              <div class="col-2">
-              <button
-                  class="rounded-5 py-2 fw-bold userFollow"
-                  type="button"
-                  name="followButton"
-                  style="background-color: ${'Y'.equals(user.isFollowing) ? 'white' : '#007bff'}; color: ${'Y'.equals(user.isFollowing) ? '#007bff' : 'white'}; border: ${'Y'.equals(user.isFollowing) ? '2px solid #007bff' : 'none'};"
-                  onclick="clickEvent('${sessionScope.user.id}', '${user.id}', this)"
-                  data-following="${user.isFollowing}">
-                  ${'Y'.equals(user.isFollowing) ? '팔로잉' : '팔로우'}
-              </button>
-              ${user.isFollowing}
-              </div>
             </li>
           </c:forEach>
             </ul>
@@ -104,31 +107,11 @@
           <!-- /users_list -->
       </section>
   </div>
-            <!-- pagination -->
-          <div class="mt-5">
-            <ul class="pagination d-flex justify-content-center gap-4 fw-bold">
-                <!-- Previous 버튼 -->
-                <li class="${currentPage == 1 ? 'disabled' : ''}">
-                    <a class="px-2 py-1" href="?page=${currentPage - 1}" ${currentPage == 1 ? 'onclick="return false;"' : ''}>Previous</a>
-                </li>
 
-                <!-- 동적 페이지 번호 버튼 -->
-                <c:forEach begin="1" end="${totalPages}" var="page">
-                    <li class="${currentPage == page ? 'active' : ''}">
-                        <a class="px-2 py-1" href="?page=${page}">${page}</a>
-                    </li>
-                </c:forEach>
-
-                <!-- Next 버튼 -->
-                <li class="${currentPage == totalPages ? 'disabled' : ''}">
-                    <a class="px-2 py-1" href="?page=${currentPage + 1}" ${currentPage == totalPages ? 'onclick="return false;"' : ''}>Next</a>
-                </li>
-            </ul>
-        </div>
-        </section>
-        <!-- /users -->
-    </div>
-    <!-- /conta -->
-  </body>
+</section>
+<!-- /users -->
+</div>
+<!-- /conta -->
+</body>
 </html>
 

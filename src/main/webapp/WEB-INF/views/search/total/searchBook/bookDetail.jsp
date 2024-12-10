@@ -48,13 +48,13 @@
             </div>
 
             <div class="col ps-5">
-              <h3 class="fw-bold mb-3" style="color: var(--color-blue)">${book.title}</h3>
-                        <p class="mb-0 fs-5"> 저자 : ${book.author}</p>
+              <h3 class="fw-bold mb-3_title" style="color: var(--color-blue)">${book.title}</h3>
+                        <p class="mb-0 fs-5_author"> 저자 : ${book.author}</p>
                     <%--    <p class="mb-0 fs-5"> 출판사 : ${book.publisher}</p>--%>
                     <%--    <p class="mb-5 fs-5"> 출판일자 : ${book.pubdate}</p>--%>
               <!-- 책 리뷰와 찜 버튼을 같은 부모 요소에 배치 -->
               <div class="d-flex align-items-center">
-                <p class="mb-0 fs-5 me-3">
+                <p class="mb-0 fs-5 me-3_review">
                   <a href="#bs_review">
                     책 리뷰
                     <span class="review-count me-2" style="color: var(--color-0f62fe)">${reviewList.size()}</span>
