@@ -25,57 +25,50 @@ repositories {
 }
 
 dependencies {
-    dependencies {
+	dependencies {
+		// Spring Boot 기본 의존성
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		// 롬복 관련
+		compileOnly 'org.projectlombok:lombok:1.18.30'// 컴파일 시에만 롬복 기능 사용 (실행 시 필요 없음)
+		testCompileOnly 'org.projectlombok:lombok:1.18.30'// 테스트 컴파일 시에만 롬복 기능 사용
+		annotationProcessor('org.projectlombok:lombok:1.18.30')// 롬복 애노테이션 처리기 추가 (컴파일 중 롬복 애노테이션을 처리)
+		testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'// 테스트에서 롬복 애노테이션 처리
+		// MyBatis
+		implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+		// MySQL Connector (JDBC 드라이버)
+		runtimeOnly 'com.mysql:mysql-connector-j'
+		// JDBC 관련
+		implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+		//implementation 'org.springframework:spring-webmvc:5.3.29'
+		// Tomcat (Spring Boot 기본 제공, 필요 시 유지)
+		providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+		// 테스트 의존성
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+		//JSP 및 JSTL
+		// Jakarta Servlet API
+		implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+		// JSTL API 및 구현체
+		implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
+		implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
+		// JSP 렌더링을 위한 Jasper 엔진
+		implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+		// Jakarta Expression Language (EL) API
+		implementation 'jakarta.el:jakarta.el-api:5.0.1'
+		// 로그4J 관련
+		implementation 'org.apache.logging.log4j:log4j-core:2.22.1'// Log4J Core: 로그를 기록하는 데 필요한 핵심 라이브러리
+		implementation 'org.apache.logging.log4j:log4j-api:2.22.1'// Log4J API: 로그를 기록할 때 사용할 API
+		// Log4J SLF4J 연결 라이브러리
+		// SLF4J와 Log4J를 연결하여 로그 기능을 사용할 수 있게 해주는 라이브러리
+		testImplementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.22.1'
 
-        // Spring Boot 기본 의존성
-        implementation 'org.springframework.boot:spring-boot-starter-web'
 
-        // 롬복 관련
-        compileOnly 'org.projectlombok:lombok:1.18.30'
-        annotationProcessor 'org.projectlombok:lombok:1.18.30'
-        testCompileOnly 'org.projectlombok:lombok:1.18.30'
-        testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
-
-        // Tomcat (Spring Boot 기본 제공, 필요 시 유지)
-        //providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-
-        // 테스트 의존성
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-        // JSP 및 JSTL
-        implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
-        implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
-        implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
-        implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-        implementation 'jakarta.el:jakarta.el-api:5.0.1'
-
-        // 로그4J 관련
-        implementation 'org.apache.logging.log4j:log4j-core:2.22.1'
-        implementation 'org.apache.logging.log4j:log4j-api:2.22.1'
-        testImplementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.22.1'
-
-        //DB 관련
-        // MyBatis
-        implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
-
-        // MySQL Connector
-        runtimeOnly 'com.mysql:mysql-connector-j'
-
-        // Spring JDBC
-        implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-
-        //JSNO 관련
-        // https://mvnrepository.com/artifact/org.json/json
-        implementation group: 'org.json', name: 'json', version: '20240303'
-
-        // Jakarta Mail API
-        implementation 'com.sun.mail:jakarta.mail:2.0.1'
-
-        // Spring Boot DevTools 의존성 추가
-        developmentOnly 'org.springframework.boot:spring-boot-devtools'
+        // Openfeign 추가
+        implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+        implementation 'io.github.openfeign:feign-jackson:12.5' //jackson디코더
 
     }
+
 
 }
 
@@ -83,6 +76,6 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-tasks.withType(JavaCompile) {
-    options.compilerArgs << "-parameters"
-}
+//tasks.withType(JavaCompile) {
+//	options.encoding = 'UTF-8'
+//}

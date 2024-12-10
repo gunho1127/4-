@@ -74,7 +74,7 @@
             <ul class="py-5 px-3">
             <!-- 사용자 목록 출력 -->
 
-          <c:forEach var="user" items="${userList}" varStatus="num">
+          <c:forEach var="user" items="${userList}">
             <li class="row align-items-center mb-5">
               <!-- 프로필 사진 -->
               <div class="col-2 ul_icon">
@@ -83,21 +83,19 @@
               <!-- 활동자명 -->
               <p class="col ul_title mb-0 fs-5">${user.username}</p>
               <!-- 팔로우/팔로잉 버튼 -->
-              <c:if test="${sessionScope.user.id ne 'guest'}"> <!-- 게스트일시 버튼 숨김 -->
-                <div class="col-2">
-                  <button
-                      class="rounded-5 py-2 fw-bold userFollow"
-                      type="button"
-                      name="followButton"
-                      style="background-color: ${'Y'.equals(user.isFollowing) ? 'white' : '#007bff'}; color: ${'Y'.equals(user.isFollowing) ? '#007bff' : 'white'}; border: ${'Y'.equals(user.isFollowing) ? '2px solid #007bff' : 'none'};"
-                      onclick="clickEvent('${sessionScope.user.id}', '${user.id}', this, ${num.count})"
-                      data-following="${user.isFollowing}">
-                      ${'Y'.equals(user.isFollowing) ? '팔로잉' : '팔로우'}
-                  </button>
-                  <span id="${num.count}follow">${user.isFollowing}</span> <!-- 팔로우 버튼 옆 N일때 팔로우 Y일때 팔로잉 -->
-                </div>
-              </c:if>
               <!-- 팔로우/팔로잉 버튼 -->
+              <div class="col-2">
+              <button
+                  class="rounded-5 py-2 fw-bold userFollow"
+                  type="button"
+                  name="followButton"
+                  style="background-color: ${'Y'.equals(user.isFollowing) ? 'white' : '#007bff'}; color: ${'Y'.equals(user.isFollowing) ? '#007bff' : 'white'}; border: ${'Y'.equals(user.isFollowing) ? '2px solid #007bff' : 'none'};"
+                  onclick="clickEvent('${sessionScope.user.id}', '${user.id}', this)"
+                  data-following="${user.isFollowing}">
+                  ${'Y'.equals(user.isFollowing) ? '팔로잉' : '팔로우'}
+              </button>
+              ${user.isFollowing}
+              </div>
             </li>
           </c:forEach>
             </ul>

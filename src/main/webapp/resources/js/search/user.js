@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
 });
 
-function clickEvent(followingId, followerId, e, textNum) {
+function clickEvent(followingId, followerId, e) {
     $.ajax({
         url: "/search/total/user/follow",
         type: "POST",
@@ -32,7 +32,6 @@ function clickEvent(followingId, followerId, e, textNum) {
             followingId: followingId
         }),
         success: function(response) {
-
             // 현재 버튼의 상태 확인
             var currentStatus = $(e).data('following');
 
@@ -45,7 +44,6 @@ function clickEvent(followingId, followerId, e, textNum) {
                     "color": "white",
                     "border": "none"
                 });
-                $("#" + textNum + "follow").text("N");
             } else {
                 $(e).text('팔로잉');
                 $(e).data('following', 'Y'); // 팔로우 상태에서 팔로잉 상태로 변경
@@ -54,7 +52,6 @@ function clickEvent(followingId, followerId, e, textNum) {
                     "color": "#007bff",
                     "border": "2px solid #007bff"
                 });
-                $("#" + textNum + "follow").text("Y");
             }
         },
         error: function(xhr, status, error) {

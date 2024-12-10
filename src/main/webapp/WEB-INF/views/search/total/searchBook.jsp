@@ -28,10 +28,21 @@
     ></script>
     <script src="/resources/js/search/cookie.js"></script>
     <script src="/resources/js/search/book.js"></script>
+    <style>
+      .book_desc {
+      font-size: 15px;
+      max-height: 40px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      }
+    </style>
   </head>
   <body>
   <header>
-      <jsp:include page="/WEB-INF/views/includes/headerBook.jsp" />
+   <jsp:include page="/WEB-INF/views/includes/headerBook.jsp" />
+
   </header>
 
   <div id="wrapper" class="py-3">
@@ -50,34 +61,35 @@
     <section class="book">
         <!-- 검색 결과 -->
         <div class="book_sch pb-3 border-bottom">
-            <h5>총 검색 결과 <span class="fw-bold">${bookList.size()}</span>건</h5>
+            <h5>'${keyword}'에 대한 도서 검색 결과 <span class="fw-bold">${bookList.totalPage}</span>건</h5>
         </div>
 
         <!-- 도서 목록 없을 때 메시지 표시 -->
-        <c:if test="${empty bookList}">
-            <p class="text-center py-5">도서 목록이 없습니다.</p>
+        <c:if test="${empty bookList.data}">
+            <p class="text-center py-5"> 도서 목록이 없습니다.</p>
         </c:if>
 
         <!-- 도서 목록 있을 때 리스트 표시 -->
-        <c:if test="${not empty bookList}">
+        <c:if test="${not empty bookList.data}">
 
             <!-- 도서 목록 -->
             <ul class="book_list p-0">
-                <c:forEach var="book" items="${bookList}">
+                <c:forEach var="book" items="${bookList.data}">
                     <li class="row py-5">
-                        <div class="col-1 fw-bold book_num">${book.index}.</div>
+                    <%-- <div class="col-1 fw-bold book_num">${book.index}.</div--%>
+                        <div class="col-1 fw-bold book_num">${book.num}.</div>
                         <div class="col-2 book_img">
                             <img src="${book.image}" alt="${book.title}의 표지" />
                         </div>
                         <div class="col">
                             <h3 class="fw-bold">
-                                <a href="/search/total/book/detail?bookId=${book.id}" class="book_title" style="color: var(--color-blue)">${book.title}</a>
+                                <a href="/search/total/book/detail?isbn=${book.isbn}&keyword=${param.keyword}" class="book_title" style="color: var(--color-blue)">${book.title}</a>
                             </h3>
                             <p class="book_info">${book.author} | ${book.publisher} | ${book.pubdate}</p>
-                            <p class="book_desc">${book.description}</p>
+                            <p class="book_desc" class="book_desc">${book.description}</p>
                         </div>
                         <div class="col-1 text-end">
-                            <button class="bookMark" type="button" data-id="${book.id}">
+                            <button class="bookMark" type="button" data-id="${book.isbn}">
                                 <img src="../../../../resources/images/search/book_mark_off.png" alt="북마크" />
                             </button>
                         </div>
@@ -88,27 +100,29 @@
         <!-- /book_list -->
 
       <!-- pagination -->
+      <c:if test="${bookList.data.size() > 0}">
       <div class="mt-5">
-        <ul class="pagination d-flex justify-content-center gap-4 fw-bold">
-            <!-- Previous 버튼 -->
-            <li class="${currentPage == 1 ? 'disabled' : ''}">
-                <a class="px-2 py-1" href="?page=${currentPage - 1}" ${currentPage == 1 ? 'onclick="return false;"' : ''}>Previous</a>
-            </li>
+          <ul class="pagination d-flex justify-content-center gap-4 fw-bold">
+              <!-- Previous 버튼 -->
+              <c:if test="${bookList.beginPage != 1}">
+                  <li class="${bookList.currentPage == 1 ? 'disabled' : ''}">
+                      <a class="px-2 py-1" href="?keyword=${keyword}&page=${bookList.currentPage - 1}" ${bookList.currentPage == 1 ? 'onclick="return false;"' : ''}>Previous</a>
+                  </li>
+              </c:if>
+              <!-- 동적 페이지 번호 버튼 -->
+              <c:forEach begin="${bookList.beginPage}" end="${bookList.beginPage + 5}" var="page">
+                  <li class="${bookList.currentPage == page ? 'active' : ''}">
+                      <a class="px-2 py-1" href="?keyword=${keyword}&page=${page}">${page}</a>
+                  </li>
+              </c:forEach>
 
-            <!-- 동적 페이지 번호 버튼 -->
-            <c:forEach begin="1" end="${totalPages}" var="page">
-                <li class="${currentPage == page ? 'active' : ''}">
-                    <a class="px-2 py-1" href="?page=${page}">${page}</a>
-                </li>
-            </c:forEach>
-
-            <!-- Next 버튼 -->
-            <li class="${currentPage == totalPages ? 'disabled' : ''}">
-                <a class="px-2 py-1" href="?page=${currentPage + 1}" ${currentPage == totalPages ? 'onclick="return false;"' : ''}>Next</a>
-            </li>
-        </ul>
-    </div>
-        
+              <!-- Next 버튼 -->
+              <li class="${bookList.currentPage == bookList.totalPage ? 'disabled' : ''}">
+                  <a class="px-2 py-1" href="?keyword=${keyword}&page=${bookList.currentPage + 1}" ${bookList.currentPage == bookList.totalPage ? 'onclick="return false;"' : ''}>Next</a>
+              </li>
+          </ul>
+          </div>
+      </c:if>
           <!-- /pagination -->
         </section>
         <!-- /book -->

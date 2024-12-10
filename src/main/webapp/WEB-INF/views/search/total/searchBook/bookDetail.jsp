@@ -49,9 +49,9 @@
 
             <div class="col ps-5">
               <h3 class="fw-bold mb-3" style="color: var(--color-blue)">${book.title}</h3>
-                        <p class="mb-0 fs-5">${book.author}</p>
-                        <p class="mb-0 fs-5">${book.publisher}</p>
-                        <p class="mb-5 fs-5">${book.pubdate}</p>
+                        <p class="mb-0 fs-5"> 저자 : ${book.author}</p>
+                    <%--    <p class="mb-0 fs-5"> 출판사 : ${book.publisher}</p>--%>
+                    <%--    <p class="mb-5 fs-5"> 출판일자 : ${book.pubdate}</p>--%>
               <!-- 책 리뷰와 찜 버튼을 같은 부모 요소에 배치 -->
               <div class="d-flex align-items-center">
                 <p class="mb-0 fs-5 me-3">
@@ -62,7 +62,7 @@
                     <span class="average-rating" style="color: var(--color-0f62fe)">${averageRating}</span>
                   </a>
                 </p>
-                <span id="bookDetail" data-id="${book.id}" class="bookFav" style="cursor: pointer;">
+                <span id="bookDetail" data-id="${book.isbn}" class="bookFav" style="cursor: pointer;">
                   <span style="font-size: 1.5rem; color: var(--color-0f62fe);" class="heart-icon">&#x2661;</span> 찜
                 </span>
               </div>              
@@ -72,7 +72,9 @@
 
         <article class="bs_info pt-5">
           <h5 class="mb-3 pb-3 border-bottom border-black">책 정보</h5>
-          <p class="p-3" style="background: var(--color-f2f4f8)">${book.info}</p>
+          <p class="p-3" style="background: var(--color-f2f4f8)"> 출판사 : ${book.publisher}</p>
+          <p class="p-3" style="background: var(--color-f2f4f8)"> 출판일자 : ${book.pubdate}</p>
+          <p class="p-3" style="background: var(--color-f2f4f8)"> ISBN : ${book.isbn}</p>
         </article>
         <!-- /bs_info -->
 
@@ -82,25 +84,13 @@
         </article>
         <!-- /bs_intro -->
 
-        <article class="bs_pub pt-5">
-          <h5 class="mb-3 pb-3 border-bottom border-black">출판사 서평</h5>
-          <p class="p-3" style="background: var(--color-f2f4f8)">${book.publisherReview}</p>
-        </article>
-        <!-- /bs_pub -->
-
-        <article class="bs_list pt-5">
-          <h5 class="mb-3 pb-3 border-bottom border-black">목차</h5>
-          <p class="p-3" style="background: var(--color-f2f4f8)">${book.index}</p>
-        </article>
-        <!-- /bs_list -->
-
         <article class="bs_images pt-5 pb-4 border-bottom border-black">
           <h5 class="mb-3">상세 이미지</h5>
           <div class="text-center" style="background: var(--color-f2f4f8)">
            <!-- 11.24 상세이미지 추가-->
              <!-- 반쯤 감춰진 이미지 영역 -->
           <div id="hiddenImages" style="height: 150px; overflow: hidden; transition: height 0.5s ease;">
-            <img src="${book.detailImage}" alt="상세 이미지" style="max-width: 100%; margin-bottom: 10px;" />
+            <img src="${book.image}" alt="상세 이미지" style="max-width: 100%; margin-bottom: 10px;" />
           </div>
             <!-- 11.24 주석처리함 button type="button">상세 이미지 더보기 &or;</button -->
             <button id="toggleButton" type="button" style="background: none; border: none; color: var(--color-blue); cursor: pointer;">
@@ -115,7 +105,7 @@
           <!-- 추가된 리뷰 작성 폼 -->
           <form action="/review" method="post" class="d-flex align-items-center">
             <!-- Hidden Field: 책 ID -->
-            <input type="hidden" name="bookId" value="${book.id}" />
+            <input type="hidden" name="bookId" value="${book.isbn}" />
           
             <!-- 평점 영역 -->
             <fieldset class="rate">

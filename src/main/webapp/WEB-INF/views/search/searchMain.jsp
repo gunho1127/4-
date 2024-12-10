@@ -36,7 +36,7 @@
       <div class="tab_menu">
         <ul class="d-flex justify-content-center gap-4 fw-bold">
           <li class="active"><a class="tm_a py-2" href="#">Overview</a></li>
-          <li><a class="tm_a py-2" href="/search/total/book?keyword=${param.keyword}">Book</a></li>
+          <li><a class="tm_a py-2" href="/search/total/book?keyword=${param.keyword}&page=1">Book</a></li>
           <li><a class="tm_a py-2" href="/search/total/author?keyword=${param.keyword}">Author</a></li>
           <li><a class="tm_a py-2" href="/search/total/post?keyword=${param.keyword}">Post</a></li>
           <li><a class="tm_a py-2" href="/search/total/user?keyword=${param.keyword}">User</a></li>
@@ -48,7 +48,7 @@
         <section class="overview totalSearch py-5_py5">
           <!-- Books -->
           <div class="ts-book border border-dark-subtle mb-4 px-3 py-2 rounded-4">
-            <h4 class="fw-bold"><a href="<c:url value='/search/total/book' />" style="color: var(--color-black);"> 책 </a></h4>
+            <h4 class="fw-bold"><a href="/search/total/book?keyword=${param.keyword}&page=1" style="color: var(--color-black);"> 책 </a></h4>
             <ul>
               <c:if test="${empty bookList}">
                   <li>
@@ -57,6 +57,7 @@
               </c:if>
               <c:forEach var="book" items="${bookList}">
                 <li>
+                    <img src="${book.image}" width="200" height="200"/>
                   <p>제목: ${book.title}</p>
                   <p>저자: ${book.author}</p>
                 </li>
@@ -133,7 +134,7 @@
           </div>
 
           <!-- pagination -->
-          <div class="mt-5">
+         <%-- <div class="mt-5">
             <ul class="pagination d-flex justify-content-center gap-4 fw-bold">
                 <!-- Previous 버튼 -->
                 <li class="${currentPage == 1 ? 'disabled' : ''}">
@@ -152,7 +153,7 @@
                     <a class="px-2 py-1" href="?page=${currentPage + 1}" ${currentPage == totalPages ? 'onclick="return false;"' : ''}>Next</a>
                 </li>
             </ul>
-          </div>
+          </div> --%>
         </section>
         <!-- /overview -->
       </div>

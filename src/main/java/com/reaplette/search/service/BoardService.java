@@ -26,19 +26,23 @@ public class BoardService {
         return boardMapper.searchBoards(keyword);
     }
 
-    public List<BoardVO> getBoardsByPage(int page, int pageSize) {
-        int offset = (page - 1) * pageSize;
-        return boardMapper.getBoardsByPage(offset, pageSize);
+//    public List<BoardVO> getBoardsByPage(int page, int pageSize) {
+//        //int offset = (page - 1) * pageSize;
+//        return boardMapper.getBoardsByPage(offset, pageSize);
+//    }
+
+    public List<BoardVO> getBoardsByPageAndSort(//int page, int pageSize,
+                                                String sort) {
+        //int offset = (page - 1) * pageSize;
+        return boardMapper.getBoardsBySort(//offset, pageSize,
+                sort);
     }
 
-    public List<BoardVO> getBoardsByPageAndSort(int page, int pageSize, String sort) {
-        int offset = (page - 1) * pageSize;
-        return boardMapper.getBoardsBySort(offset, pageSize, sort);
-    }
-
-    public List<BoardVO> searchBoardsByKeywordAndSort(String keyword, int page, int pageSize, String sort) {
-        int offset = (page - 1) * pageSize;
-        return boardMapper.searchBoardsByKeywordAndSort(keyword, offset, pageSize, sort);
+    public List<BoardVO> searchBoardsByKeywordAndSort(String keyword, String sort) {
+        // 공백 제거
+        String sanitizedKeyword = keyword.replaceAll("\\s+", "");
+        //int offset = (page - 1) * pageSize;
+        return boardMapper.searchBoardsByKeywordAndSort(keyword, sort);
     }
 
     public List<BoardVO> searchPostsByKeyword(String keyword) {
