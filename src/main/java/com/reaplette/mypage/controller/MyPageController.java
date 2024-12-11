@@ -298,7 +298,6 @@ public class MyPageController {
     @GetMapping("/logout")
     public String logout(HttpSession session, HttpServletResponse response) {
         log.info("GET /myPage/logout - Fetching Logout main");
-
         // 세션 무효화
         session.invalidate();
         return "logout";

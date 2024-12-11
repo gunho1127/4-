@@ -8,7 +8,6 @@ import lombok.extern.log4j.Log4j2;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -359,6 +358,7 @@ public class MyPageService {
     public void deleteUser(String id) {
         log.info("deleteUser....." + id);
         myPageMapper.deleteUser(id);
+        myPageMapper.deleteFollow(id);
     }
 
     public List<BookmarkVO> getAladinBestsallerList() {

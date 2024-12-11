@@ -32,13 +32,14 @@ select * from preference;
 
 DELETE FROM bookmark;
 
+select * from goal;
 
 SELECT * FROM bookmark;
 
 ALTER TABLE bookmark
 MODIFY bookTitle VARCHAR(225);
 
-
+select * from user;
 
 -- 새로운 데이터를 삽입
 INSERT INTO bookmark (id, bookId, bookTitle, category, isDelete, bookImageUrl, author)

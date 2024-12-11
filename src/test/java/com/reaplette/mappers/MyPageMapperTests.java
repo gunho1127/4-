@@ -4,18 +4,14 @@ import com.reaplette.domain.GoalVO;
 import com.reaplette.domain.TranscriptionVO;
 import com.reaplette.domain.UserVO;
 import com.reaplette.mypage.mappers.MyPageMapper;
-
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.transaction.annotation.Transactional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @Log4j2
 @ExtendWith(SpringExtension.class)
@@ -124,5 +120,12 @@ public class MyPageMapperTests {
     public void testGetPostList() {
         String id = "test@naver.com";
         log.info(myPageMapper.getPostList(id));
+    }
+
+    @Test
+    public void testGetGoal() {
+        String id = "test2@naver.com";
+        String bookId = "9788936434120";
+        log.info(myPageMapper.getGoal(id,bookId));
     }
 }
