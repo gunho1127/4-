@@ -112,8 +112,17 @@ public class MyPageMapperTests {
 
     @Test
     public void testDeleteUser() {
-        String id = "test4@naver.com";
+        String id = "test2@naver.com";
         myPageMapper.deleteUser(id);
+        myPageMapper.deleteUserPreference(id);
+        myPageMapper.deleteUserBookmark(id);
+        myPageMapper.deleteUserBookmark(id);
+        myPageMapper.deleteUserBoard(id);
+        myPageMapper.deleteUserTranscription(id);
+        myPageMapper.deleteUserGoal(id);
+        myPageMapper.deleteUserComment(id);
+        myPageMapper.deleteUserReview(id);
+//        myPageMapper.deleteFollow(id);
     }
 
     @Test

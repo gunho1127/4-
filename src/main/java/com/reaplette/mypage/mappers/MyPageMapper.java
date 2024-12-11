@@ -24,8 +24,18 @@ public interface MyPageMapper {
     List<FollowVO> getFollowingList(String id);
     List<FollowVO> getFollowerList(String id);
     List<BoardVO> getPostList(String id);
+
+
+    // 회원 탈퇴 부분
     void deleteUser(String id);
-    void deleteFollow(String id);
+    void deleteUserPreference(String id);
+    void deleteUserBookmark(String id);
+    void deleteUserBoard(String id);
+    void deleteUserTranscription(String id);
+    void deleteUserGoal(String id);
+    void deleteUserComment(String id);
+    void deleteUserReview(String id);
+    void deleteUserFollow(String id);
 }
 
 

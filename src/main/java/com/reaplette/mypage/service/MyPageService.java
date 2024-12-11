@@ -358,7 +358,15 @@ public class MyPageService {
     public void deleteUser(String id) {
         log.info("deleteUser....." + id);
         myPageMapper.deleteUser(id);
-        myPageMapper.deleteFollow(id);
+        myPageMapper.deleteUserPreference(id);
+        myPageMapper.deleteUserBookmark(id);
+        myPageMapper.deleteUserBookmark(id);
+        myPageMapper.deleteUserBoard(id);
+        myPageMapper.deleteUserTranscription(id);
+        myPageMapper.deleteUserGoal(id);
+        myPageMapper.deleteUserComment(id);
+        myPageMapper.deleteUserReview(id);
+        myPageMapper.deleteUserFollow(id);
     }
 
     public List<BookmarkVO> getAladinBestsallerList() {
