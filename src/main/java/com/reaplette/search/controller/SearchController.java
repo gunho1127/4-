@@ -341,13 +341,15 @@ public class SearchController {
         // 북마크 리스트 가져오기
         // MypageService 랑 MyPageMapper 랑 MyPagerMapper.xml 가져가시면 됩니다.
         UserVO user = (UserVO) session.getAttribute("user");
-        List<BookmarkVO> bookmarkList = myPageService.getBookmarkList(user.getId());
+        if(user != null) {
+            List<BookmarkVO> bookmarkList = myPageService.getBookmarkList(user.getId());
 
-        log.info("bookmarkList {}", bookmarkList);
-
+            log.info("bookmarkList {}", bookmarkList);
+            model.addAttribute("bookmarkList", bookmarkList);
+        }
 
         model.addAttribute("book", bookDetail);
-        model.addAttribute("bookmarkList", bookmarkList);
+
         //model.addAttribute("keyword", keyword != null ? keyword : "");
 
         return "search/total/searchBook/bookDetail";
@@ -375,7 +377,10 @@ public class SearchController {
             } else {
                 log.info("setBookmark");
                 bookmark.setIsDelete(1);
+
+
                 bookmark.setCategory("카테고리 임의 값"); // 임의 값 설정
+
                 log.info("bookmark {}", bookmark);
 
                 // 취향 테이블에 정보 삽입

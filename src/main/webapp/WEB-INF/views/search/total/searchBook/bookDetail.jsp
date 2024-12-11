@@ -62,42 +62,63 @@
                         <!-- <span style="font-size: 1.5rem; color: var(--color-0f62fe);" class="heart-icon" onclick="setBookmark()">&#x2661;찜 등록하기</span> -->
 
 
-                        <c:set var="i" value="0" /> <!-- 변수 i를 0으로 초기화 -->
+                        <c:choose>
 
-                        <c:forEach var="bookmark" items="${bookmarkList}">
+                          <c:when test="${bookmarkList == null}">
 
-                          <c:if test="${bookmark.bookId == book.isbn}">
-                            <!-- 조건이 참일 경우, i 값을 증가시킴 -->
-                            <c:set var="i" value="${i + 1}" />
-                          </c:if>
-                        </c:forEach>
+                            <span style="font-size: 1.5rem; color: var(--color-0f62fe);"
+                              onclick="window.location.href='/login/enterEmail'">찜 등록하기</span>
+                          </c:when>
 
-                        <!-- 최종적으로 i 값을 확인하여 어떤 버튼을 표시할지 결정 -->
-                        <!-- 하단에 버튼 두개 css 수정하시면 되어용 -->
-                        <c:if test="${i > 0}">
-                          <!-- 찜 해제하기 버튼을 표시 -->
-                          <span style="font-size: 1.5rem; color: var(--color-0f62fe);"
-                            onclick="deleteBookmark('${bookmark.bookId}')">찜 해제하기</span>
-                        </c:if>
+                          <c:otherwise>
 
-                        <c:if test="${i == 0}">
-                          <!-- 찜 등록하기 버튼을 표시 -->
-                          <span style="font-size: 1.5rem; color: var(--color-0f62fe);"
-                            onclick="setBookmark('${bookmark.bookId}')">찜 등록하기</span>
-                        </c:if>
+                            <c:set var="i" value="0" />
+                            <c:forEach var="bookmark" items="${bookmarkList}">
+                              <c:if test="${bookmark.bookId == book.isbn}">
+
+                                <c:set var="i" value="${i + 1}" />
+                              </c:if>
+                            </c:forEach>
+
+                            <c:choose>
+                              <c:when test="${i > 0}">
+
+                                <span style="font-size: 1.5rem; color: var(--color-0f62fe);"
+                                  onclick="deleteBookmark('${book.isbn}')">찜 해제하기</span>
+                              </c:when>
+                              <c:otherwise>
+
+                                <c:choose>
+                                  <c:when test="${user.id == null}">
+
+                                    <span style="font-size: 1.5rem; color: var(--color-0f62fe);"
+                                      onclick="window.location.href='/login/enterEmail'">찜 등록하기</span>
+                                  </c:when>
+                                  <c:otherwise>
+
+                                    <span style="font-size: 1.5rem; color: var(--color-0f62fe);"
+                                      onclick="setBookmark('${book.isbn}')">찜 등록하기</span>
+                                  </c:otherwise>
+                                </c:choose>
+                              </c:otherwise>
+                            </c:choose>
+                          </c:otherwise>
+                        </c:choose>
+
+
+
+
 
 
 
                       </span>
-
-
-
-
-
-
                     </div>
               </div>
           </article>
+
+
+
+
           <!-- /bs_top -->
 
           <article class="bs_info pt-5">
