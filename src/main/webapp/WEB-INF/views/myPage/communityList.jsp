@@ -85,6 +85,10 @@
 
             <div class="post-list">
 
+              <c:if test="${empty postList}">
+                <div>작성하신 커뮤니티 / 리뷰가 없습니다!</div>
+              </c:if>
+
               <c:forEach var="post" items="${postList}">
                 <c:choose>
                   <c:when test="${post.type == '커뮤니티'}">
@@ -128,6 +132,7 @@
                 </div>
                 </a> <!-- Closing the link -->
               </c:forEach>
+
 
 
             </div>

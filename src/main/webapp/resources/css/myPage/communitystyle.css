@@ -832,7 +832,6 @@
 
 
 .post-list {
-  border: #007bff 1px solid;
   display: flex;
   flex-direction: column;
   gap: 15px;
