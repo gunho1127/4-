@@ -54,7 +54,6 @@ public class SignUpController {
 //        System.out.println("인증번호를 재발송합니다.");
         signUpService.handleResendVerification(id, session);
         String newCode = (String) session.getAttribute("verificationCode");
-//        log.info("응답 메시지 준비 중 - 새 인증번호: {}", newCode); // 디버깅용
 //        System.out.println("새로 발송된 인증번호: " + newCode); // 인증번호 확인
 //        signUpService.saveVerificationCodeToSession(id, newCode, session);
         return ResponseEntity.ok(Map.of("message", "새로운 인증번호를 발송했습니다.", "newCode", newCode // 새 인증번호를 반환
@@ -72,14 +71,19 @@ public class SignUpController {
     public String toSetPasswordPage(HttpSession session) {
         String id = (String) session.getAttribute("id");
         if (id == null) {
-//            log.warn("세션에서 가져온 사용자 정보: id={}", id);
             return "redirect:/signup/enterEmail";
         }
-//        log.info("세션에서 가져온 사용자 정보: id={}", id);
         return "signup/setPassword";
     }
 
+
     @PostMapping("/setPassword")
+    public String setPassword(@RequestParam String pw, HttpSession session) {
+        signUpService.setPasswordForSession(session, pw);
+        return "redirect:/signup/setPreference";
+    }
+
+    /*
     public String setPassword(@RequestParam("pw") String pw, HttpSession session) {
         String id = (String) session.getAttribute("id");
         if (id == null) {
@@ -88,18 +92,16 @@ public class SignUpController {
         }
 
         session.setAttribute("pw", pw);
+        session.setAttribute("profileImagePath", "../../../resources/images/myPage/icon-jam-icons-outline-logos-user1.svg");
+        session.setAttribute("loginType", "local");
 
-        // 로그인 타입 설정
-        String loginType = (String) session.getAttribute("loginType");
-        if (loginType == null) {
-            loginType = "local";
-            session.setAttribute("loginType", loginType);
-        }
-
-        log.info("세션에서 가져온 정보: id={}, pw={}, loginType={}", id, pw, loginType);
+        log.info("세션 정보: id={}, pw={}, loginType={}, profileImagePath={}",
+                id, pw, "local", session.getAttribute("profileImagePath"));
         return "redirect:/signup/setPreference";
     }
+    */
 
+    /*
     @GetMapping("/socialLogin")
     public String handleSocialLogin(HttpSession session) {
         String id = "social_user@example.com"; // 네이버에서 가져온 사용자 이메일
@@ -109,19 +111,17 @@ public class SignUpController {
         log.info("세션에서 가져온 정보: id={}", id);
         return "redirect:/signup/setPreference";
     }
+    */
 
     @GetMapping("/setPreference")
     public String toSetPreferencePage(HttpSession session) {
-        String id = (String) session.getAttribute("id");
-        String pw = (String) session.getAttribute("pw");
-        String loginType = (String) session.getAttribute("loginType");
-
-        if (id == null || pw == null || loginType == null) {
-            log.info("세션에서 가져온 사용자 정보: id={}, pw={}, loginType={}", id, pw, loginType);
+        try {
+            signUpService.prepareSessionForPreference(session);
+            return "signup/setPreference";
+        } catch (IllegalArgumentException e) {
+            log.warn(e.getMessage());
             return "redirect:/signup/enterEmail";
         }
-        log.info("세션 값 확인: id={}, pw={}, loginType={}", session.getAttribute("id"), session.getAttribute("pw"), session.getAttribute("loginType"));
-        return "signup/setPreference";
     }
 
     @PostMapping("/checkUsername")
@@ -133,22 +133,29 @@ public class SignUpController {
     }
 
     @PostMapping("/setPreference")
-    @ResponseBody
     public ResponseEntity<String> insertPreference(@RequestParam String username, @RequestParam String categories, HttpSession session) {
         try {
             String id = (String) session.getAttribute("id");
-            String pw = (String) session.getAttribute("pw");
-            String loginType = (String) session.getAttribute("loginType");
+            String idKey = (String) session.getAttribute("idKey");
 
-            if (id == null || pw == null || loginType == null) {
-                return ResponseEntity.badRequest().body("세션에서 유효한 정보를 찾을 수 없습니다.");
+            String loginType = (String) session.getAttribute("loginType");
+            log.info("세션에서 가져온 값: id={}, idKey={}, loginType={}", id, idKey, loginType);
+
+            if (id == null || loginType == null) {
+                log.error("세션 정보 누락: id={}, loginType={}", id, loginType);
+                throw new IllegalStateException("세션 정보가 누락되었습니다. 이전 단계로 돌아가세요.");
             }
 
-            signUpService.insertUserAndPreference(id, pw, loginType, username, categories);
+            if ("naver".equalsIgnoreCase(loginType) && idKey == null) {
+                log.error("네이버 로그인 타입인데 idKey가 없습니다.");
+                throw new IllegalStateException("네이버 로그인 데이터가 누락되었습니다.");
+            }
+            // 회원가입 정보 저장
+            signUpService.saveUserAndPreferences(session, username, categories);
 
-            return ResponseEntity.ok("회원가입 성공 !");
+            return ResponseEntity.ok("회원가입 성공!");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("회원가입 정보 저장 중 오류 발생", e);
             return ResponseEntity.badRequest().body("회원가입 정보 저장 중 문제가 발생했습니다.");
         }
     }

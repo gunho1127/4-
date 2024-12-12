@@ -12,8 +12,8 @@
 
     <!--사용자 정보 저장 -->
     <insert id="insertUser" parameterType="UserVO">
-        INSERT INTO user ( id, pw, username, profileImagePath, signInDate, isDelete, followerCount, followingCount, loginType )
-        VALUES ( #{id}, #{pw}, #{username}, #{profileImagePath}, #{signInDate}, #{isDelete}, #{followerCount}, #{followingCount}, #{loginType} )
+        INSERT INTO user ( id, pw, username, profileImagePath, signInDate, isDelete, loginType, idKey )
+        VALUES ( #{id}, #{pw}, #{username}, #{profileImagePath}, #{signInDate}, #{isDelete}, #{loginType}, #{idKey} )
     </insert>
 
     <!-- 사용자 취향 데이터 저장 -->

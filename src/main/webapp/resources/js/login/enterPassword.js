@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 비밀번호 찾기 버튼 클릭 시 페이지 이동 처리
     forgotPasswordButton.addEventListener('click', (event) => {
         event.preventDefault(); // 기본 폼 동작 방지
-        window.location.href = '/login/findPassword'; // 비밀번호 찾기 페이지로 이동
+        window.location.href = "/login/findPassword"; // 비밀번호 찾기 페이지로 이동
     });
 
 

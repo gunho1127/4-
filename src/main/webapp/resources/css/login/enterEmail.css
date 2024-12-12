@@ -131,7 +131,7 @@ button:hover {
 }
 
 /* 네이버로 시작하기 버튼 스타일 */
-#naver-login {
+#naver-button {
     background-color: #1EC800;  /* 네이버로 시작하기 버튼 배경색 */
     color: white; /* 글자색은 흰색으로 유지 */
     border: none;
@@ -147,24 +147,24 @@ button:hover {
 }
 
 /* 네이버로 시작하기 버튼 호버 색상 */
-#naver-login:hover {
+#naver-button:hover {
     background-color: #16b600; /* 어두운 초록색으로 변경 */
 }
 
 /* 네이버 아이콘을 감싼 span 스타일 */
-#naver-login .icon {
+#naver-button .icon {
     display: inline-flex; /* 텍스트 옆에 이미지 배치 */
     align-items: center; /* 아이콘과 텍스트 세로로 정렬 */
     margin-right: 8px; /* 텍스트와 간격 조정 */
 }
 
 /* 호버 시 아이콘 색상 유지 */
-#naver-login:hover .icon img {
+#naver-button:hover .icon img {
     filter: invert(1); /* 호버 시에도 흰색 유지 */
 }
 
 /* 아이콘 이미지 스타일 */
-#naver-login .icon img {
+#naver-button .icon img {
     width: 20px; /* 아이콘 크기 */
     height: 20px; /* 아이콘 크기 동일하게 설정 */
     box-shadow: none; /* 이미지에 그림자 제거 */
@@ -173,7 +173,7 @@ button:hover {
 }
 
 /* 텍스트 스타일 */
-#naver-login .text {
+#naver-button .text {
     display: inline-flex;
     align-items: center; /* 텍스트와 아이콘 세로로 정렬 */
 }
@@ -188,7 +188,7 @@ button:hover {
 }
 
 /* 헤더 스타일 */
-.header {
+.header {ㄴ
     height: 56px; /* 고정된 헤더 높이 */
     background-color: transparent;
     border-bottom: 1px solid #DDE1E6; /* 헤더 구분선 */

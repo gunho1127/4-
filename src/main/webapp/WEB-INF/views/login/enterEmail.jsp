@@ -6,10 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이메일 입력</title>
+    <!-- 브라우저 캐싱 문제를 방지 -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/login/enterEmail.css">
 </head>
 <body>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-2 border-end border-light"></div> <!-- 왼쪽 구분선 -->
@@ -31,7 +36,8 @@
                         </div>
                         <button type="submit" class="w-100" id="start-button">시작하기</button>
                         <p class="mt-3 text-center social-login-text">소셜 계정으로 간편 로그인:</p>
-                        <button type="button" id="naver-login" class="btn btn-success w-100">
+                       <!-- 네이버 로그인 버튼 -->
+                        <button type="button" id="naver-button" class="btn btn-success w-100">
                             <span class="icon" style="display: inline-block; width: 20px; height: 20px; margin-right: 8px;">
                                 <img src="/resources/images/signup/naver-icon.png" alt="네이버 아이콘" style="width: 100%; height: 100%; box-shadow: none;">
                             </span>
@@ -44,8 +50,9 @@
             <div class="col-2 border-start border-light"></div> <!-- 오른쪽 구분선 -->
         </div>
     </div>
-    <script src="/resources/js/bootstrap.bundle.min.js"></script>
+    <script src="/resources/js/bootstrap.bundle.min.js" defer></script>
     <script src="/resources/js/login/enterEmail.js" defer></script>
-   <!-- <script src="https://developers.naver.com/docs/common/js/naveridlogin_js_sdk.js" defer></script> -->
+    <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" defer></script>
+<!-- <script src="https://developers.naver.com/docs/common/js/naveridlogin_js_sdk.js" defer></script> -->
 </body>
 </html>

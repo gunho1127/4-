@@ -38,45 +38,105 @@ public class LoginController {
         return "login/enterEmail";
     }
 
+    @GetMapping("/loginTypeCheck")
+    public ResponseEntity<Map<String, Boolean>> checkLoginType(@RequestParam("id") String id, HttpSession session) {
+        log.info("Received ID: " + id);
+        // 결과를 JSON 형태로 반환
+        session.setAttribute("id", id.trim()); // 세션에 ID 저장
+        Map<String, Boolean> response = new HashMap<>();
+
+        boolean exists = loginService.getUserById(id) != null;
+        response.put("exists", exists);
+
+        boolean isNaver = loginService.isNaver(id);
+        response.put("isNaver", isNaver);
+
+        return ResponseEntity.ok(response);
+    }
 
     // 입력된 이메일 검증 및 상태 확인
     @PostMapping("/enterEmail")
-    public String handleEnterEmail(UserVO user, HttpSession session) {
-        session.setAttribute("id",user.getId());
+    public String handleEnterEmail(@RequestParam("id") String id, HttpSession session) {
+        session.setAttribute("id", id.trim());
+        log.info("세션에 저장된 이메일: {}", id.trim());
 
-        if (loginService.getUserById(user.getId()) == null) {
-            // 미가입자일 경우 이메일을 세션에 저장하고, verifyEmail 페이지로 리디렉션
+        // 사용자 정보 확인
+        UserVO user = loginService.getUserById(id.trim());
+        if (user == null) {
+            // 미가입자 처리
             String verificationCode = signUpService.generateVerificationCode();
-            signUpService.sendVerificationEmail(user.getId(), verificationCode);
+            signUpService.sendVerificationEmail(id.trim(), verificationCode);
             session.setAttribute("verificationCode", verificationCode);
+            log.info("Verification email sent to: {}", id.trim());
             return "redirect:/signup/verifyEmail";
-        } else {
-
-            return "redirect:/login/enterPassword";
         }
+
+        boolean isNaver = loginService.isNaver(id.trim());
+        log.info("Checked isNaver for ID {}: {}", id.trim(), isNaver);
+
+        if (isNaver) {
+            log.info("Redirecting to Naver login flow.");
+            return "redirect:/login/naver";
+        }
+
+        session.setAttribute("user", user);
+        log.info("Existing user found. Redirecting to enterPassword.");
+        return "redirect:/login/enterPassword";
     }
 
+    // 네이버 로그인 URL 생성 및 리디렉션
+    @GetMapping("/naver")
+    public String redirectToNaverLogin(HttpSession session) {
+        String id = (String) session.getAttribute("id");
+        log.info("redirectToNaverLogin - 세션 ID: {}", id);
+        String state = loginService.generateState(session); // state 생성 및 세션 저장
+        log.info("redirectToNaverLogin - 생성된 state: {}", state);
+        String naverLoginUrl = loginService.getNaverLoginUrl(state); // 로그인 URL 생성
+//        log.info("네이버 로그인 URL 생성: {}", naverLoginUrl);
+        return "redirect:" + naverLoginUrl; // 네이버로 리디렉션
+    }
+
+    // 네이버 로그인 API 콜백
+    @GetMapping("/callback")
+    public String handleNaverCallback(@RequestParam String code, @RequestParam String state, HttpSession session) {
+//        log.info("콜백 호출됨: code={}, state={}, sessionState={}", code, state, session.getAttribute("naverState"));
+        try {
+            // Access Token 요청
+            String accessToken = loginService.getNaverAccessToken(code, state, session);
+            // 사용자 정보 요청
+            Map<String, Object> userInfo = loginService.getNaverUserInfo(accessToken);
+
+            loginService.saveUserInfoToSession(userInfo, session);
+
+            String id = (String) session.getAttribute("id");
+            String idKey = (String) session.getAttribute("idKey"); // 네이버 고유 ID
+            log.info("세션 유지된 이메일 ID: {}, 네이버 고유 ID: {}", id, idKey);
+
+            UserVO user = loginService.getUserByIdAndIdKey(id, idKey);
+            if (user != null) {
+                // 기존 회원
+                session.setAttribute("user", user);
+                return "redirect:/";
+            } else {
+                // 신규 회원
+                return "redirect:/signup/setPreference";
+            }
+        } catch (Exception e) {
+            log.error("네이버 로그인 처리 중 오류 발생", e);
+            return "redirect:/error";
+        }
+    }
 
     // 비밀번호 입력 화면
     @GetMapping("/enterPassword")
     public String showEnterPassword(HttpSession session) {
-//        UserVO user = (UserVO) session.getAttribute("user");
-//        if (user.getId() == null) {
-//            return "redirect:/login/enterEmail"; // 세션에 ID가 없을 경우 로그인 페이지로 리다이렉트
-//        }
-        return "login/enterPassword"; // 비밀번호 입력 화면으로 이동
+        String id = (String) session.getAttribute("id");
+        if (id == null) {
+            return "redirect:/login/enterEmail";
+        }
+        return "login/enterPassword";
     }
 
-    @GetMapping("/loginTypeCheck")
-    public ResponseEntity<Map<String, Boolean>> checkLoginType(@RequestParam("id") String id) {
-        // 로그를 출력하여 요청을 확인할 수 있습니다.
-        log.info("Received ID: " + id);
-        // 결과를 JSON 형태로 반환
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("isNaver", loginService.isNaver(id));
-
-        return ResponseEntity.ok(response);
-    }
 
     // 입력된 비밀번호 검증 및 로그인 처리
     @PostMapping("/enterPassword")
@@ -106,7 +166,6 @@ public class LoginController {
                 // 사용자 조회
                 UserVO user = loginService.getUserById(id);
 
-
                 session.setAttribute("user", user); // 로그인 성공 시 사용자 정보를 세션에 저장
 
                 session.removeAttribute("id"); // 세션에서 ID 제거
@@ -132,9 +191,9 @@ public class LoginController {
     @GetMapping("/findPassword")
     public String handleFindPassword(HttpSession session) {
         if (session.getAttribute("id") == null) {
-            return "redirect:/login/enterEmail"; // 세션에 ID가 없을 경우 로그인 페이지로 리다이렉트
+            return "redirect:/login/enterEmail";
         }
-        return "login/findPassword"; // 비밀번호 찾기 화면으로 이동
+        return "login/findPassword";
     }
 
     // 비밀번호 재설정 처리
@@ -146,12 +205,12 @@ public class LoginController {
 //
 //        // 세션에 ID가 없으면 에러 반환
 //        if (id == null) {
-//            log.info("아이디 값 없음 ㅜㅜ {}", id);
+//            log.info("세션에 아이디 값이 없습니다. {}", id);
 //            response.put("error", "아이디 세션이 만료되었습니다. 다시 입력하세요.");
 //            response.put("redirect", "/login/enterEmail");
 //            return response;
 //        } else {
-//            log.info("아이디 값 있음 !! {}", id);
+//            log.info("세션에 아이디 값이 있습니다 !! {}", id);
 //            session.setAttribute("id", id); // 세션에 ID 저장
 //        }
 //
@@ -168,7 +227,7 @@ public class LoginController {
 //            log.info("사용자 정보 확인 실패: {}", e.getMessage());
 //            response.put("error", "해당 사용자 정보를 찾을 수 없습니다.");
 //        } catch (Exception e) {
-//            log.info("비밀번호 재설정 중 오류 발생: {}", e.getMessage());
+//            log.info("비밀번호 재설정 중 문제 발생: {}", e.getMessage());
 //            response.put("error", "비밀번호 재설정 중 문제가 발생했습니다. 다시 시도하세요.");
 //        }
 //
@@ -214,23 +273,5 @@ public class LoginController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
-
-/*
-    @PostMapping("/login/verifyNaverUser")
-    @ResponseBody
-    public Map<String, Object> verifyNaverUser(@RequestBody UserVO userVO) {
-        Map<String, Object> response = new HashMap<>();
-
-        // 이메일로 사용자 조회
-        UserVO user = loginService.getUserByEmail(userVO.getEmail());
-
-        if (user != null) {
-            response.put("isRegistered", true);
-        } else {
-            response.put("isRegistered", false);
-        }
-
-        return response;
-    }
-*/
 }
+

@@ -10,6 +10,17 @@
         SELECT * FROM user WHERE id = #{id} AND isDelete = 1
     </select>
 
+    <!-- 이메일과 고유 키값을 조회 -->
+    <select id="getUserByIdAndIdKey" parameterType="map" resultType="com.reaplette.domain.UserVO">
+        SELECT * FROM USER WHERE id = #{id} AND idKey = #{idKey}
+    </select>
+
+    <!-- 네이버 회원인지 체크 -->
+    <select id="isNaver" resultType="boolean">
+        <!-- boolean 타입 1, 0 반환으로 id 값이 null이어도 계속 1로 반환 -->
+        SELECT EXISTS ( SELECT 1 FROM USER WHERE id = #{id} AND loginType = 'naver' AND isDelete = 1 )
+    </select>
+
     <!-- 이메일과 비밀번호를 조회 -->
     <select id="validatePassword" parameterType="map" resultType="boolean">
         SELECT EXISTS ( SELECT 1 FROM user WHERE id = #{id} AND pw = #{pw} AND isDelete = 1 )
@@ -24,10 +35,5 @@
     <update id="updateVerificationCode" parameterType="map">
         UPDATE user SET verificationCode = #{verificationCode}, codeSentTime = NOW() WHERE id = #{id}
     </update>
-
-    <!-- 네이버 회원인지 체크 -->
-    <select id="isNaver" resultType="boolean">
-        SELECT EXISTS ( SELECT 1 FROM USER WHERE id = #{id} AND loginType = 'naver' AND isDelete = 1 )
-    </select>
 
 </mapper>

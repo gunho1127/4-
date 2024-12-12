@@ -21,7 +21,7 @@
                         <div class="mb-3">
                             <label for="username" class="form-label">활동명</label>
                             <div class="input-container">
-                                <input type="text" class="form-control" id="username" name="username" placeholder="활동명을 입력하세요." maxlength="10" aria-label="활동명 입력란">
+                                <input type="text" class="form-control" id="username" name="username" value="${sessionScope.username != null ? sessionScope.username : ''}" placeholder="활동명을 입력하세요." maxlength="10" aria-label="활동명 입력란">
                                 <span class="clear-icon" id="clear-icon">
                                     <img src="/resources/images/signup/clear-icon.png" alt="지우기 아이콘" class="clear-icon-img">
                                 </span>
@@ -46,9 +46,9 @@
                                     <div class="badge" data-selected="false" data-category="에세이">에세이</div>
                                 </div>
                                 <div class="badge-row">
+                                    <div class="badge" data-selected="false" data-category="예술/대중문화">예술/대중문화</div>
                                     <div class="badge" data-selected="false" data-category="여행">여행</div>
                                     <div class="badge" data-selected="false" data-category="역사">역사</div>
-                                    <div class="badge" data-selected="false" data-category="예술/대중문화">예술/대중문화</div>
                                     <div class="badge" data-selected="false" data-category="외국어">외국어</div>
                                     <div class="badge" data-selected="false" data-category="인문학">인문학</div>
                                 </div>
