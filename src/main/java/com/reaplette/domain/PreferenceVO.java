@@ -8,7 +8,6 @@ public class PreferenceVO {
     private String bookId; // 책 ID
     private String category; // 카테고리
     private String author; // 저자
-
     private int isDelete;
 }
 

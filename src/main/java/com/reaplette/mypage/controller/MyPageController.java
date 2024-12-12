@@ -109,7 +109,7 @@ public class MyPageController {
     public List<GoalVO> getSearchMyGoals(@RequestParam("keyword") String keyword) {
         log.info("GET /myPage/myGoals/search - Searching Goals");
         log.info("keyword : {}", keyword);
-        return myPageService.getSearchGoalList(keyword);
+        return myPageService.getSearchGoalList(keyword,"100");
     }
 
 //    @PostMapping("/myGoals/select")
@@ -304,8 +304,20 @@ public class MyPageController {
     }
 
     @GetMapping("recBooks")
-    public String getRecBooks() {
+    public String getRecBooks(HttpSession session,Model model) {
         log.info("GET /myPage/recBooks - Fetching recBooks");
+        UserVO user = (UserVO) session.getAttribute("user");
+        Map<String,List> preferenceList = myPageService.getPreferenceList(user.getId(),session);
+
+        // 1. first
+        log.info("First Preference List {}",preferenceList.get("firstPreferenceList"));
+        model.addAttribute("firstPreferenceList",preferenceList.get("firstPreferenceList"));
+        // 2. second
+        log.info("Second Preference List {}",preferenceList.get("secondPreferenceList"));
+        model.addAttribute("secondPreferenceList",preferenceList.get("secondPreferenceList"));
+        // 3. author
+        log.info("Author Preference List {}",preferenceList.get("authorPreferenceList"));
+        model.addAttribute("authorPreferenceList",preferenceList.get("authorPreferenceList"));
 
         return "recBooks";
     }

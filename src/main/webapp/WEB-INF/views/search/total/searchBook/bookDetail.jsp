@@ -56,6 +56,7 @@
                       </p>
 
 
+
                       <!-- 찜 도서 승연님 여기 css !! -->
                       <span id="bookDetail" data-id="${book.isbn}" style="cursor: pointer;">
                         <!-- <span id="bookDetail" data-id="${book.isbn}" class="bookFav" style="cursor: pointer;"></span> -->
@@ -65,7 +66,6 @@
                         <c:choose>
 
                           <c:when test="${bookmarkList == null}">
-
                             <span style="font-size: 1.5rem; color: var(--color-0f62fe);"
                               onclick="window.location.href='/login/enterEmail'">찜 등록하기</span>
                           </c:when>
@@ -81,37 +81,39 @@
                             </c:forEach>
 
                             <c:choose>
+
                               <c:when test="${i > 0}">
 
                                 <span style="font-size: 1.5rem; color: var(--color-0f62fe);"
                                   onclick="deleteBookmark('${book.isbn}')">찜 해제하기</span>
                               </c:when>
+                              
+                    
                               <c:otherwise>
 
                                 <c:choose>
                                   <c:when test="${user.id == null}">
-
                                     <span style="font-size: 1.5rem; color: var(--color-0f62fe);"
                                       onclick="window.location.href='/login/enterEmail'">찜 등록하기</span>
                                   </c:when>
+
                                   <c:otherwise>
 
                                     <span style="font-size: 1.5rem; color: var(--color-0f62fe);"
                                       onclick="setBookmark('${book.isbn}')">찜 등록하기</span>
                                   </c:otherwise>
+
                                 </c:choose>
                               </c:otherwise>
+
+
                             </c:choose>
                           </c:otherwise>
                         </c:choose>
 
-
-
-
-
-
-
                       </span>
+
+                      
                     </div>
               </div>
           </article>

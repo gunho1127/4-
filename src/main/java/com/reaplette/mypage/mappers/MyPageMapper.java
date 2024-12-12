@@ -36,6 +36,17 @@ public interface MyPageMapper {
     void deleteUserComment(String id);
     void deleteUserReview(String id);
     void deleteUserFollow(String id);
+
+
+
+
+    // 카테고리 값들 불러오기
+    List<PreferenceVO> getPreferenceCategoryList(String id);
+
+
+
+    // 작가 정보 불러오기
+    List<PreferenceVO> getAuthorBookPreferenceList(String id);
 }
 
 

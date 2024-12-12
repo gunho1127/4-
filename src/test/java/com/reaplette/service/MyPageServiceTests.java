@@ -3,21 +3,21 @@ package com.reaplette.service;
 
 import com.reaplette.domain.BookmarkVO;
 import com.reaplette.domain.GoalVO;
+import com.reaplette.domain.PreferenceVO;
 import com.reaplette.domain.UserVO;
-
-
+import com.reaplette.mypage.mappers.MyPageMapper;
+import com.reaplette.mypage.service.MyPageService;
 import lombok.extern.log4j.Log4j2;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
 
 import java.io.*;
 import java.net.*;
@@ -30,6 +30,12 @@ import java.util.List;
 @SpringBootTest
 
 public class MyPageServiceTests {
+
+    @Autowired
+    private MyPageService myPageService;
+
+    @Autowired
+    private MyPageMapper myPageMapper;
 
     @Value("${client.id}")
     String CLIENT_ID;
@@ -422,5 +428,94 @@ public class MyPageServiceTests {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void getPreferences() {
+        String[] categories = {
+                "한국소설",
+                "한국소설",
+                "판타지/환상문학",
+                "외국에세이",
+                "불교",
+                "한국에세이"
+        };
+
+
+        String[] authors = {
+                "한강",
+                "한강",
+                "수잔 콜린스",
+                "몽테뉴",
+                "법륜",
+                "태수"
+        };
+
+        String[] result = myPageService.getMostCommonKeywords(categories);
+
+        String first = result[0];
+        String second = result[1];
+
+        String[] author = myPageService.getMostCommonKeywords(authors);
+
+        String getAuthor = author[0];
+
+
+        log.info("first {}",first);
+        log.info("second {}",second);
+        log.info("author {}",getAuthor);
+
+//        log.info(myPageService.getSearchGoalList(first));
+//        log.info(myPageService.getSearchGoalList(second));
+
+
+    }
+
+
+    @Test
+    public void getPreferenceList() {
+        String id = "test@naver.com";
+
+        List<PreferenceVO> getPreferenceCategoryList = myPageMapper.getPreferenceCategoryList(id);
+        List<PreferenceVO> getPreferenceAuthorList = myPageMapper.getAuthorBookPreferenceList(id);
+
+        log.info("getPreferenceCategoryList {}", getPreferenceCategoryList);
+        log.info("getPreferenceAuthorList {}", getPreferenceAuthorList);
+
+        // 리스트 형태를 문자열로 . 부득이하게 필요
+        String[] pb = new String[getPreferenceCategoryList.size()];
+        String[] pa = new String[getPreferenceAuthorList.size()];
+
+        // 생성한 문자열에, 카테고리 정보를 주입한다.
+        for(int i=0; i<getPreferenceCategoryList.size(); i++) {
+            log.info("getPreferenceCategoryList.get(i).getCategory() {}", getPreferenceCategoryList.get(i).getCategory());
+            pb[i] = getPreferenceCategoryList.get(i).getCategory();
+        }
+
+        for(int i=0; i<getPreferenceAuthorList.size(); i++) {
+            log.info("getPreferenceAuthorList.get(i).getAuthor() {}", getPreferenceAuthorList.get(i).getAuthor());
+            pa[i] = getPreferenceAuthorList.get(i).getAuthor();
+        }
+
+        String[] bookResult = myPageService.getMostCommonKeywords(pb);
+
+        String bookFirst = bookResult[0];
+        String bookSecond = bookResult[1];
+
+
+        String[] authorResult = myPageService.getMostCommonKeywords((pa));
+        String authorFirst = authorResult[0];
+
+
+        List<GoalVO> fpb = myPageService.getSearchGoalList(bookFirst,"8");
+        List<GoalVO> spb = myPageService.getSearchGoalList(bookSecond,"8");
+        List<GoalVO> ap = myPageService.getSearchGoalList(authorFirst,"8");
+
+        log.info("fpb {}",fpb);
+        log.info("spb {}",spb);
+        log.info("ap {}",ap);
+    }
+
+
+
 
 } //MyPageServiceTests

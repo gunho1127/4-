@@ -27,14 +27,27 @@
 );
 
 
-DELETE FROM preference;
-select * from preference; 
 
+ 
+select * from preference;
+SELECT * FROM bookmark;
+
+
+DELETE FROM preference
+WHERE bookId = '9781851246403';
+
+SELECT author FROM PREFERENCE
+        WHERE id = 'test@naver.com'
+
+
+
+DELETE FROM preference;
 DELETE FROM bookmark;
 
 select * from goal;
+select * from follow;
 
-SELECT * FROM bookmark;
+
 
 ALTER TABLE bookmark
 MODIFY bookTitle VARCHAR(225);
@@ -44,7 +57,24 @@ select * from user;
 -- 새로운 데이터를 삽입
 INSERT INTO bookmark (id, bookId, bookTitle, category, isDelete, bookImageUrl, author)
 VALUES 
-('test@naver.com', '9788994886060', '홀로서기', '에세이', 1, 'https://shopping-phinf.pstatic.net/main_4713729/47137298621.20240419071109.jpg', '엘레나 피렌테');]]></console>
+('test@naver.com', '9788994886060', '홀로서기', '에세이', 1, 'https://shopping-phinf.pstatic.net/main_4713729/47137298621.20240419071109.jpg', '엘레나 피렌테');
+
+
+-- PREFERENCE 테이블의 author 열 길이 수정
+ALTER TABLE PREFERENCE
+MODIFY author VARCHAR(225);
+
+-- BookMark 테이블의 author 열 길이 수정
+ALTER TABLE BookMark
+MODIFY author VARCHAR(225);
+
+SELECT category FROM PREFERENCE WHERE id = 'test@naver.com';
+
+
+INSERT INTO preference (id, category) VALUES
+('test@naver.com', '경제경영'),
+('test@naver.com', '예술/대중문화'),
+('test@naver.com', '컴퓨터/모바일');]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

@@ -47,15 +47,16 @@ public class SearchController {
                              Model model) {
 
         // 로그인된 사용자 정보를 세션에서 가져오기
-        UserVO userVO = (UserVO) session.getAttribute("user");
-        if (userVO == null) {
-            // userVO가 null일 경우 기본값을 설정하거나 예외처리를 한다.
-            // 예를 들어, 임시 사용자 ID를 할당하거나 빈 값을 사용
-            userVO = new UserVO();
-            userVO.setId("guest"); // 임시값 설정
-            // 다른 기본 값도 설정할 수 있다.
+        UserVO userVO = (UserVO)session.getAttribute("user");
+
+        if( userVO == null) {
+//            userVO = new UserVO();
+//            userVO.setId("guest");
+            session.setAttribute("user", userVO);
         }
-        String nowUserId = userVO.getId();
+        //String nowUserId = userVO.getId();
+
+
         model.addAttribute("user", userVO);
         model.addAttribute("keyword", keyword);
 //
@@ -112,7 +113,7 @@ public class SearchController {
         if (keyword != null && !keyword.trim().isEmpty()) {
             try {
                 //System.out.println("검색어: " + keyword);// 검색어 출력 (디버깅 용도)
-                userList = searchService.searchUsersByKeyword(keyword, nowUserId);// 사용자 검색 서비스 호출
+                //userList = searchService.searchUsersByKeyword(keyword, nowUserId);// 사용자 검색 서비스 호출
 
                 // 현재 로그인된 사용자를 검색 결과에서 제거
                 String currentUserId = userVO.getId(); // 현재 사용자의 ID
@@ -126,6 +127,8 @@ public class SearchController {
                 model.addAttribute("message", "검색 중 오류가 발생했습니다.");
             }
         }
+
+
         // 게시물 검색 로직
         List<BoardVO> boardList = new ArrayList<>();
         if (keyword != null && !keyword.trim().isEmpty()) {
@@ -341,6 +344,7 @@ public class SearchController {
         // 북마크 리스트 가져오기
         // MypageService 랑 MyPageMapper 랑 MyPagerMapper.xml 가져가시면 됩니다.
         UserVO user = (UserVO) session.getAttribute("user");
+
         if(user != null) {
             List<BookmarkVO> bookmarkList = myPageService.getBookmarkList(user.getId());
 
@@ -377,9 +381,7 @@ public class SearchController {
             } else {
                 log.info("setBookmark");
                 bookmark.setIsDelete(1);
-
-
-                bookmark.setCategory("카테고리 임의 값"); // 임의 값 설정
+                bookmark.setCategory(searchService.getBookCategoryInfo(bookmark.getBookId())); // 크롤링 함수를 통해 카테고리 정보 수집
 
                 log.info("bookmark {}", bookmark);
 

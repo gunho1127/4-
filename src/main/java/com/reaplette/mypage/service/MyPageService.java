@@ -3,6 +3,7 @@ package com.reaplette.mypage.service;
 import com.reaplette.domain.*;
 import com.reaplette.mypage.mappers.MyPageMapper;
 import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONArray;
@@ -15,10 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 @Log4j2
@@ -179,7 +179,7 @@ public class MyPageService {
     }
 
     // 도서 검색
-    public List<GoalVO> getSearchGoalList(String keyword) {
+    public List<GoalVO> getSearchGoalList(String keyword,String count) {
 //        private final String CLIENT_ID;  // 불변의 값
 //        private String CLIENT_SECRET;    // 변경 가능한 값
         // 네이버 도서 검색 API 서비스를 사용할 예정.
@@ -192,7 +192,7 @@ public class MyPageService {
         try {
             // 요청 URL 작성
             String encodedKeyword = URLEncoder.encode(keyword, "UTF-8");
-            String apiURL = "https://openapi.naver.com/v1/search/book.json?query=" + encodedKeyword + "&sort=sim&display=100";
+            String apiURL = "https://openapi.naver.com/v1/search/book.json?query=" + encodedKeyword + "&sort=sim&display="+count;
             url = new URL(apiURL);
 
             //HttpURLConnection 으로 데이터 요청
@@ -494,4 +494,123 @@ public class MyPageService {
         }
         return newalliList;
     }
+
+    public Map<String,List> getPreferenceList(String id, HttpSession session) {
+
+        Map<String, List> preferenceList = new HashMap<>();
+
+        // 해당하는 카테고리 리스트를 가져온다.
+        List<PreferenceVO> getPreferenceCategoryList = myPageMapper.getPreferenceCategoryList(id);
+        List<PreferenceVO> getPreferenceAuthorList = myPageMapper.getAuthorBookPreferenceList(id);
+
+        // 리스트 형태를 문자열로 . 부득이하게 필요
+        String[] pb = new String[getPreferenceCategoryList.size()];
+        String[] pa = new String[getPreferenceAuthorList.size()];
+
+        // 생성한 문자열에, 카테고리 정보를 주입한다.
+        for(int i=0; i<getPreferenceCategoryList.size(); i++) {
+            pb[i] = getPreferenceCategoryList.get(i).getCategory();
+        }
+
+        for(int i=0; i<getPreferenceAuthorList.size(); i++) {
+            pa[i] = getPreferenceAuthorList.get(i).getAuthor();
+        }
+
+        // 카테고리 변수들 중 공통된 키워드가 가장 많은 단어를 추출한다. 1위 2위.
+
+        String[] bookResult = getMostCommonKeywords(pb);
+
+        String bookFirst = bookResult[0];
+        String bookSecond = bookResult[1];
+
+
+        String[] authorResult = getMostCommonKeywords((pa));
+        String authorFirst = authorResult[0];
+
+        // 세션에 저장
+        session.setAttribute("firstCategory",bookFirst);
+        session.setAttribute("secondCategory",bookSecond);
+        session.setAttribute("authorCategory",authorFirst);
+
+        // 해당 키워드에 대한 네이버 도서 검색 값을 List<GoalVO> 객체로 받아서 리턴한다.
+
+        List<GoalVO> fpb = getSearchGoalList(bookFirst,"8");
+        List<GoalVO> spb = getSearchGoalList(bookSecond,"8");
+        List<GoalVO> ap = getSearchGoalList(authorFirst,"8");
+
+        log.info("fpb {}",fpb);
+        log.info("spb {}",spb);
+        log.info("ap {}",ap);
+
+        preferenceList.put("firstPreferenceList",fpb);
+        preferenceList.put("secondPreferenceList",spb);
+        preferenceList.put("authorPreferenceList",ap);
+
+        return preferenceList;
+    }
+
+    public String[] getMostCommonKeywords(String[] categories) {
+        // 키워드 빈도를 저장할 맵
+        Map<String, Integer> wordCount = new HashMap<>();
+
+        // 카테고리에서 키워드 추출
+        for (String category : categories) {
+            Set<String> words = extractWords(category);
+            for (String word : words) {
+                wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+            }
+        }
+
+        // 단어 빈도를 내림차순으로 정렬
+        List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(wordCount.entrySet());
+        sortedEntries.sort((entry1, entry2) -> entry2.getValue() - entry1.getValue());
+
+        // 첫 번째 키워드: 가장 많이 등장한 키워드
+        String first = sortedEntries.isEmpty() ? categories[0] : sortedEntries.get(0).getKey();
+
+        // 첫 번째 키워드와 겹치지 않는 두 번째 키워드를 찾아야 함
+        String second = null;
+
+        for (Map.Entry<String, Integer> entry : sortedEntries) {
+            if (!entry.getKey().contains(first) && (second == null || !entry.getKey().equals(first))) {
+                second = entry.getKey();
+                break;
+            }
+        }
+
+        // 두 번째 키워드가 없으면, 랜덤으로 선택
+        if (second == null) {
+            second = categories.length > 1 ? categories[1] : categories[0];
+        }
+
+        return new String[]{first, second};
+    }
+
+    // 주어진 문자열에서 단어를 추출하는 메서드
+    public Set<String> extractWords(String text) {
+        Set<String> words = new HashSet<>();
+
+        // 한글, 숫자, 그리고 '/'로 구분된 단어들을 추출하는 정규식
+        String regex = "[가-힣0-9]+";
+        Matcher matcher = Pattern.compile(regex).matcher(text);
+
+        while (matcher.find()) {
+            words.add(matcher.group());
+        }
+
+        // '/' 구분 단어 추가
+        String[] extraWords = text.split("[\\s/]+");
+        for (String word : extraWords) {
+            if (!word.isEmpty() && word.matches("[가-힣0-9]+")) {
+                words.add(word);
+            }
+        }
+
+        return words;
+    }
+
+
+
+
+
 }

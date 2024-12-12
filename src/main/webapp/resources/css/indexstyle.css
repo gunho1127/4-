@@ -370,6 +370,7 @@
   position: relative;
   object-fit: cover;
 }
+
 .dynamic-island {
   background: var(--coolgray-30, #c1c7cd);
   border-radius: 1.25rem;
@@ -732,6 +733,7 @@
   width: 13rem;
 }
 .banner-list {
+  
   display: flex;
   flex-direction: row;
   gap: 3rem;
@@ -744,6 +746,7 @@
 /* } */
 
 .banner-list1{
+  
 animation: roll 40s linear infinite; /* 롤링 애니메이션 */
 
 }

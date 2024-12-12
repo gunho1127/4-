@@ -9,7 +9,6 @@ public class BookmarkVO {
     private String bookTitle; // 책 제목
     private String category; // 카테고리
     private int isDelete; // 삭제 여부 (기본값 1: 삭제되지 않음)
-
     private String bookImageUrl; // 이미지 URL 주소
     private String author; // 작가
 }

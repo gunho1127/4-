@@ -1,6 +1,7 @@
 package com.reaplette.mappers;
 
 import com.reaplette.domain.GoalVO;
+import com.reaplette.domain.PreferenceVO;
 import com.reaplette.domain.TranscriptionVO;
 import com.reaplette.domain.UserVO;
 import com.reaplette.mypage.mappers.MyPageMapper;
@@ -12,6 +13,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Log4j2
 @ExtendWith(SpringExtension.class)
@@ -137,4 +141,13 @@ public class MyPageMapperTests {
         String bookId = "9788936434120";
         log.info(myPageMapper.getGoal(id,bookId));
     }
+
+    @Test
+    public void testGetPreferenceList() {
+        String id = "test@naver.com";
+        log.info(myPageMapper.getPreferenceCategoryList(id));
+        log.info(myPageMapper.getAuthorBookPreferenceList(id));
+    }
+
+
 }
