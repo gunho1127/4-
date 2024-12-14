@@ -31,13 +31,6 @@ public class MyPageController {
     public String getMyPageInfo(Model model,
                                 HttpSession session) {
         log.info("GET /myPage/info - Accessing MyPage Info");
-
-        //테스트 볼 때만 넣는 test@naver.com
-        //병합시엔 코드를 지우세요
-        // test@naver.com 으로 세션 등록해주는 코드.
-        // session.setAttribute("user", myPageService.getUser("test@naver.com"));
-        //병합시엔 코드를 지우세요
-
         UserVO user = (UserVO) session.getAttribute("user");
         log.info("user {}", user);
         model.addAttribute("user", user);
@@ -112,12 +105,6 @@ public class MyPageController {
         return myPageService.getSearchGoalList(keyword,"100");
     }
 
-//    @PostMapping("/myGoals/select")
-//    public String postSelectMyGoals() {
-//        log.info("POST /myPage/myGoals/select - Selecting My Goals");
-//
-//        return "myPage/myGoals/myGoalsAddBooks";
-//    }
 
     @PostMapping("/myGoals/register")
     public String postRegisterMyGoals(GoalVO goal,
@@ -176,11 +163,7 @@ public class MyPageController {
         return "redirect:/myPage/myGoalsList";
     }
 
-//    @GetMapping("/myGoals/myGoalsWriteTranscription")
-//    public String getMyGoalsWriteTranscription() {
-//        log.info("GET /myPage/myGoals/myGoalsWriteTranscription - Fetching MyGoals Write Transcription");
-//        return "/myPage/myGoals/myGoalsWriteTranscription";
-//    }
+
 
     @PostMapping("/myGoals/bookInfo/postTrans")
     public String postTransBookInfo(TranscriptionVO transcription) {
@@ -191,11 +174,7 @@ public class MyPageController {
         return "redirect:/myPage/myGoals/bookInfo?id=" + transcription.getId() + "&bookId=" + transcription.getBookId();
     }
 
-//    @PostMapping("/myGoals/bookInfo/editTrans")
-//    public String postEditTransBookInfo() {
-//        log.info("POST /myPage/myGoals/bookInfo/editTrans - Editing Translated Book Info");
-//        return "myPage/myGoals/myGoalBookInfo";
-//    }
+
 
     @GetMapping("/myGoals/bookInfo/deleteTrans")
     public String getDeleteTransBookInfo(@RequestParam("transcriptionId") String transcriptionId,
@@ -261,11 +240,6 @@ public class MyPageController {
         return "myPage/communityList";
     }
 
-    @GetMapping("/communityDetail")
-    public String getCommunityDetail() {
-        log.info("GET /myPage/communityDetail - Fetching Community Detail");
-        return "myPage/communityDetail";
-    }
 
     @GetMapping("/deleteUserGuide")
     public String getDeleteUserGuide() {

@@ -28,10 +28,11 @@
 
 
 
- 
+select * from user; 
 select * from preference;
 SELECT * FROM bookmark;
 
+DELETE FROM user;
 
 DELETE FROM preference
 WHERE bookId = '9781851246403';

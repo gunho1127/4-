@@ -69,4 +69,9 @@ public class LoginMapperTests {
         loginMapper.updatePassword(user);
 
     }
+
+    @Test
+    public void testIsNaver() {
+        log.info(loginMapper.isNaver("test1@naver.com"));
+    }
 }

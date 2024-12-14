@@ -501,50 +501,48 @@ public class MyPageService {
 
         // 해당하는 카테고리 리스트를 가져온다.
         List<PreferenceVO> getPreferenceCategoryList = myPageMapper.getPreferenceCategoryList(id);
-        List<PreferenceVO> getPreferenceAuthorList = myPageMapper.getAuthorBookPreferenceList(id);
-
-        // 리스트 형태를 문자열로 . 부득이하게 필요
         String[] pb = new String[getPreferenceCategoryList.size()];
-        String[] pa = new String[getPreferenceAuthorList.size()];
-
-        // 생성한 문자열에, 카테고리 정보를 주입한다.
         for(int i=0; i<getPreferenceCategoryList.size(); i++) {
             pb[i] = getPreferenceCategoryList.get(i).getCategory();
         }
-
-        for(int i=0; i<getPreferenceAuthorList.size(); i++) {
-            pa[i] = getPreferenceAuthorList.get(i).getAuthor();
-        }
-
-        // 카테고리 변수들 중 공통된 키워드가 가장 많은 단어를 추출한다. 1위 2위.
-
         String[] bookResult = getMostCommonKeywords(pb);
 
         String bookFirst = bookResult[0];
         String bookSecond = bookResult[1];
-
-
-        String[] authorResult = getMostCommonKeywords((pa));
-        String authorFirst = authorResult[0];
-
         // 세션에 저장
         session.setAttribute("firstCategory",bookFirst);
         session.setAttribute("secondCategory",bookSecond);
-        session.setAttribute("authorCategory",authorFirst);
-
-        // 해당 키워드에 대한 네이버 도서 검색 값을 List<GoalVO> 객체로 받아서 리턴한다.
-
         List<GoalVO> fpb = getSearchGoalList(bookFirst,"8");
         List<GoalVO> spb = getSearchGoalList(bookSecond,"8");
-        List<GoalVO> ap = getSearchGoalList(authorFirst,"8");
-
         log.info("fpb {}",fpb);
         log.info("spb {}",spb);
-        log.info("ap {}",ap);
-
         preferenceList.put("firstPreferenceList",fpb);
         preferenceList.put("secondPreferenceList",spb);
-        preferenceList.put("authorPreferenceList",ap);
+
+
+        // 리스트 형태를 문자열로 . 부득이하게 필요
+        List<PreferenceVO> getPreferenceAuthorList = myPageMapper.getAuthorBookPreferenceList(id);
+        if(getPreferenceAuthorList.isEmpty()) {
+            session.setAttribute("authorCategory","아직 선호 작가가 없습니다 !");
+        }
+        else {
+            String[] pa = new String[getPreferenceAuthorList.size()];
+            for(int i=0; i<getPreferenceAuthorList.size(); i++) {
+                pa[i] = getPreferenceAuthorList.get(i).getAuthor();
+            }
+            String[] authorResult = getMostCommonKeywords((pa));
+            String authorFirst = authorResult[0];
+            // 카테고리 변수들 중 공통된 키워드가 가장 많은 단어를 추출한다. 1위 2위.
+            session.setAttribute("authorCategory",authorFirst);
+            List<GoalVO> ap = getSearchGoalList(authorFirst,"8");
+            log.info("ap {}",ap);
+            preferenceList.put("authorPreferenceList",ap);
+        }
+
+
+
+
+
 
         return preferenceList;
     }
